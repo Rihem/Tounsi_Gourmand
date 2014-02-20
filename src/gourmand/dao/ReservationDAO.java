@@ -6,30 +6,35 @@
 
 package gourmand.dao;
 
-import gourmand.entities.Commentaire;
+import gourmand.entities.*;
 import gourmand.util.MyConnection;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
 /**
- *
+ * cette classe est a verfiee avec la tutrice :)
  * @author Wael
  */
-public class CommentaireDAO {
+public class ReservationDAO {
     
     private Connection con=MyConnection.getCurrentConnection();    
     
-    //insertion d'un commentaire dans la table commentaire
-    public void AjoutCommentaire(Commentaire C){
+    //insertion d'une reservation dans la table reservation
+    //a verifier avec la tutrice
+    public void AjoutCommentaire(Reservation R){
          try
          {
-            String requete="insert into commentaire(libelle) values(?)";
+            String requete="insert into resevation (nombrePersonne,numCompte,idEspaceGourmand,dateReservation) values(?,?,?,?)";
             PreparedStatement ps=con.prepareStatement(requete);
             
-            ps.setString(1, C.getLibelle());
+            ps.setInt(1, R.getNombrePersonne());
+            ps.setInt(2, R.getNumCompte());
+            ps.setInt(3, R.getIdEspaceGourmand());
+            ps.setDate(4, (Date) R.getDateReservation());
             ps.executeUpdate();
         }
         catch(SQLException e)
@@ -38,11 +43,11 @@ public class CommentaireDAO {
         }
     }
     
-    //cette methode permet d'afficher les commentaires 
+    //cette methode permet d'afficher les reservation 
     public void AfficherCommentaire (){
         try
         {
-            String requete ="select * from commentaire";
+            String requete ="select * from resrvation";
             Statement stm = con.createStatement();
             ResultSet res = stm.executeQuery(requete);
             while(res.next()){
@@ -56,14 +61,14 @@ public class CommentaireDAO {
         }
      }
     
-    //supprimer un commentaire de la table
-    public void DeleteParID(Commentaire C){
+    //supprimer une reservation de la table
+    public void DeleteParID(Reservation C){
          try
          {
-            String requete="delete from commentaire where idCommentaire=?";
+            String requete="delete from reservation where numReservation=?";
             PreparedStatement ps=con.prepareStatement(requete);
             
-            ps.setInt(1,C.getIdCommentaire());
+            ps.setInt(1,C.getNumReservation());
             ps.executeUpdate();
         }
         catch(SQLException e)
@@ -72,14 +77,17 @@ public class CommentaireDAO {
         }
     }
     
-    //modifier un commentaire
-    public void ModifierCommentaireParId(Commentaire C){
-            try
+    //modifier une reservation 
+    public void ModifierReservation(Reservation R){
+         try
          {
-            String requete="update commentaire set libelle=? where idCommentaire=?";
+            String requete="update reservation set nombrePersonne=?,numCompte=?,idEspaceGourmand=?,dateReservation=? where numReservation=?";
             PreparedStatement ps=con.prepareStatement(requete);
             //System.out.println("affichage1 :  " + ps);//c'est une ligne pour le test 
-            ps.setString(1, C.getLibelle());
+            ps.setInt(1, R.getNombrePersonne());
+            ps.setInt(2, R.getNumCompte());
+            ps.setInt(3, R.getIdEspaceGourmand());
+            ps.setDate(4, (Date) R.getDateReservation());
             //System.out.println("affichage2 :  " + ps);//c'est une ligne pour le test
         }
         catch(SQLException e)
@@ -87,4 +95,5 @@ public class CommentaireDAO {
             System.out.println("Erreur de mise a jour "+e.getMessage());
         }
      }
+    
 }
