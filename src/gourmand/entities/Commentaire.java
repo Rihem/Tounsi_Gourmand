@@ -15,12 +15,15 @@ public class Commentaire {
     private int idCommentaire;
     private String libelle;
 
-    public int getIdCommentaire() {
-        return idCommentaire;
+    public Commentaire() {
     }
 
-    public void setIdCommentaire(int idCommentaire) {
-        this.idCommentaire = idCommentaire;
+    public Commentaire(String libelle) {
+        this.libelle = libelle;
+    }
+    
+    public int getIdCommentaire() {
+        return idCommentaire;
     }
 
     public String getLibelle() {

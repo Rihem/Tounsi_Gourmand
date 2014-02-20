@@ -15,13 +15,22 @@ public class ProprietaireEspaceGourmand {
     private int idProprietaire, tel;
     private String password, email, nom, prenom, login;
 
+    public ProprietaireEspaceGourmand() {
+    }
+
+    public ProprietaireEspaceGourmand(int tel, String password, String email, String nom, String prenom, String login) {
+        this.tel = tel;
+        this.password = password;
+        this.email = email;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.login = login;
+    }
+    
     public int getIdProprietaire() {
         return idProprietaire;
     }
 
-    public void setIdProprietaire(int idProprietaire) {
-        this.idProprietaire = idProprietaire;
-    }
 
     public int getTel() {
         return tel;

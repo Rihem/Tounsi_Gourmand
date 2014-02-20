@@ -15,6 +15,14 @@ import java.util.Objects;
 public class Administrateur {
     private String login, password;
 
+    public Administrateur() {
+    }
+
+    public Administrateur(String login, String password) {
+        this.login = login;
+        this.password = password;
+    }
+
     public String getLogin() {
         return login;
     }

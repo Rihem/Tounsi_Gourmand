@@ -19,12 +19,20 @@ public class Menu {
     private float prix;
     private Date date;
 
-    public int getIdMenu() {
-        return idMenu;
+    public Menu() {
     }
 
-    public void setIdMenu(int idMenu) {
-        this.idMenu = idMenu;
+    public Menu(String entrees, String desserts, String plats, String boissons, float prix, Date date) {
+        this.entrees = entrees;
+        this.desserts = desserts;
+        this.plats = plats;
+        this.boissons = boissons;
+        this.prix = prix;
+        this.date = date;
+    }
+
+    public int getIdMenu() {
+        return idMenu;
     }
 
     public String getEntrees() {

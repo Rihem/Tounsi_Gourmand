@@ -21,12 +21,23 @@ public class EspaceGourmand {
     private int idProprietaire, idCommentaire, idMenu;
     private boolean ok;
 
-    public int getIdEspaceGourmand() {
-        return idEspaceGourmand;
+    public EspaceGourmand() {
     }
 
-    public void setIdEspaceGourmand(int idEspaceGourmand) {
-        this.idEspaceGourmand = idEspaceGourmand;
+    public EspaceGourmand(String nomEspaceGourmand, String adresse, int numTel, String email, String type, int idProprietaire, int idCommentaire, int idMenu, boolean ok) {
+        this.nomEspaceGourmand = nomEspaceGourmand;
+        this.adresse = adresse;
+        this.numTel = numTel;
+        this.email = email;
+        this.type = type;
+        this.idProprietaire = idProprietaire;
+        this.idCommentaire = idCommentaire;
+        this.idMenu = idMenu;
+        this.ok = ok;
+    }
+
+    public int getIdEspaceGourmand() {
+        return idEspaceGourmand;
     }
 
     public String getNomEspaceGourmand() {

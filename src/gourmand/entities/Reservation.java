@@ -17,12 +17,18 @@ public class Reservation {
     private int numReservation, nombrePersonne, numCompte,idEspaceGourmand;
     private Date dateReservation;
 
-    public int getNumReservation() {
-        return numReservation;
+    public Reservation() {
     }
 
-    public void setNumReservation(int numReservation) {
-        this.numReservation = numReservation;
+    public Reservation(int nombrePersonne, int numCompte, int idEspaceGourmand, Date dateReservation) {
+        this.nombrePersonne = nombrePersonne;
+        this.numCompte = numCompte;
+        this.idEspaceGourmand = idEspaceGourmand;
+        this.dateReservation = dateReservation;
+    }
+
+    public int getNumReservation() {
+        return numReservation;
     }
 
     public int getNombrePersonne() {

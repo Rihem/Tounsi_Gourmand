@@ -18,12 +18,20 @@ public class Client {
     private String nom, prenom, login, password, email;
     private int tel;
 
-    public int getNumCompte() {
-        return numCompte;
+    public Client() {
     }
 
-    public void setNumCompte(int numCompte) {
-        this.numCompte = numCompte;
+    public Client(String nom, String prenom, String login, String password, String email, int tel) {
+        this.nom = nom;
+        this.prenom = prenom;
+        this.login = login;
+        this.password = password;
+        this.email = email;
+        this.tel = tel;
+    }
+
+    public int getNumCompte() {
+        return numCompte;
     }
 
     public String getNom() {
