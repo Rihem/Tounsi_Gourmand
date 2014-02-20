@@ -56,7 +56,23 @@ public class Reservation {
     public void setDateReservation(Date dateReservation) {
         this.dateReservation = dateReservation;
     }
+
+    public String toString() {
+        return "numReservation=" + numReservation + ", nombrePersonne=" + nombrePersonne + ", numCompte=" + numCompte + ", idEspaceGourmand=" + idEspaceGourmand + ", dateReservation=" + dateReservation;
+    }
     
-    
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Reservation r = (Reservation) obj;
+        if(this.numReservation==r.getNumReservation()){
+            return true;
+        }
+        return false;
+    }
     
 }

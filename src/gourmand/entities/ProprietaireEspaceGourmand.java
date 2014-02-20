@@ -70,7 +70,24 @@ public class ProprietaireEspaceGourmand {
     public void setLogin(String login) {
         this.login = login;
     }
+
+    public String toString() {
+        return "idProprietaire=" + idProprietaire + ", tel=" + tel + ", password=" + password + ", email=" + email + ", nom=" + nom + ", prenom=" + prenom + ", login=" + login;
+    }
     
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final ProprietaireEspaceGourmand p = (ProprietaireEspaceGourmand) obj;
+        if(this.idProprietaire==p.getIdProprietaire()){
+            return true;
+        }
+        return false;
+    }
     
     
     

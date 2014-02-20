@@ -19,6 +19,7 @@ public class EspaceGourmand {
     private String email;
     private String type;
     private int idProprietaire, idCommentaire, idMenu;
+    private boolean ok;
 
     public int getIdEspaceGourmand() {
         return idEspaceGourmand;
@@ -91,6 +92,32 @@ public class EspaceGourmand {
     public void setIdMenu(int idMenu) {
         this.idMenu = idMenu;
     }
+
+    public boolean isOk() {
+        return ok;
+    }
+
+    public void setOk(boolean ok) {
+        this.ok = ok;
+    }
+
+    public String toString() {
+        if(ok==true) System.out.println("Client confirmé");
+        else System.out.println("Client pas encore confirmé");
+        return "idEspaceGourmand=" + idEspaceGourmand + ", nomEspaceGourmand=" + nomEspaceGourmand + ", adresse=" + adresse + ", numTel=" + numTel + ", email=" + email + ", type=" + type + ", idProprietaire=" + idProprietaire + ", idCommentaire=" + idCommentaire + ", idMenu=" + idMenu;
+    }
     
-    
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final EspaceGourmand e = (EspaceGourmand) obj;
+        if (this.idEspaceGourmand == e.getIdEspaceGourmand()) {
+            return true;
+        }
+        return false;
+    }
 }

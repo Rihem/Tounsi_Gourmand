@@ -74,7 +74,23 @@ public class Menu {
     public void setDate(Date date) {
         this.date = date;
     }
+
+    public String toString() {
+        return "idMenu=" + idMenu + ", entrees=" + entrees + ", desserts=" + desserts + ", plats=" + plats + ", boissons=" + boissons + ", prix=" + prix + ", date=" + date;
+    }
     
-    
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Menu m = (Menu) obj;
+        if(this.idMenu==m.getIdMenu()){
+            return true;
+        }
+        return false;
+    }
     
 }

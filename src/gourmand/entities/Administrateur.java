@@ -6,6 +6,8 @@
 
 package gourmand.entities;
 
+import java.util.Objects;
+
 /**
  *
  * @author Hell
@@ -28,7 +30,25 @@ public class Administrateur {
     public void setPassword(String password) {
         this.password = password;
     }
+
     
-    
+    public String toString() {
+        return "login=" + login + ", password=" + password;
+    }
+
+
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Administrateur a = (Administrateur) obj;
+        if (this.login.equals(a.getLogin())) {
+            return true;
+        }
+        return false;
+    }
     
 }

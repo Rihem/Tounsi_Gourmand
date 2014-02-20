@@ -6,6 +6,8 @@
 
 package gourmand.entities;
 
+import java.util.Objects;
+
 /**
  *
  * @author Hell
@@ -71,7 +73,24 @@ public class Client {
     public void setTel(int tel) {
         this.tel = tel;
     }
-    
+
+    public String toString() {
+        return "numCompte=" + numCompte + ", nom=" + nom + ", prenom=" + prenom + ", login=" + login + ", password=" + password + ", email=" + email + ", tel=" + tel;
+    }
+
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Client c = (Client) obj;
+        if (this.numCompte == c.getNumCompte()) {
+            return true;
+        }
+        return false;
+    }
     
     
 }
