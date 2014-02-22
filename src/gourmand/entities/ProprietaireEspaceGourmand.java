@@ -12,8 +12,8 @@ package gourmand.entities;
  */
 public class ProprietaireEspaceGourmand {
     
-    private int idProprietaire, tel;
-    private String password, email, nom, prenom, login;
+    private int idProprietaire, tel,age;
+    private String password, email, nom, prenom, login,sexe;
 
     public ProprietaireEspaceGourmand() {
     }
@@ -25,10 +25,28 @@ public class ProprietaireEspaceGourmand {
         this.nom = nom;
         this.prenom = prenom;
         this.login = login;
+        this.age=age;
+        this.sexe=sexe;
     }
     
     public int getIdProprietaire() {
         return idProprietaire;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public String getSexe() {
+        return sexe;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public void setSexe(String sexe) {
+        this.sexe = sexe;
     }
 
 
@@ -80,9 +98,11 @@ public class ProprietaireEspaceGourmand {
         this.login = login;
     }
 
+    @Override
     public String toString() {
-        return "idProprietaire=" + idProprietaire + ", tel=" + tel + ", password=" + password + ", email=" + email + ", nom=" + nom + ", prenom=" + prenom + ", login=" + login;
+        return "ProprietaireEspaceGourmand{" + "idProprietaire=" + idProprietaire + ", tel=" + tel + ", age=" + age + ", password=" + password + ", email=" + email + ", nom=" + nom + ", prenom=" + prenom + ", login=" + login + ", sexe=" + sexe + '}';
     }
+    
     
     public boolean equals(Object obj) {
         if (obj == null) {

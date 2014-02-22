@@ -15,8 +15,8 @@ import java.util.Objects;
 public class Client {
     
     private int numCompte;
-    private String nom, prenom, login, password, email;
-    private int tel;
+    private String nom, prenom, login, password, email,sexe;
+    private int tel,age;
 
     public Client() {
     }
@@ -28,6 +28,8 @@ public class Client {
         this.password = password;
         this.email = email;
         this.tel = tel;
+        this.age = age;
+        this.sexe = sexe;
     }
 
     public int getNumCompte() {
@@ -82,9 +84,28 @@ public class Client {
         this.tel = tel;
     }
 
-    public String toString() {
-        return "numCompte=" + numCompte + ", nom=" + nom + ", prenom=" + prenom + ", login=" + login + ", password=" + password + ", email=" + email + ", tel=" + tel;
+    public String getSexe() {
+        return sexe;
     }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setSexe(String sexe) {
+        this.sexe = sexe;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    @Override
+    public String toString() {
+        return "Client{" + "numCompte=" + numCompte + ", nom=" + nom + ", prenom=" + prenom + ", login=" + login + ", password=" + password + ", email=" + email + ", sexe=" + sexe + ", tel=" + tel + ", age=" + age + '}';
+    }
+
+
 
     public boolean equals(Object obj) {
         if (obj == null) {

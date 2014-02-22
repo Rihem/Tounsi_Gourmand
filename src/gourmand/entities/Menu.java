@@ -15,19 +15,14 @@ import java.util.Date;
 public class Menu {
     
     private int idMenu;
-    private String entrees, desserts, plats, boissons;
-    private float prix;
+
     private Date date;
 
     public Menu() {
     }
 
-    public Menu(String entrees, String desserts, String plats, String boissons, float prix, Date date) {
-        this.entrees = entrees;
-        this.desserts = desserts;
-        this.plats = plats;
-        this.boissons = boissons;
-        this.prix = prix;
+    public Menu(int idMenu,Date date) {
+        this.idMenu = idMenu;
         this.date = date;
     }
 
@@ -35,58 +30,27 @@ public class Menu {
         return idMenu;
     }
 
-    public String getEntrees() {
-        return entrees;
-    }
-
-    public void setEntrees(String entrees) {
-        this.entrees = entrees;
-    }
-
-    public String getDesserts() {
-        return desserts;
-    }
-
-    public void setDesserts(String desserts) {
-        this.desserts = desserts;
-    }
-
-    public String getPlats() {
-        return plats;
-    }
-
-    public void setPlats(String plats) {
-        this.plats = plats;
-    }
-
-    public String getBoissons() {
-        return boissons;
-    }
-
-    public void setBoissons(String boissons) {
-        this.boissons = boissons;
-    }
-
-    public float getPrix() {
-        return prix;
-    }
-
-    public void setPrix(float prix) {
-        this.prix = prix;
-    }
-
     public Date getDate() {
         return date;
     }
+
 
     public void setDate(Date date) {
         this.date = date;
     }
 
+    @Override
     public String toString() {
-        return "idMenu=" + idMenu + ", entrees=" + entrees + ", desserts=" + desserts + ", plats=" + plats + ", boissons=" + boissons + ", prix=" + prix + ", date=" + date;
+        return "Menu{" + "idMenu=" + idMenu + ", date=" + date + '}';
     }
-    
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        return hash;
+    }
+
+    @Override
     public boolean equals(Object obj) {
         if (obj == null) {
             return false;
@@ -94,11 +58,15 @@ public class Menu {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Menu m = (Menu) obj;
-        if(this.idMenu==m.getIdMenu()){
-            return true;
+        final Menu other = (Menu) obj;
+        if (this.idMenu != other.idMenu) {
+            return false;
         }
-        return false;
+        return true;
     }
+
+   
+
+    
     
 }
