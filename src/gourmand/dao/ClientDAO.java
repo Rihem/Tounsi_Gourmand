@@ -98,10 +98,10 @@ public class ClientDAO
     }
     
     //modifier un client
-    public void ModifierObjetParNom(Client C){
+    public void ModifierClientParId(Client C){
             try
          {
-            String requete="update client set nom=?,prenom=?,=?,login=?,password=?,email=?,tel=?,critereSpecialite=? where idR=?";
+            String requete="update client set nom=?,prenom=?,=?,login=?,password=?,email=?,tel=?,critereSpecialite=? where numCompte=?";
             PreparedStatement ps=con.prepareStatement(requete);
             //System.out.println("affichage1 :  " + ps);//c'est une ligne pour le test 
             ps.setString(1, C.getNom());
