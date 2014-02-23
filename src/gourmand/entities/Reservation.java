@@ -15,12 +15,13 @@ import java.util.Date;
 public class Reservation {
     
     private int numReservation, nombrePersonne, numCompte,idEspaceGourmand;
-    private Date dateReservation;
+    private String dateReservation;
+    private boolean ok;
 
     public Reservation() {
     }
 
-    public Reservation(int nombrePersonne, int numCompte, int idEspaceGourmand, Date dateReservation) {
+    public Reservation(int nombrePersonne, int numCompte, int idEspaceGourmand, String dateReservation) {
         this.nombrePersonne = nombrePersonne;
         this.numCompte = numCompte;
         this.idEspaceGourmand = idEspaceGourmand;
@@ -55,17 +56,27 @@ public class Reservation {
         this.idEspaceGourmand = idEspaceGourmand;
     }
 
-    public Date getDateReservation() {
+    public String getDateReservation() {
         return dateReservation;
     }
 
-    public void setDateReservation(Date dateReservation) {
+    public void setDateReservation(String dateReservation) {
         this.dateReservation = dateReservation;
     }
 
-    public String toString() {
-        return "numReservation=" + numReservation + ", nombrePersonne=" + nombrePersonne + ", numCompte=" + numCompte + ", idEspaceGourmand=" + idEspaceGourmand + ", dateReservation=" + dateReservation;
+    public boolean getOk() {
+        return ok;
     }
+
+    public void setOk(boolean ok) {
+        this.ok = ok;
+    }
+
+    @Override
+    public String toString() {
+        return "Reservation{" + "numReservation=" + numReservation + ", nombrePersonne=" + nombrePersonne + ", numCompte=" + numCompte + ", idEspaceGourmand=" + idEspaceGourmand + ", dateReservation=" + dateReservation + ", ok=" + ok + '}';
+    }
+
     
     public boolean equals(Object obj) {
         if (obj == null) {

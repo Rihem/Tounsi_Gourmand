@@ -28,13 +28,14 @@ public class ReservationDAO {
     public void AjoutCommentaire(Reservation R){
          try
          {
-            String requete="insert into resevation (nombrePersonne,numCompte,idEspaceGourmand,dateReservation) values(?,?,?,?)";
+            String requete="insert into resevation (nombrePersonne,numCompte,idEspaceGourmand,dateReservation,ok) values(?,?,?,?,?)";
             PreparedStatement ps=con.prepareStatement(requete);
             
             ps.setInt(1, R.getNombrePersonne());
             ps.setInt(2, R.getNumCompte());
             ps.setInt(3, R.getIdEspaceGourmand());
-            ps.setDate(4, (Date) R.getDateReservation());
+            ps.setString(4,R.getDateReservation());
+            ps.setBoolean(5,R.getOk());
             ps.executeUpdate();
         }
         catch(SQLException e)
@@ -44,7 +45,7 @@ public class ReservationDAO {
     }
     
     //cette methode permet d'afficher les reservation 
-    public void AfficherCommentaire (){
+    public void AfficherReservation (){
         try
         {
             String requete ="select * from resrvation";
@@ -87,7 +88,8 @@ public class ReservationDAO {
             ps.setInt(1, R.getNombrePersonne());
             ps.setInt(2, R.getNumCompte());
             ps.setInt(3, R.getIdEspaceGourmand());
-            ps.setDate(4, (Date) R.getDateReservation());
+            ps.setString(4, R.getDateReservation());
+            ps.setBoolean(5, R.getOk());
             //System.out.println("affichage2 :  " + ps);//c'est une ligne pour le test
         }
         catch(SQLException e)
