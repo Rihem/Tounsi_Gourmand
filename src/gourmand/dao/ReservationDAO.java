@@ -41,12 +41,35 @@ public class ReservationDAO implements Crud {
 
     @Override
     public void supprimer(Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+         Reservation R = (Reservation) o;
+        String url = " DELETE FROM reservation WHERE numReservation=" +R.getNumReservation();
+        try {
+            PreparedStatement prst = MyConnection.getInstance().conn.prepareStatement(url);
+           
+
+            prst.executeUpdate();
+            System.out.println("Suppression effectuée!");
+        } catch (SQLException ex) {
+            System.err.println("Probleme de suppression");
+        }
     }
 
     @Override
     public void modifier(Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            String url = " UPDATE reservation SET dateReservation=? , nombtrePersonne=?,numCompte=?,idEspaceGourmand=?,ok=? WHERE numReservation=" + idConnexion;
+            PreparedStatement prst = MyConnection.getInstance().conn.prepareStatement(url);
+            Reservation R = (Reservation) o;
+            prst.setString(1, R.getDateReservation());
+            prst.setInt(2, R.getNombrePersonne());
+            prst.setInt(3, R.getNumCompte());
+            prst.setInt(4, R.getIdEspaceGourmand());
+            prst.setBoolean(5, R.getOk());
+            prst.executeUpdate();
+            System.out.println("Modification avec succes");
+        } catch (SQLException ex) {
+            System.err.println("Echec de modification!");
+        }
     }
 
     @Override

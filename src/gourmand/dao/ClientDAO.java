@@ -48,7 +48,7 @@ public class ClientDAO implements Crud{
     @Override
     public void supprimer(Object o) {
         ClientDAO a = new ClientDAO();
-        String url = " DELETE FROM client WHERE id=" + a.idConnexion;
+        String url = " DELETE FROM client WHERE numCompte=" + a.idConnexion;
         try {
             PreparedStatement prst = MyConnection.getInstance().conn.prepareStatement(url);
             Client c = (Client) o;
@@ -63,7 +63,7 @@ public class ClientDAO implements Crud{
     @Override
     public void modifier(Object o) {
         try {
-            String url = " UPDATE client SET nom=? , prenom=?,login=?,password=?,email=?,tel=?,sexe=?,age=? WHERE id=" + idConnexion;
+            String url = " UPDATE client SET nom=? , prenom=?,login=?,password=?,email=?,tel=?,sexe=?,age=? WHERE numCompte=" + idConnexion;
             PreparedStatement prst = MyConnection.getInstance().conn.prepareStatement(url);
             Client c = (Client) o;
             prst.setString(1, c.getNom());
