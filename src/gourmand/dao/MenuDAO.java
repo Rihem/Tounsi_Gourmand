@@ -6,35 +6,31 @@
 
 package gourmand.dao;
 
-import gourmand.entities.*;
-import gourmand.util.MyConnection;
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import gourmand.entities.Menu;
+import gourmand.util.*;
+import java.sql.*;
 
 /**
- * @author Wael
+ *
+ * @author Mahdouch
  */
-public class ReservationDAO {
+public class MenuDAO {
     
     private Connection con=MyConnection.getInstance();    
     
     //insertion d'une reservation dans la table reservation
 
-    public void AjoutReservation(Reservation R){
+    public void AjoutMenu(Menu M){
          try
          {
-            String requete="insert into resevation (nombrePersonne,numCompte,idEspaceGourmand,dateReservation,ok) values(?,?,?,?,?)";
+            String requete="insert into menu (idEntrees,idDesserts,idPlats,idBoissons,date) values(?,?,?,?,?)";
             PreparedStatement ps=con.prepareStatement(requete);
             
-            ps.setInt(1, R.getNombrePersonne());
-            ps.setInt(2, R.getNumCompte());
-            ps.setInt(3, R.getIdEspaceGourmand());
-            ps.setString(4, R.getDateReservation());
-            ps.setBoolean(5, R.getOk());
+            ps.setInt(1, M.getIdEntrees());
+            ps.setInt(2, M.getIdDesserts());
+            ps.setInt(3, M.getIdPlats());
+            ps.setInt(4, M.getIdBoissons());
+            ps.setString(5, M.getDate());
             ps.executeUpdate();
         }
         catch(SQLException e)
@@ -44,10 +40,10 @@ public class ReservationDAO {
     }
     
     //cette methode permet d'afficher les reservation 
-    public void AfficherReservation (){
+    public void AfficherMenu (){
         try
         {
-            String requete ="select * from resrvation";
+            String requete ="select * from menu";
             Statement stm = con.createStatement();
             ResultSet res = stm.executeQuery(requete);
             while(res.next()){
@@ -62,13 +58,13 @@ public class ReservationDAO {
      }
     
     //supprimer une reservation de la table
-    public void DeleteParID(Reservation C){
+    public void DeleteParID(Menu C){
          try
          {
-            String requete="delete from reservation where numReservation=?";
+            String requete="delete from menu where idMenu=?";
             PreparedStatement ps=con.prepareStatement(requete);
             
-            ps.setInt(1,C.getNumReservation());
+            ps.setInt(1,C.getIdMenu());
             ps.executeUpdate();
         }
         catch(SQLException e)
@@ -78,17 +74,17 @@ public class ReservationDAO {
     }
     
     //modifier une reservation 
-    public void ModifierReservation(Reservation R){
+    public void ModifierReservation(Menu M){
          try
          {
-            String requete="update reservation set nombrePersonne=?,numCompte=?,idEspaceGourmand=?,dateReservation=?,ok=? where numReservation=?";
+            String requete="update menu set idEntrees=?,idDesserts=?,idPLats=?,idBoissons=?,date=? where idMenu=?";
             PreparedStatement ps=con.prepareStatement(requete);
             //System.out.println("affichage1 :  " + ps);//c'est une ligne pour le test 
-            ps.setInt(1, R.getNombrePersonne());
-            ps.setInt(2, R.getNumCompte());
-            ps.setInt(3, R.getIdEspaceGourmand());
-            ps.setString(4, R.getDateReservation());
-            ps.setBoolean(5, R.getOk());
+            ps.setInt(1, M.getIdEntrees());
+            ps.setInt(2, M.getIdDesserts());
+            ps.setInt(3, M.getIdPlats());
+            ps.setInt(4, M.getIdBoissons());
+            ps.setString(5, M.getDate());
             //System.out.println("affichage2 :  " + ps);//c'est une ligne pour le test
         }
         catch(SQLException e)
@@ -96,5 +92,4 @@ public class ReservationDAO {
             System.out.println("Erreur de mise a jour "+e.getMessage());
         }
      }
-    
 }

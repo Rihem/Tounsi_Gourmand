@@ -13,15 +13,15 @@ import java.util.Date;
  * @author Hell
  */
 public class Menu {
-    
+    private int idEntrees, idPlats, idBoissons, idDesserts;
     private int idMenu;
 
-    private Date date;
+    private String date;
 
     public Menu() {
     }
 
-    public Menu(int idMenu,Date date) {
+    public Menu(int idMenu,String date) {
         this.idMenu = idMenu;
         this.date = date;
     }
@@ -30,14 +30,48 @@ public class Menu {
         return idMenu;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
+
+    public int getIdEntrees() {
+        return idEntrees;
+    }
+
+    public int getIdPlats() {
+        return idPlats;
+    }
+
+    public int getIdBoissons() {
+        return idBoissons;
+    }
+
+    public int getIdDesserts() {
+        return idDesserts;
+    }
+
+    public void setIdEntrees(int idEntrees) {
+        this.idEntrees = idEntrees;
+    }
+
+    public void setIdPlats(int idPlats) {
+        this.idPlats = idPlats;
+    }
+
+    public void setIdBoissons(int idBoissons) {
+        this.idBoissons = idBoissons;
+    }
+
+    public void setIdDesserts(int idDesserts) {
+        this.idDesserts = idDesserts;
+    }
+    
+    
 
     @Override
     public String toString() {
