@@ -16,7 +16,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 /**
- * cette classe est a verfiee avec la tutrice :)
  * @author Wael
  */
 public class ReservationDAO {
@@ -34,8 +33,8 @@ public class ReservationDAO {
             ps.setInt(1, R.getNombrePersonne());
             ps.setInt(2, R.getNumCompte());
             ps.setInt(3, R.getIdEspaceGourmand());
-            ps.setString(4,R.getDateReservation());
-            ps.setBoolean(5,R.getOk());
+            ps.setString(4, R.getDateReservation());
+            ps.setBoolean(5, R.getOk());
             ps.executeUpdate();
         }
         catch(SQLException e)
