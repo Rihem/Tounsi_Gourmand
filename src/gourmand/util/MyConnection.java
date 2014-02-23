@@ -24,8 +24,8 @@ public class MyConnection {
    
     private String url="jdbc:mysql://localhost:3306/";
     private String nomUser= "root";
-    private String mdp ="";
-    private String nomBD ="test";
+    private String mdp ="0000";
+    private String nomBD ="pidev";
     private static Connection con;
 
     //verfié si la connection est etablite avant
