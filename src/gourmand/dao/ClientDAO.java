@@ -28,7 +28,7 @@ public class ClientDAO implements Crud{
     public void ajouter(Object o) {
         String url = " INSERT INTO client(nom,prenom,login,password,email,tel,sexe,age) VALUES (?,?,?,?,?,?,?,?)";
         try {
-            PreparedStatement prst = MyConnection.GetInstance().conn.prepareStatement(url);
+            PreparedStatement prst = MyConnection.getInstance().conn.prepareStatement(url);
             Client c = (Client) o;
             prst.setString(1, c.getNom());
             prst.setString(2, c.getPrenom());
@@ -50,7 +50,7 @@ public class ClientDAO implements Crud{
         ClientDAO a = new ClientDAO();
         String url = " DELETE FROM client WHERE id=" + a.idConnexion;
         try {
-            PreparedStatement prst = MyConnection.GetInstance().conn.prepareStatement(url);
+            PreparedStatement prst = MyConnection.getInstance().conn.prepareStatement(url);
             Client c = (Client) o;
 
             prst.executeUpdate();
@@ -64,7 +64,7 @@ public class ClientDAO implements Crud{
     public void modifier(Object o) {
         try {
             String url = " UPDATE client SET nom=? , prenom=?,login=?,password=?,email=?,tel=?,sexe=?,age=? WHERE id=" + idConnexion;
-            PreparedStatement prst = MyConnection.GetInstance().conn.prepareStatement(url);
+            PreparedStatement prst = MyConnection.getInstance().conn.prepareStatement(url);
             Client c = (Client) o;
             prst.setString(1, c.getNom());
             prst.setString(2, c.getPrenom());
@@ -86,7 +86,7 @@ public class ClientDAO implements Crud{
         List<Client> listeClient = new ArrayList<Client>();
         String url = "SELECT * FROM client";
         try {
-            Statement st = MyConnection.GetInstance().conn.createStatement();
+            Statement st = MyConnection.getInstance().conn.createStatement();
             ResultSet rst = st.executeQuery(url);
             while (rst.next()) {
                 Client c = new Client();

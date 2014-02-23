@@ -19,6 +19,7 @@ import java.util.logging.Logger;
 public class MyConnection {
     public static MyConnection instance;
     public static Connection conn;
+    
     private MyConnection() {
         String url = "jdbc:mysql://localhost:3306/projet_restaurant";
         String user = "root";
@@ -36,7 +37,7 @@ public class MyConnection {
         }
         System.out.println("Connection établie!");
     }
-    public static MyConnection GetInstance() {
+    public static MyConnection getInstance() {
         if (instance == null) {
             instance = new MyConnection();
         }
