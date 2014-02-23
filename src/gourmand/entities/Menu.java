@@ -21,10 +21,15 @@ public class Menu {
     public Menu() {
     }
 
-    public Menu(int idMenu,String date) {
-        this.idMenu = idMenu;
+    public Menu(int idEntrees, int idPlats, int idBoissons, int idDesserts,  String date) {
+        this.idEntrees = idEntrees;
+        this.idPlats = idPlats;
+        this.idBoissons = idBoissons;
+        this.idDesserts = idDesserts;
         this.date = date;
     }
+    
+    
 
     public int getIdMenu() {
         return idMenu;
@@ -70,12 +75,10 @@ public class Menu {
     public void setIdDesserts(int idDesserts) {
         this.idDesserts = idDesserts;
     }
-    
-    
 
     @Override
     public String toString() {
-        return "Menu{" + "idMenu=" + idMenu + ", date=" + date + '}';
+        return "Menu{" + "idEntrees=" + idEntrees + ", idPlats=" + idPlats + ", idBoissons=" + idBoissons + ", idDesserts=" + idDesserts + ", idMenu=" + idMenu + ", date=" + date + '}';
     }
 
     @Override

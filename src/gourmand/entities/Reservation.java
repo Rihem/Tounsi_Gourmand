@@ -21,11 +21,12 @@ public class Reservation {
     public Reservation() {
     }
 
-    public Reservation(int nombrePersonne, int numCompte, int idEspaceGourmand, String dateReservation) {
+    public Reservation(int nombrePersonne, int numCompte, int idEspaceGourmand, String dateReservation, boolean ok) {
         this.nombrePersonne = nombrePersonne;
         this.numCompte = numCompte;
         this.idEspaceGourmand = idEspaceGourmand;
         this.dateReservation = dateReservation;
+        this.ok=ok;
     }
 
     public int getNumReservation() {
