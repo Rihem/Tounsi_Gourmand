@@ -9,57 +9,41 @@ package gourmand.util;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author Hell
  */
 public class MyConnection {
-
-    public static Connection getCurrentConnection() {
-        if (con==null){
-                con= new MyConnection().getConnection();}
-            return con;
+    public static MyConnection instance;
+    public static Connection conn;
+    private MyConnection() {
+        String url = "jdbc:mysql://localhost:3306/projet_restaurant";
+        String user = "root";
+        String pwd = "0000";
+        try {
+            Class.forName("com.mysql.jdbc.Driver"); //charger drive au niveau memoire
+            System.out.println("Driver chargé!");
+        } catch (ClassNotFoundException ex) {
+            System.err.println("Driver non chargé!"); //msg erreur en rouge
+        }
+        try {
+            conn = DriverManager.getConnection(url, user, pwd);
+        } catch (SQLException ex) {
+            Logger.getLogger(MyConnection.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println("Connection établie!");
     }
-   
-    private String url="jdbc:mysql://localhost:3306/";
-    private String nomUser= "root";
-    private String mdp ="0000";
-    private String nomBD ="pidev";
-    private static Connection con;
-
-    //verfié si la connection est etablite avant
-    private  MyConnection() {
+    public static MyConnection GetInstance() {
+        if (instance == null) {
+            instance = new MyConnection();
         }
-
-
-    public Connection getConnection() {
-
-        try
-        {
-            //chargement du driver
-            Class.forName("com.mysql.jdbc.Driver");
-            //etablir la connection
-            con = DriverManager.getConnection(url+nomBD,nomUser,mdp);
-            System.out.println("connection etablit");
-        }
-        catch(ClassNotFoundException e)
-        {
-            System.out.println("erreur chargement de driver"+e.getMessage());
-        }
-        catch(SQLException s)
-        {
-            System.out.println("problem de connexion "+s.getMessage());
-        }
-        return con;
+        return instance;
     }
-    
-    public static Connection getInstance(){
-       if (con==null){
-           new MyConnection().getConnection();
-       }
-   return con;
-   }
-
+    public static Connection getConnection() {
+        return conn;
+        //commit
+    }
 }
-
