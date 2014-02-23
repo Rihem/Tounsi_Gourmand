@@ -14,7 +14,7 @@ import java.util.Objects;
  */
 public class Client {
     
-    private int numCompte;
+
     private String nom, prenom, login, password, email,sexe;
     private int tel,age;
 
@@ -32,9 +32,6 @@ public class Client {
         this.sexe = sexe;
     }
 
-    public int getNumCompte() {
-        return numCompte;
-    }
 
     public String getNom() {
         return nom;
@@ -102,11 +99,16 @@ public class Client {
 
     @Override
     public String toString() {
-        return "Client{" + "numCompte=" + numCompte + ", nom=" + nom + ", prenom=" + prenom + ", login=" + login + ", password=" + password + ", email=" + email + ", sexe=" + sexe + ", tel=" + tel + ", age=" + age + '}';
+        return "Client{ nom=" + nom + ", prenom=" + prenom + ", login=" + login + ", password=" + password + ", email=" + email + ", sexe=" + sexe + ", tel=" + tel + ", age=" + age + '}';
     }
 
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        return hash;
+    }
 
-
+    @Override
     public boolean equals(Object obj) {
         if (obj == null) {
             return false;
@@ -114,12 +116,36 @@ public class Client {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Client c = (Client) obj;
-        if (this.numCompte == c.getNumCompte()) {
-            return true;
+        final Client other = (Client) obj;
+        if (!Objects.equals(this.nom, other.nom)) {
+            return false;
         }
-        return false;
+        if (!Objects.equals(this.prenom, other.prenom)) {
+            return false;
+        }
+        if (!Objects.equals(this.login, other.login)) {
+            return false;
+        }
+        if (!Objects.equals(this.password, other.password)) {
+            return false;
+        }
+        if (!Objects.equals(this.email, other.email)) {
+            return false;
+        }
+        if (!Objects.equals(this.sexe, other.sexe)) {
+            return false;
+        }
+        if (this.tel != other.tel) {
+            return false;
+        }
+        if (this.age != other.age) {
+            return false;
+        }
+        return true;
     }
-    
+
+
+
+
     
 }
