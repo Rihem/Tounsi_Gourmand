@@ -21,10 +21,10 @@ import java.sql.Statement;
  */
 public class ReservationDAO {
     
-    private Connection con=MyConnection.getCurrentConnection();    
+    private Connection con=MyConnection.getInstance();    
     
     //insertion d'une reservation dans la table reservation
-    //a verifier avec la tutrice
+
     public void AjoutCommentaire(Reservation R){
          try
          {

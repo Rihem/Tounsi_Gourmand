@@ -24,7 +24,7 @@ public class MyConnection {
    
     private String url="jdbc:mysql://localhost:3306/";
     private String nomUser= "root";
-    private String mdp ="0000";
+    private String mdp ="";
     private String nomBD ="test";
     private static Connection con;
 
@@ -35,9 +35,6 @@ public class MyConnection {
 
     public Connection getConnection() {
 
-
-
-        
         try
         {
             //chargement du driver
@@ -56,6 +53,13 @@ public class MyConnection {
         }
         return con;
     }
+    
+    public static Connection getInstance(){
+       if (con==null){
+           new MyConnection().getConnection();
+       }
+   return con;
+   }
 
 }
 
