@@ -24,7 +24,7 @@ public class ReservationDAO {
     
     //insertion d'une reservation dans la table reservation
 
-    public void AjoutCommentaire(Reservation R){
+    public void AjoutReservation(Reservation R){
          try
          {
             String requete="insert into resevation (nombrePersonne,numCompte,idEspaceGourmand,dateReservation,ok) values(?,?,?,?,?)";
