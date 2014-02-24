@@ -28,7 +28,7 @@ public class PlatDAO implements Crud{
     public void ajouter(Object o) {
         String url = " INSERT INTO plats(libellePlat,prix) VALUES (?,?)";
         try {
-            PreparedStatement prst = MyConnection.GetInstance().conn.prepareStatement(url);
+            PreparedStatement prst = MyConnection.getInstance().conn.prepareStatement(url);
             Plats c = (Plats) o;
             prst.setString(1, c.getLibellePlat());
             prst.setInt(2, c.getPrix());
@@ -45,7 +45,7 @@ public class PlatDAO implements Crud{
         PlatDAO a = new PlatDAO();
         String url = " DELETE FROM plats WHERE id=" + a.idConnexion;
         try {
-            PreparedStatement prst = MyConnection.GetInstance().conn.prepareStatement(url);
+            PreparedStatement prst = MyConnection.getInstance().conn.prepareStatement(url);
             Plats c = (Plats) o;
 
             prst.executeUpdate();
@@ -60,7 +60,7 @@ public class PlatDAO implements Crud{
     public void modifier(Object o) {
         try {
             String url = " UPDATE plats SET libellePlats=? , prix=? WHERE id=" + idConnexion;
-            PreparedStatement prst = MyConnection.GetInstance().conn.prepareStatement(url);
+            PreparedStatement prst = MyConnection.getInstance().conn.prepareStatement(url);
             Plats c = (Plats) o;
             prst.setString(1, c.getLibellePlat());
             prst.setInt(2, c.getPrix());
@@ -76,7 +76,7 @@ public class PlatDAO implements Crud{
         List<Plats> listePlats = new ArrayList<Plats>();
         String url = "SELECT * FROM Plats";
         try {
-            Statement st = MyConnection.GetInstance().conn.createStatement();
+            Statement st = MyConnection.getInstance().conn.createStatement();
             ResultSet rst = st.executeQuery(url);
             while (rst.next()) {
                 Plats c = new Plats();
