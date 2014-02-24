@@ -29,7 +29,7 @@ public class AdministrateurDAO implements Crud {
         int key = 0;
         try {
             String requete = "select * from administrateur where password='" + password + "' and login='" + login + "'";
-            Statement stm = MyConnection.GetInstance().conn.createStatement();
+            Statement stm = MyConnection.getInstance().conn.createStatement();
             ResultSet res = stm.executeQuery(requete);
             while (res.next()) {
                 key = res.getInt(1);
@@ -46,7 +46,7 @@ public class AdministrateurDAO implements Crud {
     public void ajouter(Object o) {
         String url = " INSERT INTO administrateur(login,password) VALUES (?,?)";
         try {
-            PreparedStatement prst = MyConnection.GetInstance().conn.prepareStatement(url);
+            PreparedStatement prst = MyConnection.getInstance().conn.prepareStatement(url);
             Administrateur c = (Administrateur) o;
             prst.setString(1, c.getLogin());
             prst.setString(2, c.getPassword());
@@ -62,7 +62,7 @@ public class AdministrateurDAO implements Crud {
         AdministrateurDAO a = new AdministrateurDAO();
         String url = " DELETE FROM administrateur WHERE id=" + a.IDconnexion;
         try {
-            PreparedStatement prst = MyConnection.GetInstance().conn.prepareStatement(url);
+            PreparedStatement prst = MyConnection.getInstance().conn.prepareStatement(url);
             Administrateur c = (Administrateur) o;
 
             prst.executeUpdate();
@@ -77,7 +77,7 @@ public class AdministrateurDAO implements Crud {
 
         try {
             String url = " UPDATE administrateur SET login=? , password=? WHERE id=" + IDconnexion;
-            PreparedStatement prst = MyConnection.GetInstance().conn.prepareStatement(url);
+            PreparedStatement prst = MyConnection.getInstance().conn.prepareStatement(url);
             Administrateur c = (Administrateur) o;
             prst.setString(1, c.getLogin());
             prst.setString(2, c.getPassword());
@@ -97,7 +97,7 @@ public class AdministrateurDAO implements Crud {
 
             
             String req = "select * from user";
-            Statement st = MyConnection.GetInstance().conn.createStatement();
+            Statement st = MyConnection.getInstance().conn.createStatement();
             ResultSet res = st.executeQuery(req);
             while (res.next()) {
 
