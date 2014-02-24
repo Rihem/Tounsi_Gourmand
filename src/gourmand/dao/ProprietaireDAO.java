@@ -52,6 +52,6 @@ public class ProprietaireDAO implements Crud {
     public List display() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    ///////hhhhhhhh mathama chay stanou chouya :p
+   
     
 }
