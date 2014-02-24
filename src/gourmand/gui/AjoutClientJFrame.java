@@ -270,7 +270,7 @@ public class AjoutClientJFrame extends javax.swing.JFrame {
         client.setSexe(sexe);
         
         ClientDAO clientDao = new ClientDAO();
-        clientDao.AjoutClients(client);
+        clientDao.AjoutClient(client);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
