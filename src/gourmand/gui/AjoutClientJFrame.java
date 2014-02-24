@@ -8,6 +8,7 @@ package gourmand.gui;
 
 import gourmand.dao.ClientDAO;
 import gourmand.entities.Client;
+import javax.swing.*;
 
 /**
  *
@@ -39,7 +40,6 @@ public class AjoutClientJFrame extends javax.swing.JFrame {
         txtNom = new javax.swing.JTextField();
         txtPrenom = new javax.swing.JTextField();
         txtLogin = new javax.swing.JTextField();
-        txtPass = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -53,6 +53,7 @@ public class AjoutClientJFrame extends javax.swing.JFrame {
         txtAge = new javax.swing.JTextField();
         radioH = new javax.swing.JRadioButton();
         radioF = new javax.swing.JRadioButton();
+        txtPass = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -155,28 +156,26 @@ public class AjoutClientJFrame extends javax.swing.JFrame {
                                     .addComponent(txtNom, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
                                     .addComponent(txtPrenom)
                                     .addComponent(txtLogin)
-                                    .addComponent(txtPass)
                                     .addComponent(txtTel)
                                     .addComponent(txtMail)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(radioH)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(radioF)))))
+                                        .addComponent(radioF))
+                                    .addComponent(txtPass))))
                         .addGap(149, 149, 149))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(txtNom, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(24, 24, 24)
-                        .addComponent(txtPrenom, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(32, 32, 32)
-                        .addComponent(jLabel3)))
-                .addGap(14, 14, 14)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(txtNom, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(19, 19, 19)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(txtPrenom, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(19, 19, 19)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel8)
@@ -185,23 +184,23 @@ public class AjoutClientJFrame extends javax.swing.JFrame {
                 .addGap(24, 24, 24)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(txtLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
+                    .addComponent(txtLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
+                    .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(txtTel, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtTel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(txtMail, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtMail, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -243,34 +242,81 @@ public class AjoutClientJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        initComponents();
+        txtNom.setText(null);
+        txtPrenom.setText(null);
+        txtLogin.setText(null);
+        txtPass.setText(null);
+        txtMail.setText(null);
+        txtAge.setText(null);
+        txtTel.setText(null);
+        buttonGroup1.clearSelection();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         Client client = new Client();
         
-        String nom = txtNom.getText();
-        String prenom = txtPrenom.getText();
-        String login = txtLogin.getText();
-        String pass = txtPass.getText();
+        String err="";
+        if("".equals(txtNom.getText())) err+="nom ";
+        if("".equals(txtPrenom.getText())) err+="prenom ";
+        if("".equals(txtLogin.getText())) err+="login ";
+        if("".equals(txtPass.getText())) err+="password ";
+        if("".equals(txtMail.getText())) err+="mail ";
+        if("".equals(txtAge.getText())) err+="age ";
+        if("".equals(txtTel.getText())) err+="téléphone ";
+        if(!radioF.isSelected()&&!radioH.isSelected()) err+="sexe ";
+        
         String email = txtMail.getText();
-        int age = Integer.parseInt(txtAge.getText());
-        int tel = Integer.parseInt(txtTel.getText());
-        String sexe="";
-        if(radioH.isSelected()) sexe = radioH.getText();
-        if(radioF.isSelected()) sexe = radioF.getText();
+        if(email.indexOf("@")==-1) {
+            JOptionPane.showMessageDialog(this, "Adresse mail nom valide");
+            txtMail.setText(null);
+        }
+        else{
+            if("".equals(err)){
+                String nom = txtNom.getText();
+                String prenom = txtPrenom.getText();
+                String login = txtLogin.getText();
+                String pass = txtPass.getText();
+                int age = Integer.parseInt(txtAge.getText());
+                int tel = Integer.parseInt(txtTel.getText());
+                String sexe="";
+                if(radioH.isSelected()) sexe = radioH.getText();
+                if(radioF.isSelected()) sexe = radioF.getText();
+
+                client.setNom(nom);
+                client.setPrenom(prenom);
+                client.setLogin(login);
+                client.setPassword(pass);
+                client.setEmail(email);
+                client.setAge(age);
+                client.setTel(tel);
+                client.setSexe(sexe);
+
+                ClientDAO clientDao = new ClientDAO();
+                clientDao.ajouter(client);
+            }
+            else JOptionPane.showMessageDialog(this, "Les champs "+err+"sont obligatoires");
+        }
+
+        if(!"".equals(txtAge.getText())) {
+            try{  
+                    int age = Integer.parseInt(txtAge.getText()); 
+               } catch (Exception z) {   
+                        JOptionPane.showMessageDialog(this, "Type incorrect, l'age doit etre un entier", "ERROR", JOptionPane.ERROR_MESSAGE);
+                    txtAge.setText("");  
+                    return;  
+             } 
+        }
         
-        client.setNom(nom);
-        client.setPrenom(prenom);
-        client.setLogin(login);
-        client.setPassword(pass);
-        client.setEmail(email);
-        client.setAge(age);
-        client.setTel(tel);
-        client.setSexe(sexe);
-        
-        ClientDAO clientDao = new ClientDAO();
-        clientDao.ajouter(client);
+        if(!"".equals(txtTel.getText())){
+            try{ 
+                 int tel = Integer.parseInt(txtTel.getText()); 
+
+               } catch (Exception z) {   
+                        JOptionPane.showMessageDialog(this, "Type incorrect, le numéro de téléphone doit etre un entier", "ERROR", JOptionPane.ERROR_MESSAGE);
+                    txtTel.setText("");  
+                    return;  
+             }
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -328,7 +374,7 @@ public class AjoutClientJFrame extends javax.swing.JFrame {
     private javax.swing.JTextField txtLogin;
     private javax.swing.JTextField txtMail;
     private javax.swing.JTextField txtNom;
-    private javax.swing.JTextField txtPass;
+    private javax.swing.JPasswordField txtPass;
     private javax.swing.JTextField txtPrenom;
     private javax.swing.JTextField txtTel;
     // End of variables declaration//GEN-END:variables
