@@ -21,6 +21,10 @@ public class Plats {
         this.prix = prix;
     }
 
+    public Plats() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public int getIdPlats() {
         return idPlats;
     }
