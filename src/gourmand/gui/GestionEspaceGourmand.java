@@ -10,12 +10,12 @@ package gourmand.gui;
  *
  * @author Mahdouch
  */
-public class GestionCompteProprietaire extends javax.swing.JFrame {
+public class GestionEspaceGourmand extends javax.swing.JFrame {
 
     /**
      * Creates new form GestionCompteProprietaire
      */
-    public GestionCompteProprietaire() {
+    public GestionEspaceGourmand() {
         initComponents();
     }
 
@@ -161,20 +161,20 @@ public class GestionCompteProprietaire extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GestionCompteProprietaire.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GestionEspaceGourmand.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GestionCompteProprietaire.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GestionEspaceGourmand.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GestionCompteProprietaire.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GestionEspaceGourmand.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GestionCompteProprietaire.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GestionEspaceGourmand.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GestionCompteProprietaire().setVisible(true);
+                new GestionEspaceGourmand().setVisible(true);
             }
         });
     }
