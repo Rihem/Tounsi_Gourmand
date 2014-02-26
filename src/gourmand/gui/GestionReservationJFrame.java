@@ -6,6 +6,11 @@
 
 package gourmand.gui;
 
+import gourmand.dao.ReservationDAO;
+import gourmand.entities.Reservation;
+import java.util.*;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Mahdouch
@@ -17,6 +22,32 @@ public class GestionReservationJFrame extends javax.swing.JFrame {
      */
     public GestionReservationJFrame() {
         initComponents();
+        ReservationDAO RDAO = new ReservationDAO();
+        List<Reservation> LReservation = RDAO.display();
+        DefaultTableModel DTM = new DefaultTableModel();
+        DTM.addColumn("Nom");
+        DTM.addColumn("Prenom");
+        DTM.addColumn("OK");
+        try
+        {
+            DTM.setRowCount(0);
+            for(Reservation res : LReservation)
+            {
+                String nom = "select nom from client where res.numCompte = numCompte";
+                String prenom ="select prenom from client where res.numCompte = numCompte";
+                boolean ok = res.getOk();
+                
+                Object [] obj = {nom,prenom,ok};
+                DTM.addRow(obj);
+                
+            }
+            TableReservation.setModel(DTM);
+        }
+        catch(Exception e)
+                    {
+                    System.out.println("erreur"+e.getMessage());
+                    
+                    }
     }
 
     /**
@@ -28,21 +59,98 @@ public class GestionReservationJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        TableReservation = new javax.swing.JTable();
+        butAccepter = new javax.swing.JButton();
+        butRefuser = new javax.swing.JButton();
+        butRetour = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        TableReservation.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Nom", "Prenom", "OK"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(TableReservation);
+
+        butAccepter.setText("Accepter");
+
+        butRefuser.setText("Refuser");
+
+        butRetour.setText("Retour");
+        butRetour.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                butRetourActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(41, 41, 41)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(butRefuser)
+                    .addComponent(butRetour)
+                    .addComponent(butAccepter, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {butAccepter, butRefuser, butRetour});
+
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(93, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(44, 44, 44))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(butAccepter, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(37, 37, 37)
+                        .addComponent(butRefuser)
+                        .addGap(32, 32, 32)
+                        .addComponent(butRetour)
+                        .addGap(58, 58, 58))))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {butAccepter, butRefuser, butRetour});
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void butRetourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butRetourActionPerformed
+        ProprietaireJFrameGenerale prGeneral = new ProprietaireJFrameGenerale();
+        prGeneral.setVisible(true);
+        this.setVisible(false);
+        
+    }//GEN-LAST:event_butRetourActionPerformed
 
     /**
      * @param args the command line arguments
@@ -80,5 +188,10 @@ public class GestionReservationJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable TableReservation;
+    private javax.swing.JButton butAccepter;
+    private javax.swing.JButton butRefuser;
+    private javax.swing.JButton butRetour;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
