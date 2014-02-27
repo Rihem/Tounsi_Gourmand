@@ -15,7 +15,7 @@ import org.jfree.ui.RefineryUtilities;
 public class Bienvenue extends javax.swing.JFrame {
 
     /**
-     * Creates new form Bienvenue
+     * Creates new form 
      */
     public Bienvenue() {
         initComponents();
