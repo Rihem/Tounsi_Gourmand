@@ -8,7 +8,13 @@ package gourmand.gui;
 
 import gourmand.dao.ReservationDAO;
 import gourmand.entities.Reservation;
+import gourmand.util.MyConnection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -21,13 +27,14 @@ public class GestionReservationJFrame extends javax.swing.JFrame {
      * Creates new form GestionReservationJFrame
      */
     public GestionReservationJFrame() {
+        
         initComponents();
         ReservationDAO RDAO = new ReservationDAO();
         List<Reservation> LReservation = RDAO.display();
         DefaultTableModel DTM = new DefaultTableModel();
         DTM.addColumn("Nom");
         DTM.addColumn("Prenom");
-        DTM.addColumn("OK");
+        DTM.addColumn("Etat");
         try
         {
             DTM.setRowCount(0);
@@ -36,8 +43,15 @@ public class GestionReservationJFrame extends javax.swing.JFrame {
                 String nom = "select nom from client where res.numCompte = numCompte";
                 String prenom ="select prenom from client where res.numCompte = numCompte";
                 boolean ok = res.getOk();
+                String v="";
+                if(ok == true)
+                {
+                    v="Valide";
+                }
+                else
+                    v="En Attente";
                 
-                Object [] obj = {nom,prenom,ok};
+                Object [] obj = {nom,prenom,v};
                 DTM.addRow(obj);
                 
             }
@@ -96,6 +110,11 @@ public class GestionReservationJFrame extends javax.swing.JFrame {
         jScrollPane1.setViewportView(TableReservation);
 
         butAccepter.setText("Accepter");
+        butAccepter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                butAccepterActionPerformed(evt);
+            }
+        });
 
         butRefuser.setText("Refuser");
 
@@ -144,13 +163,36 @@ public class GestionReservationJFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    private void TableGPEGMouseClicked(java.awt.event.MouseEvent evt) {                                       
+        int rows = TableReservation.getSelectedRow();
+        String a=TableReservation.getModel().getValueAt(rows, 1).toString();
+        System.out.println(a);
+        try {
+            Statement st =(Statement) MyConnection.getInstance().conn.createStatement();
+            int row = TableReservation.getSelectedRow();
+            String Table_Click =(TableReservation.getModel().getValueAt(row, 1).toString());
+            String sql = "select nom,prenom,ok from reservation where nom='"+ Table_Click+"'";
+            ResultSet res = st.executeQuery(sql);
+            while(res.next())
+            {
+                
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(GestionReservationJFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }    
+    
     private void butRetourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butRetourActionPerformed
         ProprietaireJFrameGenerale prGeneral = new ProprietaireJFrameGenerale();
         prGeneral.setVisible(true);
         this.setVisible(false);
         
     }//GEN-LAST:event_butRetourActionPerformed
+
+    private void butAccepterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butAccepterActionPerformed
+        
+    }//GEN-LAST:event_butAccepterActionPerformed
 
     /**
      * @param args the command line arguments
