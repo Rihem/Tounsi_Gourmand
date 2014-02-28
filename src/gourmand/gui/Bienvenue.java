@@ -71,7 +71,7 @@ public class Bienvenue extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton2);
-        jButton2.setBounds(280, 180, 85, 23);
+        jButton2.setBounds(280, 190, 85, 23);
 
         jButton3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButton3.setText("Quitter");
@@ -81,7 +81,7 @@ public class Bienvenue extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton3);
-        jButton3.setBounds(170, 240, 77, 23);
+        jButton3.setBounds(180, 260, 77, 23);
 
         jPanel1.setDoubleBuffered(false);
 
