@@ -23,11 +23,9 @@ public class Authentification extends javax.swing.JFrame {
     Connection con ;
     Statement st ;
     ResultSet rs ; 
-   
-   
-            
+     
     
-    public Authentification() {
+   public Authentification() {
         initComponents();
         RefineryUtilities.centerFrameOnScreen(this);
     }
@@ -150,29 +148,102 @@ public class Authentification extends javax.swing.JFrame {
 
         {
             
-            AuthentificationDAO AutDAO = new AuthentificationDAO();
-            //AdministrateurDAO AutDAO=new AdministrateurDAO();
+            AuthentificationAdminDAO AutAdmDAO = new AuthentificationAdminDAO();
+            AuthentificationClientDAO AutCliDAO = new AuthentificationClientDAO();
+            AuthentificationPropEspDAO AuthProDAO = new AuthentificationPropEspDAO();
+                       
+            int x = AutAdmDAO.AuthentificationAdmin (txt_login.getText(),txt_password.getText());
+            int a = AutCliDAO.AuthentificationClient(txt_login.getText(),txt_password.getText());
+            int b = AuthProDAO.AuthentificationProp (txt_login.getText(),txt_password.getText());
             
-        int x = AutDAO.AuthentificationAdmin(txt_login.getText(), txt_password.getText());
+            if ( x==0  ) {
+            //JOptionPane.showMessageDialog(this, "Informations Invalides !!");  
+
+            // txt_login.setText("");
+            //txt_password.setText("");
+            System.out.println("Erreur de login Admin ");
+            //System.err.println("Erreur de login") ;
+            //         JOptionPane.showMessageDialog
+            //        (this, "Information Invalide !!!", "About", JOptionPane.ERROR_MESSAGE, 
+            //          new ImageIcon("/img/Error_Message.jpg"));
+            }
+            else if ( x !=0 ){
+           // JOptionPane.showMessageDialog(this, "Bienvenue dans votre espace Administration " );
+           
+           Icon image = new ImageIcon( getClass().getResource("/img/admin.png"));     
+           JOptionPane.showMessageDialog(this,"Bienvenue dans votre espace Administration ","Administrateur ",
+            JOptionPane.OK_OPTION, image);
+                
+            ProprietaireJFrameGenerale GComProp = null;
+            GComProp = new ProprietaireJFrameGenerale();
+            this.setVisible(false);
+            GComProp.setVisible(true);
+            }
         
-        if ( x==0 ) {
-       JOptionPane.showMessageDialog(this, "Informations Invalides !!");  
-         
-        txt_login.setText("");
-        txt_password.setText("");
-        System.out.println("Erreur de login");
-         //System.err.println("Erreur de login") ;
-//         JOptionPane.showMessageDialog
-//        (this, "Information Invalide !!!", "About", JOptionPane.ERROR_MESSAGE, 
-//          new ImageIcon("/img/Error_Message.jpg"));
-      }
-        else if ( x !=0 ){
-        ProprietaireJFrameGenerale GComProp = null;
-        GComProp = new ProprietaireJFrameGenerale();
-        this.setVisible(false);
-        GComProp.setVisible(true);
-                    }
-        }
+      ////////////////////Client///////////////////////////////////
+        
+             if ( a==0  ) {
+            //JOptionPane.showMessageDialog(this, "Informations Invalides !!");  
+
+            // txt_login.setText("");
+            //txt_password.setText("");
+            System.out.println("Erreur de login Client");
+            //System.err.println("Erreur de login") ;
+            //         JOptionPane.showMessageDialog
+            //        (this, "Information Invalide !!!", "About", JOptionPane.ERROR_MESSAGE, 
+            //          new ImageIcon("/img/Error_Message.jpg"));
+            }
+            else if ( a !=0 ){
+                
+            //JOptionPane.showMessageDialog(this,  "Bienvenue dans votre espace client"); 
+            Icon image = new ImageIcon( getClass().getResource("/img/customer.png"));     
+            JOptionPane.showMessageDialog(this,"Bienvenue dans votre espace Client ","Espace Client ",
+            JOptionPane.OK_OPTION, image);
+            
+                
+            ProprietaireJFrameGenerale GComProp = null;
+            GComProp = new ProprietaireJFrameGenerale();
+            this.setVisible(false);
+            GComProp.setVisible(true);
+            }
+        //////////////////PropEspGourm////////////////////////////////
+        
+             if ( b==0  ) {
+            // JOptionPane.showMessageDialog(this, "Informations Invalides !!");  
+
+            // txt_login.setText("");
+            //txt_password.setText("");
+            System.out.println("Erreur de login PropEspGroum");
+            //System.err.println("Erreur de login") ;
+            //         JOptionPane.showMessageDialog
+            //        (this, "Information Invalide !!!", "About", JOptionPane.ERROR_MESSAGE, 
+            //          new ImageIcon("/img/Error_Message.jpg"));
+            }
+            else if ( b !=0 ){
+            Icon image = new ImageIcon( getClass().getResource("/img/restaurant.png"));     
+            JOptionPane.showMessageDialog(this,"Bienvenue dans votre espace Gourmand ","Espace Gourmand  ",
+            JOptionPane.OK_OPTION, image);          
+
+
+//  JOptionPane.showMessageDialog(this,  "Bienvenue dans votre espace Gourmand");
+            ProprietaireJFrameGenerale GComProp = null;
+            GComProp = new ProprietaireJFrameGenerale();
+            this.setVisible(false);
+            GComProp.setVisible(true);
+            }
+
+        
+        ///////////////////sinon////////////////////////////////
+        
+            if((( a==0 )&& (b==0)) && (x==0)) {
+            JOptionPane.showMessageDialog(this, "Informations Invalides !!","",JOptionPane.ERROR );
+            txt_login.setText("");
+            txt_password.setText("");
+            
+            }
+            }
+        
+        //////////////////////////////////////////////////////
         else {
             JOptionPane.showMessageDialog(this, "Champs Vides !!");
 //         JOptionPane.showMessageDialog

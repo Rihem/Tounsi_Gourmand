@@ -16,13 +16,13 @@ import java.sql.Statement;
  *
  * @author BENAMARA
  */
-public class AuthentificationDAO {
+public class AuthentificationClientDAO {
     
     public static int IDconnexion;
 
-    public int AuthentificationAdmin(String login, String password) {
+    public int AuthentificationClient (String login, String password) {
         int key = 0;
-        String requete = "select * from administrateur where password='" + password + "' and login='" + login + "'";
+        String requete = "select * from client where password='" + password + "' and login='" + login + "'";
             
         try {
             
@@ -35,9 +35,9 @@ public class AuthentificationDAO {
                 //admin.getLogin((res.getString(key));
                 System.out.println("login"+res.getString(1));
                 System.out.println("pass"+res.getString(2));
-                //key = res.getInt(1);
-                key=1;
-                System.out.println("ok"+key);
+               
+                key=res.getInt(1);
+                System.out.println("ok id Client = "+key);
             }
         } catch (SQLException e) {
             System.out.println("erreur ??");

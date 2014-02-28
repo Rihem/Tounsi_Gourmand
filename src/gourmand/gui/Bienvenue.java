@@ -37,21 +37,25 @@ public class Bienvenue extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Bienvenue");
-        setMinimumSize(new java.awt.Dimension(400, 300));
+        setAlwaysOnTop(true);
+        setMaximumSize(null);
+        setMinimumSize(new java.awt.Dimension(530, 415));
+        setResizable(false);
         getContentPane().setLayout(null);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/commentaires.png"))); // NOI18N
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(240, 30, 140, 150);
+        jLabel2.setBounds(350, 100, 140, 150);
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Authentification_1.png"))); // NOI18N
         jLabel3.setText("jLabel3");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(30, 40, 120, 130);
+        jLabel3.setBounds(40, 100, 120, 130);
 
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButton1.setText("s'authentifier ");
@@ -61,7 +65,7 @@ public class Bienvenue extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(50, 190, 119, 23);
+        jButton1.setBounds(50, 250, 119, 23);
 
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButton2.setText("s'inscrire");
@@ -71,7 +75,7 @@ public class Bienvenue extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton2);
-        jButton2.setBounds(280, 190, 85, 23);
+        jButton2.setBounds(400, 250, 85, 23);
 
         jButton3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButton3.setText("Quitter");
@@ -81,7 +85,7 @@ public class Bienvenue extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton3);
-        jButton3.setBounds(180, 260, 77, 23);
+        jButton3.setBounds(240, 310, 77, 23);
 
         jPanel1.setDoubleBuffered(false);
 
@@ -99,10 +103,14 @@ public class Bienvenue extends javax.swing.JFrame {
         getContentPane().add(jPanel1);
         jPanel1.setBounds(0, 0, 0, 0);
 
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/BIENVENUE.png"))); // NOI18N
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(30, -30, 470, 120);
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/background0.gif"))); // NOI18N
-        jLabel1.setText("jLabel1");
+        jLabel1.setMinimumSize(null);
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, 0, 400, 300);
+        jLabel1.setBounds(0, 0, 540, 390);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -174,6 +182,7 @@ System.exit(0);
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
