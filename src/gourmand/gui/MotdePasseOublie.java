@@ -6,19 +6,23 @@
 
 package gourmand.gui;
 
+
 import gourmand.dao.MailClient;
 import gourmand.dao.MailPropEG;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import org.jfree.ui.RefineryUtilities;
+import mail.*;
 
-/**
- *
+ /*
  * @author BaSeif
  */
 public class MotdePasseOublie extends javax.swing.JFrame {
-
+    
+ 
+    Mail mail = new Mail();
+        
     /**
      * Creates new form motdepasseoublie
      */
@@ -110,6 +114,16 @@ public class MotdePasseOublie extends javax.swing.JFrame {
 
     private void cmd_mail_passeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmd_mail_passeActionPerformed
         // TODO add your handling code here:
+       
+        mail.setMailAddressRecipient(txt_mail_pass.getText());
+        mail.setMailAddressSender("tounsi.gourmand@gmail.com");
+        mail.setPwd("O2tounsi");
+               
+        mail.setMailSubject("Tounsi Gourmand:Réinitialiser/Récupérer votre mot de passe ");
+      
+        
+        
+        
         if (!(txt_mail_pass.getText().isEmpty()))
             
             
@@ -123,12 +137,29 @@ public class MotdePasseOublie extends javax.swing.JFrame {
        
             if ((x!=null) || (y!=null))
         {
+             //Envoi de mail @ 
+        String msg="Tounsi Gourmand a reçu une demande pour retrouver le mot de passe de votre compte. \n" +
+        "\n votre mot de passe est : ";           
+            if (x!=null)
+            {  msg=(msg+""+x);
+            System.out.println("msg X \n"+msg);
+            }else if (y!=null)
+            {   msg=(msg+" "+y );
+            System.out.println("msg Y \n"+msg);
+            }
+        
+        mail.setMailObject(msg);
+        
+            System.out.println("finale msg \n"+msg );
+         
+        MailConstruction mc = new MailConstruction();
+        mc.getMailProperties();
+        mc.getMailMessage(mail);
+        mc.SendMessage();
+        System.out.println("OK c bon ");
             
-
-                    //Envoi de mail @ 
         
         
-            
            Icon image = new ImageIcon( getClass().getResource("/img/mail.png"));     
            JOptionPane.showMessageDialog(this,"Nous avons envoyé les instructions de récuperation de mot de passe à votre adresse email : "
                    +txt_mail_pass.getText()
