@@ -1,4 +1,6 @@
 package gourmand.gui;
+import java.awt.Graphics;
+import javax.swing.*;
 
 import org.jfree.ui.RefineryUtilities;
 

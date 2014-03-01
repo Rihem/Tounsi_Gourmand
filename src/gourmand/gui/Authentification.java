@@ -49,6 +49,7 @@ public class Authentification extends javax.swing.JFrame {
         cmd_Back = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -123,6 +124,17 @@ public class Authentification extends javax.swing.JFrame {
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Goldenlock.png"))); // NOI18N
         jPanel1.add(jLabel5);
         jLabel5.setBounds(380, 60, 100, 90);
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(51, 51, 255));
+        jLabel6.setText("Mot de passe oublié ? ");
+        jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel6MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel6);
+        jLabel6.setBounds(370, 150, 130, 30);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/background0.gif"))); // NOI18N
         jPanel1.add(jLabel1);
@@ -266,6 +278,15 @@ public class Authentification extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
+        MotdePasseOublie MPO = null;
+        MPO = new MotdePasseOublie();
+        MPO.setVisible(true);
+        
+        
+// TODO add your handling code here:
+    }//GEN-LAST:event_jLabel6MouseClicked
+
     
     
     
@@ -316,6 +337,7 @@ public class Authentification extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField txt_login;
     private javax.swing.JPasswordField txt_password;
