@@ -123,7 +123,9 @@ public class MotdePasseOublie extends javax.swing.JFrame {
        
             if ((x!=null) || (y!=null))
         {
-            //Envoi de mail @ de l'ID
+            
+
+                    //Envoi de mail @ 
         
         
             
