@@ -118,6 +118,7 @@ public class MotdePasseOublie extends javax.swing.JFrame {
         mail.setMailAddressRecipient(txt_mail_pass.getText());
         mail.setMailAddressSender("tounsi.gourmand@gmail.com");
         mail.setPwd("O2tounsi");
+       
                
         mail.setMailSubject("Tounsi Gourmand:Réinitialiser/Récupérer votre mot de passe ");
       
@@ -137,19 +138,28 @@ public class MotdePasseOublie extends javax.swing.JFrame {
        
             if ((x!=null) || (y!=null))
         {
-             //Envoi de mail @ 
+             //Envoi de mail @  
         String msg="Tounsi Gourmand a reçu une demande pour retrouver le mot de passe de votre compte. \n" +
-        "\n votre mot de passe est : ";           
+        "\n # Votre mot de passe est : ";           
             if (x!=null)
             {  msg=(msg+""+x);
-            System.out.println("msg X \n"+msg);
+          //System.out.println("msg X \n"+msg);
             }else if (y!=null)
             {   msg=(msg+" "+y );
-            System.out.println("msg Y \n"+msg);
+           // System.out.println("msg Y \n"+msg);
             }
+            
+        msg=(msg+"\n============================================================"
+                +"\n  Si vous recevez beaucoup d'emails de réinitialisation de mot de passe que "
+                +"vous n'avez pas demandés, vous pouvez changer vos paramètres de compte afin d'exiger "
+                +"une information personnelle pour pouvoir débuter une réinitialisation de mot de passe."
+                +"\n\n\n============================================================"
+                + "\n  Veuillez ne pas répondre à ce message ; il a été envoyé à partir d'une boîte automatisée."
+                +"\n Ce message est lié à votre utilisation de Tounsi Gourmand" );
         
         mail.setMailObject(msg);
         
+            
             System.out.println("finale msg \n"+msg );
          
         MailConstruction mc = new MailConstruction();
