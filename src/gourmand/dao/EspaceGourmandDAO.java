@@ -9,6 +9,7 @@ package gourmand.dao;
 import gourmand.entities.*;
 import gourmand.util.*;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -44,17 +45,62 @@ public class EspaceGourmandDAO implements Crud{
 
     @Override
     public void supprimer(Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        EspaceGourmandDAO a = new EspaceGourmandDAO();
+        String url = " DELETE FROM espacegourmand WHERE idEspaceGourmand=" + a.idConnexion;
+        try {
+            PreparedStatement prst = MyConnection.getInstance().conn.prepareStatement(url);
+            EspaceGourmand eg = (EspaceGourmand) o;
+
+            prst.executeUpdate();
+            System.out.println("Suppression effectuée!");
+        } catch (SQLException ex) {
+            System.err.println("Probleme de suppression");
+        }
     }
 
     @Override
     public void modifier(Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            String url = " UPDATE espacegourmand SET nomEspaceGourmand=? , adresse=?,numTel=?,email=?,type=?,idProprietaire=? WHERE idEspaceGourmand=" + idConnexion;
+            PreparedStatement prst = MyConnection.getInstance().conn.prepareStatement(url);
+            EspaceGourmand eg = (EspaceGourmand) o;
+            prst.setString(1, eg.getNomEspaceGourmand());
+            prst.setString(2, eg.getAdresse());
+            prst.setInt(3, eg.getNumTel());
+            prst.setString(4, eg.getEmail());
+            prst.setString(5, eg.getType());
+            prst.setInt(6, eg.getIdProprietaire());
+            
+            prst.executeUpdate();
+            System.out.println("Modification avec succes");
+        } catch (SQLException ex) {
+            System.err.println("Echec de modification!");
+        }
     }
 
     @Override
     public List display() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<EspaceGourmand> listeEspaceGourmand = new ArrayList<EspaceGourmand>();
+        String url = "SELECT * FROM espacegourmand";
+        try {
+            Statement st = MyConnection.getInstance().conn.createStatement();
+            ResultSet rst = st.executeQuery(url);
+            while (rst.next()) {
+                EspaceGourmand eg = new EspaceGourmand();
+                eg.setNomEspaceGourmand(rst.getString(2));
+                eg.setAdresse(rst.getString(3));
+                eg.setNumTel(rst.getInt(4));
+                eg.setEmail(rst.getString(5));
+                eg.setType(rst.getString(6));
+                eg.setIdProprietaire(rst.getInt(7));
+                eg.setIdMenu(rst.getInt(8));
+                eg.setIdCommentaire(rst.getInt(9));
+                listeEspaceGourmand.add(eg);
+            }
+            return listeEspaceGourmand;
+        } catch (SQLException ex) {
+            return null;
+        }
     }
     ///dima tnasnes mathama chay gayel
 }
