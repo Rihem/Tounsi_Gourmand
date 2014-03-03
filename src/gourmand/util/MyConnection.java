@@ -12,7 +12,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
+/** 
  *
  * @author Hell
  */
@@ -23,7 +23,7 @@ public class MyConnection {
     private MyConnection() {
         String url = "jdbc:mysql://localhost:3306/pidev";
         String user = "root";
-        String pwd = "0000";
+        String pwd = "";
         try {
             Class.forName("com.mysql.jdbc.Driver"); //charger drive au niveau memoire
             System.out.println("Driver chargé!");
