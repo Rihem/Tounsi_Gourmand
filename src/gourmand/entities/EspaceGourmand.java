@@ -19,12 +19,11 @@ public class EspaceGourmand {
     private String email;
     private String type;
     private int idProprietaire, idCommentaire, idMenu;
-    private boolean ok;
 
     public EspaceGourmand() {
     }
 
-    public EspaceGourmand(String nomEspaceGourmand, String adresse, int numTel, String email, String type, int idProprietaire, int idCommentaire, int idMenu, boolean ok) {
+    public EspaceGourmand(String nomEspaceGourmand, String adresse, int numTel, String email, String type, int idProprietaire, int idCommentaire, int idMenu) {
         this.nomEspaceGourmand = nomEspaceGourmand;
         this.adresse = adresse;
         this.numTel = numTel;
@@ -33,7 +32,6 @@ public class EspaceGourmand {
         this.idProprietaire = idProprietaire;
         this.idCommentaire = idCommentaire;
         this.idMenu = idMenu;
-        this.ok = ok;
     }
 
     public int getIdEspaceGourmand() {
@@ -104,19 +102,12 @@ public class EspaceGourmand {
         this.idMenu = idMenu;
     }
 
-    public boolean isOk() {
-        return ok;
-    }
-
-    public void setOk(boolean ok) {
-        this.ok = ok;
-    }
-
+    @Override
     public String toString() {
-        if(ok==true) System.out.println("Client confirmé");
-        else System.out.println("Client pas encore confirmé");
-        return "idEspaceGourmand=" + idEspaceGourmand + ", nomEspaceGourmand=" + nomEspaceGourmand + ", adresse=" + adresse + ", numTel=" + numTel + ", email=" + email + ", type=" + type + ", idProprietaire=" + idProprietaire + ", idCommentaire=" + idCommentaire + ", idMenu=" + idMenu;
+        return "EspaceGourmand{" + "idEspaceGourmand=" + idEspaceGourmand + ", nomEspaceGourmand=" + nomEspaceGourmand + ", adresse=" + adresse + ", numTel=" + numTel + ", email=" + email + ", type=" + type + ", idProprietaire=" + idProprietaire + ", idCommentaire=" + idCommentaire + ", idMenu=" + idMenu + '}';
     }
+
+
     
     public boolean equals(Object obj) {
         if (obj == null) {

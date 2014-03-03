@@ -40,8 +40,8 @@ public class GestionReservationJFrame extends javax.swing.JFrame {
             DTM.setRowCount(0);
             for(Reservation res : LReservation)
             {
-                String nom = "select nom from client where res.numCompte = numCompte";
-                String prenom ="select prenom from client where res.numCompte = numCompte";
+                String nom = "select nom from client where numCompte ='"+ res.getNumCompte() +"'";
+                String prenom ="select prenom from client where numCompte ='"+ res.getNumCompte() +"'";
                 boolean ok = res.getOk();
                 String v="";
                 if(ok == true)
