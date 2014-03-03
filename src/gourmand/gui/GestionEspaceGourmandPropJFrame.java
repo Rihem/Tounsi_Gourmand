@@ -138,6 +138,11 @@ public class GestionEspaceGourmandPropJFrame extends javax.swing.JFrame {
         });
 
         butSupprimer.setText("Supprimer");
+        butSupprimer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                butSupprimerActionPerformed(evt);
+            }
+        });
 
         butRetour.setText("Retour");
 
@@ -297,8 +302,23 @@ public class GestionEspaceGourmandPropJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_butResetActionPerformed
 
     private void butAjouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butAjouterActionPerformed
-        // TODO add your handling code here:
+        EspaceGourmandDAO EGDAO = new EspaceGourmandDAO();
+        EspaceGourmand E1 = new EspaceGourmand();
+        E1.setNomEspaceGourmand(txtNomEG.getText());
+        E1.setAdresse(txtAdresseEG.getText());
+        E1.setNumTel(Integer.parseInt(txtTelEG.getText()));
+        E1.setEmail(txtMailEG.getText());
+        E1.setType(txtTypeEG.getText());
+        E1.setIdProprietaire(Integer.parseInt(txtProprEG.getText()));
+        
+        EGDAO.ajouter(E1);
     }//GEN-LAST:event_butAjouterActionPerformed
+
+    private void butSupprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butSupprimerActionPerformed
+        EspaceGourmandDAO EGDAO = new EspaceGourmandDAO();
+        EspaceGourmand E1 = new EspaceGourmand();
+        EGDAO.supprimer(E1);
+    }//GEN-LAST:event_butSupprimerActionPerformed
 
     
     private void TableGPEGMouseClicked(java.awt.event.MouseEvent evt) {                                       
