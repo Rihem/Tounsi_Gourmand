@@ -122,6 +122,11 @@ public class GestionReservationJFrame extends javax.swing.JFrame {
         });
 
         butRefuser.setText("Refuser");
+        butRefuser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                butRefuserActionPerformed(evt);
+            }
+        });
 
         butRetour.setText("Retour");
         butRetour.addActionListener(new java.awt.event.ActionListener() {
@@ -206,8 +211,18 @@ public class GestionReservationJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_butRetourActionPerformed
 
     private void butAccepterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butAccepterActionPerformed
+        ReservationDAO RDAO = new ReservationDAO();
+        Reservation R = new Reservation();
+        R.setOk(true);
         
+        RDAO.modifier(R);
     }//GEN-LAST:event_butAccepterActionPerformed
+
+    private void butRefuserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butRefuserActionPerformed
+        ReservationDAO RDAO = new ReservationDAO();
+        Reservation R = new Reservation();
+        RDAO.supprimer(R);
+    }//GEN-LAST:event_butRefuserActionPerformed
 
     /**
      * @param args the command line arguments
