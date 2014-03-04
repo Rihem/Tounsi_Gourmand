@@ -24,7 +24,7 @@ public class EspaceGourmandDAO implements Crud{
 
     @Override
     public void ajouter(Object o) {
-        String url = " INSERT INTO espacegourmand(nomEspaceGourmand,adresse,numTel,email,type,idProprietaire,idMenu,idCommentaire) VALUES (?,?,?,?,?,?,?,?)";
+        String url = " INSERT INTO espacegourmand(nomEspaceGourmand,adresse,numTel,email,type,idProprietaire) VALUES (?,?,?,?,?,?)";
         try {
             PreparedStatement prst = MyConnection.getInstance().conn.prepareStatement(url);
             EspaceGourmand EG = (EspaceGourmand) o;
@@ -34,8 +34,6 @@ public class EspaceGourmandDAO implements Crud{
             prst.setString(4, EG.getEmail());
             prst.setString(5, EG.getType());
             prst.setInt(6, EG.getIdProprietaire());
-            prst.setInt(7, EG.getIdMenu());
-            prst.setInt(8, EG.getIdCommentaire());
             prst.executeUpdate();
             System.out.println("Insertion effectuée!");
         } catch (SQLException ex) {
@@ -93,8 +91,6 @@ public class EspaceGourmandDAO implements Crud{
                 eg.setEmail(rst.getString(5));
                 eg.setType(rst.getString(6));
                 eg.setIdProprietaire(rst.getInt(7));
-                eg.setIdMenu(rst.getInt(8));
-                eg.setIdCommentaire(rst.getInt(9));
                 listeEspaceGourmand.add(eg);
             }
             return listeEspaceGourmand;
