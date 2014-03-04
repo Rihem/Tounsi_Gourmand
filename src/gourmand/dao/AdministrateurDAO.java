@@ -7,6 +7,7 @@
 package gourmand.dao;
 
 import gourmand.entities.Administrateur;
+import gourmand.entities.ProprietaireEspaceGourmand;
 import gourmand.util.MyConnection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -114,6 +115,26 @@ public class AdministrateurDAO implements Crud {
         return LA;
         
         
+    }
+    
+    public List<ProprietaireEspaceGourmand> display2() {
+        List<ProprietaireEspaceGourmand> listeProprio = new ArrayList<ProprietaireEspaceGourmand>();
+        String url = "SELECT * FROM proprietaireEspaceGourmand";
+        try {
+            Statement st = MyConnection.conn.createStatement();
+            ResultSet rst = st.executeQuery(url);
+            while (rst.next()) {
+                ProprietaireEspaceGourmand c = new ProprietaireEspaceGourmand();
+
+                c.setLogin(rst.getString(1));
+                c.setPassword(rst.getString(2));
+
+                listeProprio.add(c);
+            }
+            return listeProprio;
+        } catch (SQLException ex) {
+            return null;
+        }
     }
 
 }
