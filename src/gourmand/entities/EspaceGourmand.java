@@ -18,20 +18,18 @@ public class EspaceGourmand {
     private int numTel;
     private String email;
     private String type;
-    private int idProprietaire, idCommentaire, idMenu;
+    private int idProprietaire;
 
     public EspaceGourmand() {
     }
 
-    public EspaceGourmand(String nomEspaceGourmand, String adresse, int numTel, String email, String type, int idProprietaire, int idCommentaire, int idMenu) {
+    public EspaceGourmand(String nomEspaceGourmand, String adresse, int numTel, String email, String type, int idProprietaire) {
         this.nomEspaceGourmand = nomEspaceGourmand;
         this.adresse = adresse;
         this.numTel = numTel;
         this.email = email;
         this.type = type;
         this.idProprietaire = idProprietaire;
-        this.idCommentaire = idCommentaire;
-        this.idMenu = idMenu;
     }
 
     public int getIdEspaceGourmand() {
@@ -86,25 +84,11 @@ public class EspaceGourmand {
         this.idProprietaire = idProprietaire;
     }
 
-    public int getIdCommentaire() {
-        return idCommentaire;
-    }
-
-    public void setIdCommentaire(int idCommentaire) {
-        this.idCommentaire = idCommentaire;
-    }
-
-    public int getIdMenu() {
-        return idMenu;
-    }
-
-    public void setIdMenu(int idMenu) {
-        this.idMenu = idMenu;
-    }
+    
 
     @Override
     public String toString() {
-        return "EspaceGourmand{" + "idEspaceGourmand=" + idEspaceGourmand + ", nomEspaceGourmand=" + nomEspaceGourmand + ", adresse=" + adresse + ", numTel=" + numTel + ", email=" + email + ", type=" + type + ", idProprietaire=" + idProprietaire + ", idCommentaire=" + idCommentaire + ", idMenu=" + idMenu + '}';
+        return "EspaceGourmand{" + "idEspaceGourmand=" + idEspaceGourmand + ", nomEspaceGourmand=" + nomEspaceGourmand + ", adresse=" + adresse + ", numTel=" + numTel + ", email=" + email + ", type=" + type + ", idProprietaire=" + idProprietaire +'}';
     }
 
 
