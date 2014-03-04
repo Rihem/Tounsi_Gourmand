@@ -20,7 +20,7 @@ import java.util.List;
  */
 public class EspaceGourmandDAO implements Crud{
     
-    private static int idConnexion;
+    static int idConnexion;
 
     @Override
     public void ajouter(Object o) {
