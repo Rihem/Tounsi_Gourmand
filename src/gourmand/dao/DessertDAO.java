@@ -6,7 +6,7 @@
 
 package gourmand.dao;
 
-import gourmand.entities.Boissons;
+import gourmand.entities.Desserts;
 import gourmand.util.MyConnection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -19,17 +19,17 @@ import java.util.List;
  *
  * @author Mahdouch
  */
-public class BoissonDAO implements Crud{
-    
-    static int idConnexion;
+public class DessertDAO implements Crud{
 
+    static int idConnexion;
+    
     @Override
     public void ajouter(Object o) {
-        String url = " INSERT INTO boissons(libelleBoisson,prix,idMenu) VALUES (?,?,?)";
+        String url = " INSERT INTO desserts(libelleDessert,prix,idMenu) VALUES (?,?,?)";
         try {
             PreparedStatement prst = MyConnection.getInstance().conn.prepareStatement(url);
-            Boissons c = (Boissons) o;
-            prst.setString(1, c.getLibelleBoisson());
+            Desserts c = (Desserts) o;
+            prst.setString(1, c.getLibelleDessert());
             prst.setInt(2, c.getPrix());
             prst.setInt(3, c.getIdMenu());
             prst.executeUpdate();
@@ -41,11 +41,11 @@ public class BoissonDAO implements Crud{
 
     @Override
     public void supprimer(Object o) {
-        BoissonDAO a = new BoissonDAO();
-        String url = " DELETE FROM boissons WHERE id=" + a.idConnexion;
+        DessertDAO a = new DessertDAO();
+        String url = " DELETE FROM desserts WHERE id=" + a.idConnexion;
         try {
             PreparedStatement prst = MyConnection.getInstance().conn.prepareStatement(url);
-            Boissons c = (Boissons) o;
+            Desserts c = (Desserts) o;
 
             prst.executeUpdate();
             System.out.println("Suppression effectuée!");
@@ -57,10 +57,10 @@ public class BoissonDAO implements Crud{
     @Override
     public void modifier(Object o) {
         try {
-            String url = " UPDATE boissons SET libelleBoisson=? , prix=? , idMenu=? WHERE id=" + idConnexion;
+            String url = " UPDATE desserts SET libelleDessert=? , prix=? , idMenu=? WHERE id=" + idConnexion;
             PreparedStatement prst = MyConnection.getInstance().conn.prepareStatement(url);
-            Boissons c = (Boissons) o;
-            prst.setString(1, c.getLibelleBoisson());
+            Desserts c = (Desserts) o;
+            prst.setString(1, c.getLibelleDessert());
             prst.setInt(2, c.getPrix());
             prst.setInt(3, c.getIdMenu());
             prst.executeUpdate();
@@ -72,18 +72,18 @@ public class BoissonDAO implements Crud{
 
     @Override
     public List display() {
-        List<Boissons> listeBoissons = new ArrayList<Boissons>();
-        String url = "SELECT * FROM boissons";
+        List<Desserts> listeDesserts = new ArrayList<Desserts>();
+        String url = "SELECT * FROM desserts";
         try {
             Statement st = MyConnection.getInstance().conn.createStatement();
             ResultSet rst = st.executeQuery(url);
             while (rst.next()) {
-                Boissons c = new Boissons();
-                c.setLibelleBoisson(rst.getString(2));
+                Desserts c = new Desserts();
+                c.setLibelleDessert(rst.getString(2));
                 c.setPrix(rst.getInt(3));
                 c.setIdMenu(rst.getInt(3));
             }
-            return listeBoissons;
+            return listeDesserts;
         } catch (SQLException ex) {
             return null;
         }
