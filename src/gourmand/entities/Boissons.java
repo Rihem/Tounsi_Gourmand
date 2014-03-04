@@ -15,6 +15,9 @@ public class Boissons {
     private String libelleBoisson;
     private int prix;
 
+    public Boissons() {
+    }
+    
     public Boissons(int idBoissons, String libelleBoisson, int prix, int idMenu) {
         this.idBoissons = idBoissons;
         this.libelleBoisson = libelleBoisson;

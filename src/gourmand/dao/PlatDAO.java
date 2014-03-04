@@ -21,7 +21,7 @@ import java.util.List;
  */
 public class PlatDAO implements Crud{
 
-    private static int idConnexion;
+    static int idConnexion;
 
     
     @Override
