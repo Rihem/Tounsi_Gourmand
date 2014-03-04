@@ -11,5 +11,9 @@ package gourmand.gui;
  * @author Mahdouch
  */
 class RefineryUtilities {
+
+    static void centerFrameOnScreen(Runnable aThis) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

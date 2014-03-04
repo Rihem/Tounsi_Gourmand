@@ -26,7 +26,7 @@ public class GestionReservationJFrame extends javax.swing.JFrame {
     /**
      * Creates new form GestionReservationJFrame
      */
-    public GestionReservationJFrame() {
+    public GestionReservationJFrame(){
         
         initComponents();
         ReservationDAO RDAO = new ReservationDAO();
@@ -240,6 +240,7 @@ public class GestionReservationJFrame extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new GestionReservationJFrame().setVisible(true);
+                RefineryUtilities.centerFrameOnScreen(this);
             }
         });
     }
