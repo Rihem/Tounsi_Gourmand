@@ -15,6 +15,9 @@ public class Entrees {
     private String libelleEntree;
     private int prix;
 
+    public Entrees() {
+    }
+
     public Entrees(int idEntrees, String libelleEntree, int prix, int idMenu) {
         this.idEntrees = idEntrees;
         this.libelleEntree = libelleEntree;

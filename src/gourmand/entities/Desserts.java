@@ -17,6 +17,9 @@ public class Desserts {
     private String libelleDessert;
     private int prix;
 
+    public Desserts() {
+    }
+
     public Desserts(int idDesserts, String libelleDessert, int prix, int idMenu) {
         this.idDesserts = idDesserts;
         this.libelleDessert = libelleDessert;
