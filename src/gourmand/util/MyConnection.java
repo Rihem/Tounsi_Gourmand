@@ -21,9 +21,9 @@ public class MyConnection {
     public static Connection conn;
     
     private MyConnection() {
-        String url = "jdbc:mysql://localhost:3306/pidev";
+        String url = "jdbc:mysql://localhost:3306/pi";
         String user = "root";
-        String pwd = "0000";
+        String pwd = "";
         try {
             Class.forName("com.mysql.jdbc.Driver"); //charger drive au niveau memoire
             System.out.println("Driver chargé!");
