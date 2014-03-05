@@ -7,6 +7,7 @@
 package gourmand.dao;
 
 import gourmand.entities.Client;
+import gourmand.entities.EspaceGourmand;
 import gourmand.util.MyConnection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -22,7 +23,7 @@ import java.util.List;
  */
 public class ClientDAO implements Crud{
 
-   private static int idConnexion;
+   static int idConnexion;
 
     @Override
     public void ajouter(Object o) {
@@ -104,5 +105,61 @@ public class ClientDAO implements Crud{
         } catch (SQLException ex) {
             return null;
         }
+    }
+     public List<EspaceGourmand> display2() {
+        List<EspaceGourmand> listeEG = new ArrayList<EspaceGourmand>();
+        String url = "SELECT * FROM espacegourmand";
+        try {
+            Statement st = MyConnection.conn.createStatement();
+            ResultSet rst = st.executeQuery(url);
+            while (rst.next()) {
+                EspaceGourmand c = new EspaceGourmand();
+                c.setNomEspaceGourmand(rst.getString(2));
+                c.setAdresse(rst.getString(3));
+                c.setNumTel(rst.getInt(4));
+                c.setEmail(rst.getString(5));
+                c.setType(rst.getString(6));
+                listeEG.add(c);
+
+            }
+            return listeEG;
+        } catch (SQLException ex) {
+            return null;
+        }
+    }
+
+    
+     public Client InfoClient() {
+        String url = "SELECT * FROM client WHERE NumCompte=" + idConnexion;
+        try {
+            Statement st = MyConnection.conn.createStatement();
+            ResultSet rst = st.executeQuery(url);
+            Client c = new Client();
+            while (rst.next()) {
+
+                c.setNom(rst.getString(2));
+                c.setPrenom(rst.getString(3));
+                c.setLogin(rst.getString(4));
+                c.setPassword(rst.getString(5));
+                c.setEmail(rst.getString(6));
+                c.setTel(rst.getInt(7));
+                c.setSexe(rst.getString(8));
+                c.setAge(rst.getInt(9));
+
+            }
+
+            //  System.out.println(c.getCin());
+            return c;
+        } catch (SQLException ex) {
+            return null;
+        }
+    }
+
+    public static int getIdConnexion() {
+        return idConnexion;
+    }
+
+    public static void setIdConnexion(int idConnexion) {
+        ClientDAO.idConnexion = idConnexion;
     }
 }

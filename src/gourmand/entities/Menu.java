@@ -13,7 +13,7 @@ import java.util.Date;
  * @author Hell
  */
 public class Menu {
-    private int idEntrees, idPlats, idBoissons, idDesserts;
+    private int idEspaceGourmand;
     private int idMenu;
 
     private String date;
@@ -21,69 +21,19 @@ public class Menu {
     public Menu() {
     }
 
-    public Menu(int idEntrees, int idPlats, int idBoissons, int idDesserts,  String date) {
-        this.idEntrees = idEntrees;
-        this.idPlats = idPlats;
-        this.idBoissons = idBoissons;
-        this.idDesserts = idDesserts;
+    public Menu(int idEspaceGourmand,  String date) {
+        this.idEspaceGourmand=idEspaceGourmand;
         this.date = date;
-    }
-    
-    
-
-    public int getIdMenu() {
-        return idMenu;
-    }
-
-    public String getDate() {
-        return date;
-    }
-
-
-    public void setDate(String date) {
-        this.date = date;
-    }
-
-    public int getIdEntrees() {
-        return idEntrees;
-    }
-
-    public int getIdPlats() {
-        return idPlats;
-    }
-
-    public int getIdBoissons() {
-        return idBoissons;
-    }
-
-    public int getIdDesserts() {
-        return idDesserts;
-    }
-
-    public void setIdEntrees(int idEntrees) {
-        this.idEntrees = idEntrees;
-    }
-
-    public void setIdPlats(int idPlats) {
-        this.idPlats = idPlats;
-    }
-
-    public void setIdBoissons(int idBoissons) {
-        this.idBoissons = idBoissons;
-    }
-
-    public void setIdDesserts(int idDesserts) {
-        this.idDesserts = idDesserts;
     }
 
     @Override
     public String toString() {
-        return "Menu{" + "idEntrees=" + idEntrees + ", idPlats=" + idPlats + ", idBoissons=" + idBoissons + ", idDesserts=" + idDesserts + ", idMenu=" + idMenu + ", date=" + date + '}';
+        return "Menu{" + "idEspaceGourmand=" + idEspaceGourmand + ", idMenu=" + idMenu + ", date=" + date + '}';
     }
 
     @Override
     public int hashCode() {
-        int hash = 7;
+        int hash = 3;
         return hash;
     }
 
@@ -101,9 +51,31 @@ public class Menu {
         }
         return true;
     }
-
-   
-
     
     
-}
+
+    public int getIdMenu() {
+        return idMenu;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public int getIdEspaceGourmand() {
+        return idEspaceGourmand;
+    }
+
+    public void setIdEspaceGourmand(int idEspaceGourmand) {
+        this.idEspaceGourmand = idEspaceGourmand;
+    }
+
+    
+    }
+    
+

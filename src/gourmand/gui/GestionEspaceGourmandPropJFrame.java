@@ -6,6 +6,14 @@
 
 package gourmand.gui;
 
+import gourmand.dao.EspaceGourmandDAO;
+import gourmand.entities.EspaceGourmand;
+import gourmand.util.*;
+import java.sql.*;
+import java.util.*;
+import java.util.logging.*;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Mahdouch
@@ -17,6 +25,39 @@ public class GestionEspaceGourmandPropJFrame extends javax.swing.JFrame {
      */
     public GestionEspaceGourmandPropJFrame() {
         initComponents();
+        EspaceGourmandDAO EGDAO = new EspaceGourmandDAO();
+        List<EspaceGourmand> LEG = EGDAO.display();
+        DefaultTableModel DTM = new DefaultTableModel();
+        DTM.addColumn("Nom Espace Gourmand");
+        DTM.addColumn("Adress");
+        DTM.addColumn("Téléphone");
+        DTM.addColumn("E-mail");
+        DTM.addColumn("Type Espace Gourmand");
+        DTM.addColumn("Proprietaire");
+        
+        try
+        {
+            DTM.setRowCount(0);
+            for(EspaceGourmand eg : LEG)
+            {
+                String nomEG = eg.getNomEspaceGourmand();
+                String adresseEG =eg.getAdresse();
+                int telEG = eg.getNumTel();
+                String mail = eg.getEmail();
+                String type = eg.getType();
+                int proprietaire =eg.getIdProprietaire();
+                
+                Object [] obj = {nomEG,adresseEG,telEG,mail,type,proprietaire};
+                DTM.addRow(obj);
+
+            }
+            TableEGA.setModel(DTM);
+        }
+            catch(Exception e)
+                    {
+                    System.out.println("erreur"+e.getMessage());
+                    
+                    }
     }
 
     /**
@@ -28,22 +69,288 @@ public class GestionEspaceGourmandPropJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        TableEGA = new javax.swing.JTable();
+        butAjouter = new javax.swing.JButton();
+        butModifier = new javax.swing.JButton();
+        butSupprimer = new javax.swing.JButton();
+        butRetour = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        txtNomEG = new javax.swing.JTextField();
+        txtAdresseEG = new javax.swing.JTextField();
+        txtTelEG = new javax.swing.JTextField();
+        txtMailEG = new javax.swing.JTextField();
+        txtTypeEG = new javax.swing.JTextField();
+        txtProprEG = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        butReset = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setBackground(new java.awt.Color(255, 204, 204));
+
+        TableEGA.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "Nom Espace", "Adresse", "Téléphone", "E-mail", "Type", "Proprietaire"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(TableEGA);
+
+        butAjouter.setText("Ajouter");
+        butAjouter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                butAjouterActionPerformed(evt);
+            }
+        });
+
+        butModifier.setText("Modifier");
+        butModifier.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                butModifierActionPerformed(evt);
+            }
+        });
+
+        butSupprimer.setText("Supprimer");
+        butSupprimer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                butSupprimerActionPerformed(evt);
+            }
+        });
+
+        butRetour.setText("Retour");
+
+        jLabel1.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(51, 153, 255));
+        jLabel1.setText("Gestion Espace Gourmand \"Administrateur\"");
+
+        jLabel2.setText(" Adresse : ");
+
+        jLabel3.setText(" Nom Espace Gourmand : ");
+
+        jLabel4.setText(" Téléphone : ");
+
+        jLabel5.setText(" Type Espace Gourmand:");
+
+        jLabel6.setText(" Proprietaire :");
+
+        jLabel7.setText(" E-mail :");
+
+        butReset.setText("Reset");
+        butReset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                butResetActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(169, 169, 169)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 451, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(butAjouter, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(58, 58, 58)
+                        .addComponent(butModifier, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(60, 60, 60)
+                        .addComponent(butSupprimer, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(64, 64, 64))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 518, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel3)
+                            .addComponent(butRetour, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(33, 33, 33)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtAdresseEG, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtNomEG, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtTelEG, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtMailEG, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtTypeEG, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtProprEG, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(62, 62, 62))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(butReset, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(97, 97, 97))))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(butSupprimer, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(butModifier, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(butAjouter, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(83, 83, 83)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(13, 13, 13))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(txtNomEG, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtAdresseEG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtTelEG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtMailEG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtTypeEG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtProprEG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
+                .addComponent(butReset, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38)
+                .addComponent(butRetour, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {txtAdresseEG, txtMailEG, txtNomEG, txtProprEG, txtTelEG, txtTypeEG});
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void butModifierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butModifierActionPerformed
+        EspaceGourmandDAO EGDAO = new EspaceGourmandDAO();
+        EspaceGourmand E1 = new EspaceGourmand();
+        E1.setNomEspaceGourmand(txtNomEG.getText());
+        E1.setAdresse(txtAdresseEG.getText());
+        E1.setNumTel(Integer.parseInt(txtTelEG.getText()));
+        E1.setEmail(txtMailEG.getText());
+        E1.setType(txtTypeEG.getText());
+        E1.setIdProprietaire(Integer.parseInt(txtProprEG.getText()));
+        
+        
+        EGDAO.modifier(E1);
+    }//GEN-LAST:event_butModifierActionPerformed
+
+    private void butResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butResetActionPerformed
+        txtNomEG.setText(null);
+        txtAdresseEG.setText(null);
+        txtTelEG.setText(null);
+        txtMailEG.setText(null);
+        txtTypeEG.setText(null);
+        txtProprEG.setText(null);
+    }//GEN-LAST:event_butResetActionPerformed
+
+    private void butAjouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butAjouterActionPerformed
+        EspaceGourmandDAO EGDAO = new EspaceGourmandDAO();
+        EspaceGourmand E1 = new EspaceGourmand();
+        E1.setNomEspaceGourmand(txtNomEG.getText());
+        E1.setAdresse(txtAdresseEG.getText());
+        E1.setNumTel(Integer.parseInt(txtTelEG.getText()));
+        E1.setEmail(txtMailEG.getText());
+        E1.setType(txtTypeEG.getText());
+        E1.setIdProprietaire(Integer.parseInt(txtProprEG.getText()));
+        
+        EGDAO.ajouter(E1);
+    }//GEN-LAST:event_butAjouterActionPerformed
+
+    private void butSupprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butSupprimerActionPerformed
+        EspaceGourmandDAO EGDAO = new EspaceGourmandDAO();
+        EspaceGourmand E1 = new EspaceGourmand();
+        EGDAO.supprimer(E1);
+    }//GEN-LAST:event_butSupprimerActionPerformed
+
+    
+    private void TableGPEGMouseClicked(java.awt.event.MouseEvent evt) {                                       
+        int rows = TableEGA.getSelectedRow();
+        String a=TableEGA.getModel().getValueAt(rows, 1).toString();
+        System.out.println(a);
+        try {
+            Statement st =(Statement) MyConnection.getInstance().conn.createStatement();
+            int row = TableEGA.getSelectedRow();
+            String Table_Click =(TableEGA.getModel().getValueAt(row, 1).toString());
+            String sql = "select nomEspaceGourmand,adresse,numTel,email,type,idProprietaire from espacegourmand where nom='"+ Table_Click+"'";
+            ResultSet res = st.executeQuery(sql);
+            while(res.next())
+            {
+                String add0 = res.getString("Nom Espace Gourmand");
+                txtNomEG.setText(add0);
+                String add1 = res.getString("Adresse");
+                txtAdresseEG.setText(add1);
+                String add2 = res.getString("Téléphone");
+                txtTelEG.setText(add2);
+                String add3 = res.getString("E-mail");
+                txtMailEG.setText(add3);
+                String add4 = res.getString("Type Espace Gourmand");
+                txtTypeEG.setText(add4);
+                String add5 = res.getString("Proprietaire");
+                txtProprEG.setText(add5);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(GestionEspaceGourmandPropJFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }              
+    
     /**
      * @param args the command line arguments
      */
@@ -80,5 +387,26 @@ public class GestionEspaceGourmandPropJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable TableEGA;
+    private javax.swing.JButton butAjouter;
+    private javax.swing.JButton butModifier;
+    private javax.swing.JButton butReset;
+    private javax.swing.JButton butRetour;
+    private javax.swing.JButton butSupprimer;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField txtAdresseEG;
+    private javax.swing.JTextField txtMailEG;
+    private javax.swing.JTextField txtNomEG;
+    private javax.swing.JTextField txtProprEG;
+    private javax.swing.JTextField txtTelEG;
+    private javax.swing.JTextField txtTypeEG;
     // End of variables declaration//GEN-END:variables
 }

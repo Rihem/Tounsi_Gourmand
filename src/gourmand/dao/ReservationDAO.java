@@ -94,5 +94,24 @@ public class ReservationDAO implements Crud {
             return null;
         }
     }
+   
+    
+    public void ReservationClient(String idEG,String date,String nb) {
+      
+         String url = " insert into reservation set dateReservation='"+date+"', nombrePersonne="+nb+", numCompte="+ClientDAO.idConnexion+",idEspaceGourmand=(select idEspaceGourmand from espacegourmand where nomEspaceGourmand='"+idEG+"' ),ok=0";
+        try {
+            PreparedStatement prst = MyConnection.conn.prepareStatement(url);
+            
+          
+            prst.executeUpdate();
+            System.out.println("Insertion effectuée!");
+            System.out.println(url);
+        } catch (SQLException ex) {
+            System.out.println(url);
+            System.err.println("Probleme d'insertion");
+        }
+
+    }
+    
 }
     
