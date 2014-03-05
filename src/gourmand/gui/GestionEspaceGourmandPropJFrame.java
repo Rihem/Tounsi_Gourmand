@@ -72,6 +72,7 @@ public class GestionEspaceGourmandPropJFrame extends javax.swing.JFrame {
         butSalonThe = new javax.swing.JRadioButton();
         butFastFood = new javax.swing.JRadioButton();
         butRestau = new javax.swing.JRadioButton();
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         TableEGA = new javax.swing.JTable();
@@ -188,10 +189,13 @@ public class GestionEspaceGourmandPropJFrame extends javax.swing.JFrame {
             }
         });
 
+        buttonGroup1.add(butSalonThe1);
         butSalonThe1.setText("   Sallon de thé");
 
+        buttonGroup1.add(butFastFood1);
         butFastFood1.setText("   FastFood");
 
+        buttonGroup1.add(butRestau1);
         butRestau1.setText("   Restaurant");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -343,7 +347,7 @@ public class GestionEspaceGourmandPropJFrame extends javax.swing.JFrame {
         txtAdresseEG.setText(null);
         txtTelEG.setText(null);
         txtMailEG.setText(null);
-        txtTypeEG.setText(null);
+        buttonGroup1.setSelected(null, false);
         txtProprEG.setText(null);
     }//GEN-LAST:event_butResetActionPerformed
 
@@ -394,7 +398,7 @@ public class GestionEspaceGourmandPropJFrame extends javax.swing.JFrame {
                 String add3 = res.getString("E-mail");
                 txtMailEG.setText(add3);
                 String add4 = res.getString("Type Espace Gourmand");
-                txtTypeEG.setText(add4);
+                //txtTypeEG.setText(add4);
                 String add5 = res.getString("Proprietaire");
                 txtProprEG.setText(add5);
             }
@@ -451,6 +455,7 @@ public class GestionEspaceGourmandPropJFrame extends javax.swing.JFrame {
     private javax.swing.JRadioButton butSalonThe;
     private javax.swing.JRadioButton butSalonThe1;
     private javax.swing.JButton butSupprimer;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

@@ -17,6 +17,8 @@
         <Property name="text" type="java.lang.String" value="   Restaurant"/>
       </Properties>
     </Component>
+    <Component class="javax.swing.ButtonGroup" name="buttonGroup1">
+    </Component>
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
@@ -345,16 +347,25 @@
         </Component>
         <Component class="javax.swing.JRadioButton" name="butSalonThe1">
           <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="buttonGroup1"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="   Sallon de th&#xe9;"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JRadioButton" name="butFastFood1">
           <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="buttonGroup1"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="   FastFood"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JRadioButton" name="butRestau1">
           <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="buttonGroup1"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="   Restaurant"/>
           </Properties>
         </Component>
