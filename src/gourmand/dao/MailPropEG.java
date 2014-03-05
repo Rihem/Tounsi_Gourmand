@@ -46,5 +46,35 @@ public class MailPropEG {
         return passeRecover;
     }
     
+    
+    
+      public String MailPropEGLogin (String mail) {
+     
+        String loginRecover=null;
+        String requete = "select * from proprietaireespacegourmand where email='" + mail + "'";
+            
+        try {
+            
+            Statement stm = MyConnection.getInstance().conn.createStatement();
+            ResultSet res = stm.executeQuery(requete);
+           
+            while (res.next()) {
+            
+                
+               loginRecover=res.getString(5);
+                       
+                System.out.println("oOok  Login Propri : = "+loginRecover);
+            }
+        } catch (SQLException e) {
+         
+            System.out.println("Login  non retrouver " + e.getMessage());
+            loginRecover=null;
+            return loginRecover;
+        }
+        System.out.println("Login du Propri est "+loginRecover);
+        
+        return loginRecover;
+    }
+    
 
 }

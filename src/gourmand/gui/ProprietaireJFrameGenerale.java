@@ -10,6 +10,9 @@ package gourmand.gui;
  *
  * @author Mahdouch
  */
+
+import gourmand.dao.*;
+          
 public class ProprietaireJFrameGenerale extends javax.swing.JFrame {
 
     /**
@@ -17,6 +20,14 @@ public class ProprietaireJFrameGenerale extends javax.swing.JFrame {
      */
     public ProprietaireJFrameGenerale() {
         initComponents();
+        
+        
+
+    int a ;
+     AuthentificationClientDAO AutCliDAO = new AuthentificationClientDAO();
+     a = AutCliDAO.IDconnexion;
+    System.out.println("a= "+a);
+     
     }
 
     /**

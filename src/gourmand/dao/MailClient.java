@@ -47,4 +47,34 @@ public class MailClient {
     }
     
 
+    
+    public String MailClientlogin (String mail) {
+     
+        String loginRecover=null;
+        String requete = "select * from client where email='" + mail + "'";
+            
+        try {
+            
+            Statement stm = MyConnection.getInstance().conn.createStatement();
+            ResultSet res = stm.executeQuery(requete);
+           
+            while (res.next()) {
+            
+                
+               loginRecover=res.getString(4);
+                       
+                System.out.println("oOok  le login Client est : = "+loginRecover);
+            }
+        } catch (SQLException e) {
+         
+            System.out.println("login  non retrouver " + e.getMessage());
+            loginRecover=null;
+            return loginRecover;
+        }
+        System.out.println("le login du Client est : "+loginRecover);
+        
+        return loginRecover;
+    }
+    
+    
 }

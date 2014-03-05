@@ -94,15 +94,15 @@ public class MotdePasseOublie extends javax.swing.JFrame {
         getContentPane().add(jLabel7);
         jLabel7.setBounds(40, 220, 210, 20);
 
-        cmd_mail_passe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/btn_envoyer.png"))); // NOI18N
-        cmd_mail_passe.setText("jButton1");
+        cmd_mail_passe.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        cmd_mail_passe.setText("Envoyer");
         cmd_mail_passe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmd_mail_passeActionPerformed(evt);
             }
         });
         getContentPane().add(cmd_mail_passe);
-        cmd_mail_passe.setBounds(190, 310, 130, 30);
+        cmd_mail_passe.setBounds(70, 320, 130, 30);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/background0.gif"))); // NOI18N
@@ -134,7 +134,11 @@ public class MotdePasseOublie extends javax.swing.JFrame {
             
             
             String x = MaCl.MailClientPasse(txt_mail_pass.getText());
+            String a = MaCl.MailClientlogin(txt_mail_pass.getText());
+            
             String y=  MaPr.MailPropEGPasse(txt_mail_pass.getText());
+            String b=  MaPr.MailPropEGLogin(txt_mail_pass.getText());
+            
        
             if ((x!=null) || (y!=null))
         {
@@ -142,12 +146,23 @@ public class MotdePasseOublie extends javax.swing.JFrame {
         String msg="Tounsi Gourmand a reçu une demande pour retrouver le mot de passe de votre compte. \n" +
         "\n # Votre mot de passe est : ";           
             if (x!=null)
-            {  msg=(msg+""+x);
+            {  msg=(msg+" "+x);
           //System.out.println("msg X \n"+msg);
             }else if (y!=null)
             {   msg=(msg+" "+y );
            // System.out.println("msg Y \n"+msg);
             }
+      
+            msg =(msg+"\n # Votre Login est : ");
+            if (a!=null)
+            {  msg=(msg+" "+a);
+          //System.out.println("msg X \n"+msg);
+            }else if (b!=null)
+            {   msg=(msg+" "+b );
+           // System.out.println("msg Y \n"+msg);
+            }
+        
+            
             
         msg=(msg+"\n============================================================"
                 +"\n  Si vous recevez beaucoup d'emails de réinitialisation de mot de passe que "
@@ -171,17 +186,22 @@ public class MotdePasseOublie extends javax.swing.JFrame {
         
         
            Icon image = new ImageIcon( getClass().getResource("/img/mail.png"));     
-           JOptionPane.showMessageDialog(this,"Nous avons envoyé les instructions de récuperation de mot de passe à votre adresse email : "
+           JOptionPane.showMessageDialog(this,"Nous avons envoyé les instructions de récuperation \nde mot de passe à votre adresse email : "
                    +txt_mail_pass.getText()
-                   + "\nSi vous ne recevez pas les instructions d'ici une minute ou deux, vérifiez les filtres de spams et de courriers indésirables de votre compte","Réinitialiser le mot de passe",
+                   + "\n\nSi vous ne recevez pas les instructions d'ici une minute ou deux, \nvérifiez les filtres de spams et de courriers indésirables de votre compte","Réinitialiser le mot de passe",
            JOptionPane.OK_OPTION, image);
+           
+            Authentification Aut= null;
+            Aut = new Authentification();
+            this.setVisible(false);
+            Aut.setVisible(true);
+           
         }
             else {
             Icon image = new ImageIcon( getClass().getResource("/img/interdit.png"));     
            JOptionPane.showMessageDialog(this,"L’adresse électronique ne correspond à aucun compte."
-                   + "\n Avez-vous vraiment un compte ? ","Erreur de l'Adresse mail ",
+                   + "\n Avez-vous vraiment un compte ?"," Erreur de l'Adresse mail  ",
             JOptionPane.OK_OPTION, image);
-                
                 
             }
         

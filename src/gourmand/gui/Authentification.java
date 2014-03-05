@@ -11,7 +11,11 @@ package gourmand.gui;
  * @author BENAMARA
  */
 import gourmand.dao.*;
-import javax.swing.*;
+
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+
 import java.sql.*;
 import org.jfree.ui.RefineryUtilities;
 
@@ -212,11 +216,16 @@ public class Authentification extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this,"Bienvenue dans votre espace Client ","Espace Client ",
             JOptionPane.OK_OPTION, image);
             
-                
-            ProprietaireJFrameGenerale GComProp = null;
-            GComProp = new ProprietaireJFrameGenerale();
+            AjoutClientJFrame  AjCl = null;
+            AjCl = new AjoutClientJFrame();
             this.setVisible(false);
-            GComProp.setVisible(true);
+            AjCl.setVisible(true);
+            
+            
+//            ProprietaireJFrameGenerale GComProp = null;
+//            GComProp = new ProprietaireJFrameGenerale();
+//            this.setVisible(false);
+//            GComProp.setVisible(true);
             }
         //////////////////PropEspGourm////////////////////////////////
         
@@ -248,7 +257,8 @@ public class Authentification extends javax.swing.JFrame {
         ///////////////////sinon////////////////////////////////
         
             if((( a==0 )&& (b==0)) && (x==0)) {
-            JOptionPane.showMessageDialog(this, "Informations Invalides !!","",JOptionPane.ERROR );
+                 JOptionPane.showMessageDialog(this, "Informations Invalides !!!");
+       // JOptionPane.showMessageDialog(this, "Informations Invalides !!","",JOptionPane.ERROR );
             txt_login.setText("");
             txt_password.setText("");
             
