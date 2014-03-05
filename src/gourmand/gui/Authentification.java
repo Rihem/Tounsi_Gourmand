@@ -11,7 +11,6 @@ package gourmand.gui;
  * @author BENAMARA
  */
 import gourmand.dao.*;
-import javax.swing.*;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
