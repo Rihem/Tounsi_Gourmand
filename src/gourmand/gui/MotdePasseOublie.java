@@ -200,7 +200,7 @@ public class MotdePasseOublie extends javax.swing.JFrame {
             else {
             Icon image = new ImageIcon( getClass().getResource("/img/interdit.png"));     
            JOptionPane.showMessageDialog(this,"L’adresse électronique ne correspond à aucun compte."
-                   + "\n Avez-vous vraiment un compte ? ","Erreur de l'Adresse mail ",
+                   + "\n Avez-vous vraiment un compte ?"," Erreur de l'Adresse mail ",
             JOptionPane.OK_OPTION, image);
                 
             }
