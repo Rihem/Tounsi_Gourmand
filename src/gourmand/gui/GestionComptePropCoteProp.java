@@ -497,7 +497,9 @@ public class GestionComptePropCoteProp extends javax.swing.JFrame {
     }//GEN-LAST:event_TXTNom1ActionPerformed
 
     private void butQuitterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butQuitterActionPerformed
-        // TODO add your handling code here:
+        ProprietaireJFrameGenerale PropGeneral = new ProprietaireJFrameGenerale();
+        PropGeneral.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_butQuitterActionPerformed
 
     /**
