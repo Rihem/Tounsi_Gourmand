@@ -12,6 +12,11 @@ package gourmand.gui;
  */
 import gourmand.dao.*;
 import javax.swing.*;
+
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+
 import java.sql.*;
 import org.jfree.ui.RefineryUtilities;
 
@@ -248,7 +253,8 @@ public class Authentification extends javax.swing.JFrame {
         ///////////////////sinon////////////////////////////////
         
             if((( a==0 )&& (b==0)) && (x==0)) {
-            JOptionPane.showMessageDialog(this, "Informations Invalides !!","",JOptionPane.ERROR );
+                 JOptionPane.showMessageDialog(this, "Informations Invalides !!!");
+       // JOptionPane.showMessageDialog(this, "Informations Invalides !!","",JOptionPane.ERROR );
             txt_login.setText("");
             txt_password.setText("");
             
