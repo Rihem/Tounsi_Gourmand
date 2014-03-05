@@ -122,6 +122,14 @@ public class GestionEspaceGourmandPropJFrame extends javax.swing.JFrame {
             }
         });
         jScrollPane1.setViewportView(TableEGA);
+        if (TableEGA.getColumnModel().getColumnCount() > 0) {
+            TableEGA.getColumnModel().getColumn(0).setHeaderValue("Nom Espace");
+            TableEGA.getColumnModel().getColumn(1).setHeaderValue("Adresse");
+            TableEGA.getColumnModel().getColumn(2).setHeaderValue("Téléphone");
+            TableEGA.getColumnModel().getColumn(3).setHeaderValue("E-mail");
+            TableEGA.getColumnModel().getColumn(4).setHeaderValue("Type");
+            TableEGA.getColumnModel().getColumn(5).setHeaderValue("Proprietaire");
+        }
 
         butAjouter.setText("Ajouter");
         butAjouter.addActionListener(new java.awt.event.ActionListener() {

@@ -21,7 +21,7 @@ public class MyConnection {
     public static Connection conn;
     
     private MyConnection() {
-        String url = "jdbc:mysql://localhost:3306/pi";
+        String url = "jdbc:mysql://localhost:3306/projet_restaurant";
         String user = "root";
         String pwd = "";
         try {

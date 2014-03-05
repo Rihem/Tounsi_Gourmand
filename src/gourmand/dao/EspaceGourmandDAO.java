@@ -79,7 +79,7 @@ public class EspaceGourmandDAO implements Crud{
     @Override
     public List display() {
         List<EspaceGourmand> listeEspaceGourmand = new ArrayList<EspaceGourmand>();
-        String url = "SELECT * FROM espacegourmand";
+        String url = "SELECT * FROM espacegourmand where idProprietaire="+idConnexion;
         try {
             Statement st = MyConnection.getInstance().conn.createStatement();
             ResultSet rst = st.executeQuery(url);
