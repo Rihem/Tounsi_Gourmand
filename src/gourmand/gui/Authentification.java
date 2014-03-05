@@ -216,11 +216,16 @@ public class Authentification extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this,"Bienvenue dans votre espace Client ","Espace Client ",
             JOptionPane.OK_OPTION, image);
             
-                
-            ProprietaireJFrameGenerale GComProp = null;
-            GComProp = new ProprietaireJFrameGenerale();
+            AjoutClientJFrame  AjCl = null;
+            AjCl = new AjoutClientJFrame();
             this.setVisible(false);
-            GComProp.setVisible(true);
+            AjCl.setVisible(true);
+            
+            
+//            ProprietaireJFrameGenerale GComProp = null;
+//            GComProp = new ProprietaireJFrameGenerale();
+//            this.setVisible(false);
+//            GComProp.setVisible(true);
             }
         //////////////////PropEspGourm////////////////////////////////
         
