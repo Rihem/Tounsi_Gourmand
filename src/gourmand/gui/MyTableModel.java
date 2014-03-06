@@ -7,6 +7,7 @@ package gourmand.gui;
 
 
 import gourmand.dao.EspaceGourmandDAO;
+import gourmand.dao.EspaceGourmandDAOHAJER;
 import gourmand.entities.EspaceGourmand;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +23,7 @@ public class MyTableModel extends AbstractTableModel {
     String []header = {"NomEspaceGourmand","Adresse","NumTel","Email","Type"};
     
     public MyTableModel() { //remplissage de la liste des stocks
-        listE=new EspaceGourmandDAO().display();
+        listE=new EspaceGourmandDAOHAJER().display();
     }
     //
     public int getRowCount() { //nombre de lignes de la table

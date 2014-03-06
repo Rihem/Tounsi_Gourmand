@@ -6,7 +6,7 @@
 
 package gourmand.gui;
 
-import gourmand.dao.EspaceGourmandDAO;
+import gourmand.dao.EspaceGourmandDAOHAJER;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
@@ -126,7 +126,7 @@ public static Connection conn;
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
        // Statement state = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
-      EspaceGourmandDAO D =new EspaceGourmandDAO();
+      EspaceGourmandDAOHAJER D =new EspaceGourmandDAOHAJER();
     // jTable1.addMouseListener();
      //jButton1.addMouseListener((new java.awt.event.MouseAdapter() {} ));
     
