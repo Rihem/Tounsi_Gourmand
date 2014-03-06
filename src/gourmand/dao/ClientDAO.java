@@ -27,24 +27,28 @@ public class ClientDAO implements Crud{
 
     @Override
     public void ajouter(Object o) {
-        String url = " INSERT INTO client(nom,prenom,login,password,email,tel,sexe,age) VALUES (?,?,?,?,?,?,?,?)";
+       String url = " INSERT INTO client(nom,prenom,login,password,email,tel,sexe,age) VALUES (?,?,?,?,?,?,?,?)";
+        System.out.println(url);
         try {
+            
+            //List<Client> P=new ArrayList<Client>();
+            
             PreparedStatement prst = MyConnection.getInstance().conn.prepareStatement(url);
-            Client c = (Client) o;
-            prst.setString(1, c.getNom());
-            prst.setString(2, c.getPrenom());
-            prst.setString(3, c.getLogin());
-            prst.setString(4, c.getPassword());
-            prst.setString(5, c.getEmail());
-            prst.setInt(6, c.getTel());
-            prst.setString(7, c.getSexe());
-            prst.setInt(8, c.getAge());
+            System.out.println("prst"+prst);
+           Client pr= (Client) o;
+            prst.setString(1, pr.getNom());
+            prst.setString(2, pr.getPrenom());
+            prst.setString(3, pr.getLogin());
+            prst.setString(4, pr.getPassword());
+            prst.setString(5, pr.getEmail());
+            prst.setInt(6, pr.getTel());
+            prst.setString(7, pr.getSexe());
+            prst.setInt(8, pr.getAge());
             prst.executeUpdate();
             System.out.println("Insertion effectuée!");
         } catch (SQLException ex) {
             System.err.println("Probleme d'insertion");
-        }
-    }
+        }}
 
     @Override
     public void supprimer(Object o) {

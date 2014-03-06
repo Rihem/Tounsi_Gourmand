@@ -146,7 +146,7 @@ public class ProprietaireJFrameGenerale extends javax.swing.JFrame {
     }//GEN-LAST:event_gestionReservationActionPerformed
 
     private void gestionEspaceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gestionEspaceActionPerformed
-        GestionEspaceGourmand gEspaceGourmand = new GestionEspaceGourmand();
+        GestionEspaceGourmandHAJER gEspaceGourmand = new GestionEspaceGourmandHAJER();
         gEspaceGourmand.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_gestionEspaceActionPerformed

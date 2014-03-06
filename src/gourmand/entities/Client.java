@@ -16,7 +16,7 @@ public class Client {
     
 
     private String nom, prenom, login, password, email,sexe;
-    private int tel,age;
+    private int tel,age,NomCompte;
 
     public Client() {
     }
@@ -26,10 +26,19 @@ public class Client {
         this.prenom = prenom;
         this.login = login;
         this.password = password;
+        this.NomCompte =NomCompte;
         this.email = email;
         this.tel = tel;
         this.age = age;
         this.sexe = sexe;
+    }
+
+    public int getIdCompte() {
+        return NomCompte;
+    }
+
+    public void setIdCompte(int idCompte) {
+        this.NomCompte = NomCompte;
     }
 
 

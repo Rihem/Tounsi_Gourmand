@@ -7,7 +7,9 @@
 package gourmand.gui;
 
 //import gourmand.dao.ProprietaireDAO;
+import gourmand.dao.ClientDAO;
 import gourmand.dao.ProprietaireDAOHAJER;
+import gourmand.entities.Client;
 import gourmand.entities.ProprietaireEspaceGourmand;
 import javax.swing.JOptionPane;
 
@@ -190,6 +192,11 @@ public class AjoutProprietaireHAJER extends javax.swing.JFrame {
         });
 
         jButton2.setText("Ajout-Client");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -318,6 +325,75 @@ public class AjoutProprietaireHAJER extends javax.swing.JFrame {
         txtAge.setText(null);
        //radio mazel
     }//GEN-LAST:event_REZETActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        
+        Client Prop = new Client();
+
+        String err="";
+        if("".equals(txtNom.getText())) err+="nom";
+        if("".equals(txtPrenom.getText())) err+="prenom ";
+        if("".equals(txtLogin.getText())) err+="login ";
+        if("".equals(txtPass.getText())) err+="password ";
+        if("".equals(txtMail.getText())) err+="mail ";
+        if("".equals(txtAge.getText())) err+="age ";
+        if("".equals(txtTel.getText())) err+="téléphone ";
+        if(!radiofemme.isSelected()&&!radioHomme.isSelected()) err+="sexe ";
+
+        String email = txtMail.getText();
+        if(email.indexOf("@")==-1) {
+            JOptionPane.showMessageDialog(this, "Adresse mail nom valide");
+            txtMail.setText(null);
+        }
+        else{
+            if("".equals(err)){
+                String nom = txtNom.getText();
+                String prenom = txtPrenom.getText();
+                String login = txtLogin.getText();
+                String pass = txtPass.getText();
+                int age = Integer.parseInt(txtAge.getText());
+                int tel = Integer.parseInt(txtTel.getText());
+                String sexe="";
+                if(radioHomme.isSelected()) sexe = radioHomme.getText();
+                if(radiofemme.isSelected()) sexe = radiofemme.getText();
+
+                Prop.setNom(nom);
+                Prop.setPrenom(prenom);
+                Prop.setLogin(login);
+                Prop.setPassword(pass);
+                Prop.setEmail(email);
+                Prop.setAge(age);
+                Prop.setTel(tel);
+                Prop.setSexe(sexe);
+                  ClientDAO PRdao =new ClientDAO();
+                PRdao.ajouter(Prop);
+                
+            }
+            else JOptionPane.showMessageDialog(this, "Les champs "+err+"sont obligatoires");
+        }
+
+        if(!"".equals(txtAge.getText())) {
+            try{
+                int age = Integer.parseInt(txtAge.getText());
+            } catch (Exception z) {
+                JOptionPane.showMessageDialog(this, "Type incorrect, l'age doit etre un entier", "ERROR", JOptionPane.ERROR_MESSAGE);
+                txtAge.setText("");
+                return;
+            }
+        }
+
+        if(!"".equals(txtTel.getText())){
+            try{
+                int tel = Integer.parseInt(txtTel.getText());
+
+            } catch (Exception z) {
+                JOptionPane.showMessageDialog(this, "Type incorrect, le numéro de téléphone doit etre un entier", "ERROR", JOptionPane.ERROR_MESSAGE);
+                txtTel.setText("");
+                return;
+            }
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

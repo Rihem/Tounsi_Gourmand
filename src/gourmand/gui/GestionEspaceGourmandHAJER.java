@@ -154,7 +154,7 @@ public static Connection conn;
                     setVisible(true );
                 }
             });
-      state.executeUpdate("DELETE  FROM espacegourmand WHERE NomEspaceGourmand  ='"+b+"'");
+      state.executeUpdate("DELETE  FROM espacegourmand WHERE nomEspaceGourmand  ='"+b+"'");
                                                 System.out.println("voila C fé");
     
      
