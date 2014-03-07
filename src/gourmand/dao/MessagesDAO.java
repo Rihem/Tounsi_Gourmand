@@ -13,6 +13,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import org.smslib.CMessage;
 
 /**
  *
@@ -38,17 +39,43 @@ public class MessagesDAO implements Crud{
 
     @Override
     public void supprimer(Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Messages m = (Messages)o;
+        String url = " DELETE FROM messages WHERE id=" + m.getId();
+        try {
+            PreparedStatement prst = MyConnection.getInstance().conn.prepareStatement(url);
+            prst.executeUpdate();
+            System.out.println("Suppression effectuée!");
+        } catch (SQLException ex) {
+            System.err.println("Probleme de suppression");
+        }
     }
 
     @Override
     public void modifier(Object o) {
+        //On ne peut pas modifier un message
         
     }
 
     @Override
     public List display() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<Messages> listeMessages = new ArrayList<Messages>();
+        String url = "SELECT * FROM messages";
+        try {
+            Statement st = MyConnection.getInstance().conn.createStatement();
+            ResultSet rst = st.executeQuery(url);
+            while (rst.next()) {
+                Messages m = new Messages();
+                m.setId(rst.getInt(1));
+                m.setMessage(rst.getString(2));
+                m.setEmetteur(rst.getString(3));
+                m.setDestinataire(rst.getString(4));
+                listeMessages.add(m);
+            }
+            return listeMessages;
+        } catch (SQLException ex) {
+            return null;
+        }
+  
     }
     
 }
