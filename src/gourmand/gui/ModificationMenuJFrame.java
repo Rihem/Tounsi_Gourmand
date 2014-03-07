@@ -30,10 +30,7 @@ public class ModificationMenuJFrame extends javax.swing.JFrame {
      */
     public ModificationMenuJFrame() {
         initComponents();
-        remplirEntrees();
-        remplirBoissons();
-        remplirDesserts();
-        remplirPlats();
+        
     }
     
     public void remplirEntrees(){
@@ -41,7 +38,7 @@ public class ModificationMenuJFrame extends javax.swing.JFrame {
         EntreeDAO entreeDAO = new EntreeDAO();
         listEntrees = entreeDAO.display();
         for(Entrees e:listEntrees){
-            ComboEntrees.addItem(e.getLibelleEntree());
+            Combo.addItem(e.getLibelleEntree());
         }
         
     }
@@ -51,7 +48,7 @@ public class ModificationMenuJFrame extends javax.swing.JFrame {
         PlatDAO platDAO = new PlatDAO();
         listPlats = platDAO.display();
         for(Plats p:listPlats){
-            ComboPlat.addItem(p.getLibellePlat());
+            Combo.addItem(p.getLibellePlat());
         }
         
     }
@@ -61,7 +58,7 @@ public class ModificationMenuJFrame extends javax.swing.JFrame {
         DessertDAO dessertDAO = new DessertDAO();
         listDesserts = dessertDAO.display();
         for(Desserts d:listDesserts){
-            ComboDessert.addItem(d.getLibelleDessert());
+            Combo.addItem(d.getLibelleDessert());
         }
         
     }
@@ -71,7 +68,7 @@ public class ModificationMenuJFrame extends javax.swing.JFrame {
         BoissonDAO boissonDAO = new BoissonDAO();
         listBoissons = boissonDAO.display();
         for(Boissons b:listBoissons){
-            ComboBoissons.addItem(b.getLibelleBoisson());
+            Combo.addItem(b.getLibelleBoisson());
         }
         
     }
@@ -89,10 +86,7 @@ public class ModificationMenuJFrame extends javax.swing.JFrame {
         buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
-        ComboEntrees = new javax.swing.JComboBox();
-        ComboPlat = new javax.swing.JComboBox();
-        ComboBoissons = new javax.swing.JComboBox();
-        ComboDessert = new javax.swing.JComboBox();
+        Combo = new javax.swing.JComboBox();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -129,6 +123,11 @@ public class ModificationMenuJFrame extends javax.swing.JFrame {
         });
 
         butModifierMenu.setText("Modifier");
+        butModifierMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                butModifierMenuActionPerformed(evt);
+            }
+        });
 
         butAjouterMenu.setText("Ajouter");
         butAjouterMenu.addActionListener(new java.awt.event.ActionListener() {
@@ -153,6 +152,11 @@ public class ModificationMenuJFrame extends javax.swing.JFrame {
 
         buttonGroup1.add(radioEntree);
         radioEntree.setText("  Entrees");
+        radioEntree.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radioEntreeActionPerformed(evt);
+            }
+        });
 
         buttonGroup1.add(radioPlat);
         radioPlat.setText("  Plats");
@@ -164,34 +168,32 @@ public class ModificationMenuJFrame extends javax.swing.JFrame {
 
         buttonGroup1.add(radioDessert);
         radioDessert.setText("  Desserts");
+        radioDessert.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radioDessertActionPerformed(evt);
+            }
+        });
 
         buttonGroup1.add(radioBoisson);
         radioBoisson.setText("  Boissons");
+        radioBoisson.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radioBoissonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(122, 122, 122)
-                .addComponent(butModifierMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
-                .addComponent(butAjouterMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
-                .addComponent(butRetour, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 124, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(ComboDessert, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(ComboPlat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(ComboBoissons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(ComboEntrees, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(55, 55, 55)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 469, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -203,40 +205,49 @@ public class ModificationMenuJFrame extends javax.swing.JFrame {
                                     .addComponent(txtMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(txtPrix, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(butReset, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addGap(0, 0, Short.MAX_VALUE)))
+                                .addGap(205, 205, 205))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(32, 32, 32)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(radioDessert)
                                     .addComponent(radioEntree))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(radioPlat)
-                                    .addComponent(radioBoisson))))
-                        .addGap(5, 5, 5))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 469, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                                    .addComponent(radioBoisson))
+                                .addGap(71, 71, 71)
+                                .addComponent(Combo, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(111, 111, 111))))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(122, 122, 122)
+                .addComponent(butModifierMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37)
+                .addComponent(butAjouterMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(butReset, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(butRetour, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 124, Short.MAX_VALUE))
         );
-
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {ComboBoissons, ComboDessert, ComboEntrees, ComboPlat});
-
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(39, 39, 39)
                 .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addComponent(ComboEntrees, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addComponent(ComboPlat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(31, 31, 31)
-                        .addComponent(ComboDessert, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Combo, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(radioEntree)
+                            .addComponent(radioPlat))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(radioDessert)
+                            .addComponent(radioBoisson))
+                        .addGap(36, 36, 36)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtLibelle, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -249,28 +260,13 @@ public class ModificationMenuJFrame extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(57, 57, 57)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(radioEntree)
-                    .addComponent(radioPlat))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(ComboBoissons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(butModifierMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(butAjouterMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(butRetour, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(25, 25, 25))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(radioDessert)
-                            .addComponent(radioBoisson))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addComponent(butModifierMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(butAjouterMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(butRetour, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25))
         );
-
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {ComboBoissons, ComboDessert, ComboEntrees, ComboPlat});
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -305,29 +301,106 @@ public class ModificationMenuJFrame extends javax.swing.JFrame {
     private void butAjouterMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butAjouterMenuActionPerformed
         MenuDAO EGDAO = new MenuDAO();
         Menu m = new Menu();
-        if(ComboEntrees.)
-        {
-            
-        }
-        E1.setNomEspaceGourmand(txtNomEG.getText());
-        E1.setAdresse(txtAdresseEG.getText());
-        E1.setNumTel(Integer.parseInt(txtTelEG.getText()));
-        E1.setEmail(txtMailEG.getText());
-        String type="";
-        if(butFastFood.isSelected())
-            E1.setType(type = butFastFood.getText());
-        if(butRestau.isSelected())
-            E1.setType(type = butRestau.getText());
-        if(butSalonThe.isSelected())
-            E1.setType(type = butSalonThe.getText());
-        E1.setIdProprietaire(Integer.parseInt(txtProprEG.getText()));
         
-        EGDAO.ajouter(E1);
+        EntreeDAO EntDAO = new EntreeDAO();
+        Entrees E = new Entrees();
+        
+        PlatDAO PDAO = new PlatDAO();
+        Plats P = new Plats();
+        
+        DessertDAO DDAO = new DessertDAO();
+        Desserts D = new Desserts();
+        
+        BoissonDAO BDAO = new BoissonDAO();
+        Boissons B = new Boissons();
+        
+        if(radioEntree.isSelected())
+        {
+            E.setLibelleEntree(txtLibelle.getText());
+            E.setPrix(Integer.parseInt(txtPrix.getText()));
+            EntDAO.ajouter(E);
+        }
+        
+        if(radioPlat.isSelected())
+        {
+            P.setLibellePlat(txtLibelle.getText());
+            P.setPrix(Integer.parseInt(txtPrix.getText()));
+            PDAO.ajouter(P);
+        }
+        
+        if(radioDessert.isSelected())
+        {
+            D.setLibelleDessert(txtLibelle.getText());
+            D.setPrix(Integer.parseInt(txtPrix.getText()));
+            DDAO.ajouter(D);
+        }
+        
+        if(radioBoisson.isSelected())
+        {
+            B.setLibelleBoisson(txtLibelle.getText());
+            B.setPrix(Integer.parseInt(txtPrix.getText()));
+            EntDAO.ajouter(B);
+        }
+        
     }//GEN-LAST:event_butAjouterMenuActionPerformed
 
     private void radioPlatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioPlatActionPerformed
-        // TODO add your handling code here:
+        remplirPlats();
     }//GEN-LAST:event_radioPlatActionPerformed
+
+    private void radioEntreeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioEntreeActionPerformed
+        remplirEntrees();
+    }//GEN-LAST:event_radioEntreeActionPerformed
+
+    private void radioBoissonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioBoissonActionPerformed
+        remplirBoissons();
+    }//GEN-LAST:event_radioBoissonActionPerformed
+
+    private void radioDessertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioDessertActionPerformed
+        remplirDesserts();
+    }//GEN-LAST:event_radioDessertActionPerformed
+
+    private void butModifierMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butModifierMenuActionPerformed
+        EntreeDAO EntDAO = new EntreeDAO();
+        Entrees E = new Entrees();
+        
+        PlatDAO PDAO = new PlatDAO();
+        Plats P = new Plats();
+        
+        DessertDAO DDAO = new DessertDAO();
+        Desserts D = new Desserts();
+        
+        BoissonDAO BDAO = new BoissonDAO();
+        Boissons B = new Boissons();
+        
+        if(radioEntree.isSelected())
+        {
+            E.setLibelleEntree(txtLibelle.getText());
+            E.setPrix(Integer.parseInt(txtPrix.getText()));
+            EntDAO.modifier(E);
+        }
+        
+        if(radioPlat.isSelected())
+        {
+            P.setLibellePlat(txtLibelle.getText());
+            P.setPrix(Integer.parseInt(txtPrix.getText()));
+            PDAO.modifier(P);
+        }
+        
+        if(radioDessert.isSelected())
+        {
+            D.setLibelleDessert(txtLibelle.getText());
+            D.setPrix(Integer.parseInt(txtPrix.getText()));
+            DDAO.modifier(D);
+        }
+        
+        if(radioBoisson.isSelected())
+        {
+            B.setLibelleBoisson(txtLibelle.getText());
+            B.setPrix(Integer.parseInt(txtPrix.getText()));
+            EntDAO.modifier(B);
+        }
+    }//GEN-LAST:event_butModifierMenuActionPerformed
 
     /**
      * @param args the command line arguments
@@ -365,10 +438,7 @@ public class ModificationMenuJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox ComboBoissons;
-    private javax.swing.JComboBox ComboDessert;
-    private javax.swing.JComboBox ComboEntrees;
-    private javax.swing.JComboBox ComboPlat;
+    private javax.swing.JComboBox Combo;
     private javax.swing.JButton butAjouterMenu;
     private javax.swing.JButton butModifierMenu;
     private javax.swing.JButton butReset;
