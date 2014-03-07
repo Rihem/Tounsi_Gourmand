@@ -7,7 +7,6 @@
 package gourmand.dao;
 
 import gourmand.entities.Client;
-import gourmand.entities.EspaceGourmand;
 import gourmand.util.MyConnection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -23,32 +22,28 @@ import java.util.List;
  */
 public class ClientDAO implements Crud{
 
-   static int idConnexion;
+   private static int idConnexion;
 
     @Override
     public void ajouter(Object o) {
-       String url = " INSERT INTO client(nom,prenom,login,password,email,tel,sexe,age) VALUES (?,?,?,?,?,?,?,?)";
-        System.out.println(url);
+        String url = " INSERT INTO client(nom,prenom,login,password,email,tel,sexe,age) VALUES (?,?,?,?,?,?,?,?)";
         try {
-            
-            //List<Client> P=new ArrayList<Client>();
-            
             PreparedStatement prst = MyConnection.getInstance().conn.prepareStatement(url);
-            System.out.println("prst"+prst);
-           Client pr= (Client) o;
-            prst.setString(1, pr.getNom());
-            prst.setString(2, pr.getPrenom());
-            prst.setString(3, pr.getLogin());
-            prst.setString(4, pr.getPassword());
-            prst.setString(5, pr.getEmail());
-            prst.setInt(6, pr.getTel());
-            prst.setString(7, pr.getSexe());
-            prst.setInt(8, pr.getAge());
+            Client c = (Client) o;
+            prst.setString(1, c.getNom());
+            prst.setString(2, c.getPrenom());
+            prst.setString(3, c.getLogin());
+            prst.setString(4, c.getPassword());
+            prst.setString(5, c.getEmail());
+            prst.setInt(6, c.getTel());
+            prst.setString(7, c.getSexe());
+            prst.setInt(8, c.getAge());
             prst.executeUpdate();
             System.out.println("Insertion effectuée!");
         } catch (SQLException ex) {
             System.err.println("Probleme d'insertion");
-        }}
+        }
+    }
 
     @Override
     public void supprimer(Object o) {
@@ -68,7 +63,7 @@ public class ClientDAO implements Crud{
     @Override
     public void modifier(Object o) {
         try {
-            String url = " UPDATE client SET nom=? , prenom=?,login=?,password=?,email=?,tel=?,sexe=?,age=? WHERE numCompte=" + idConnexion;
+            String url = " UPDATE client SET nom=? , prenom=?,login=?,password=?,email=?,tel=?,sexe=?,age=? WHERE NumCompte=" + idConnexion;
             PreparedStatement prst = MyConnection.getInstance().conn.prepareStatement(url);
             Client c = (Client) o;
             prst.setString(1, c.getNom());
@@ -95,52 +90,7 @@ public class ClientDAO implements Crud{
             ResultSet rst = st.executeQuery(url);
             while (rst.next()) {
                 Client c = new Client();
-                c.setNom(rst.getString(2));
-                c.setPrenom(rst.getString(3));
-                c.setLogin(rst.getString(4));
-                c.setPassword(rst.getString(5));
-                c.setEmail(rst.getString(6));
-                c.setTel(rst.getInt(7));
-                c.setSexe(rst.getString(8));
-                c.setTel(rst.getInt(9));
-                listeClient.add(c);
-            }
-            return listeClient;
-        } catch (SQLException ex) {
-            return null;
-        }
-    }
-     public List<EspaceGourmand> display2() {
-        List<EspaceGourmand> listeEG = new ArrayList<EspaceGourmand>();
-        String url = "SELECT * FROM espacegourmand";
-        try {
-            Statement st = MyConnection.conn.createStatement();
-            ResultSet rst = st.executeQuery(url);
-            while (rst.next()) {
-                EspaceGourmand c = new EspaceGourmand();
-                c.setNomEspaceGourmand(rst.getString(2));
-                c.setAdresse(rst.getString(3));
-                c.setNumTel(rst.getInt(4));
-                c.setEmail(rst.getString(5));
-                c.setType(rst.getString(6));
-                listeEG.add(c);
-
-            }
-            return listeEG;
-        } catch (SQLException ex) {
-            return null;
-        }
-    }
-
-    
-     public Client InfoClient() {
-        String url = "SELECT * FROM client WHERE NumCompte=" + idConnexion;
-        try {
-            Statement st = MyConnection.conn.createStatement();
-            ResultSet rst = st.executeQuery(url);
-            Client c = new Client();
-            while (rst.next()) {
-
+                c.setNumCompte(rst.getInt(1));
                 c.setNom(rst.getString(2));
                 c.setPrenom(rst.getString(3));
                 c.setLogin(rst.getString(4));
@@ -149,21 +99,43 @@ public class ClientDAO implements Crud{
                 c.setTel(rst.getInt(7));
                 c.setSexe(rst.getString(8));
                 c.setAge(rst.getInt(9));
-
+                listeClient.add(c);
             }
-
-            //  System.out.println(c.getCin());
-            return c;
+            return listeClient;
         } catch (SQLException ex) {
             return null;
         }
     }
+    
+    public void deleteById(int id) {
+        ClientDAO a = new ClientDAO();
+        String url = " DELETE FROM client WHERE NumCompte='"+id+"'";
+        try {
+            PreparedStatement prst = MyConnection.getInstance().conn.prepareStatement(url);
 
-    public static int getIdConnexion() {
-        return idConnexion;
+            prst.executeUpdate();
+            System.out.println("Suppression effectuée!");
+        } catch (SQLException ex) {
+            System.err.println("Probleme de suppression");
+        }
     }
-
-    public static void setIdConnexion(int idConnexion) {
-        ClientDAO.idConnexion = idConnexion;
+    
+    public void updateById(Client c,int id){
+        try {
+            String url = " UPDATE client SET nom=? , prenom=?,login=?,password=?,email=?,tel=?,sexe=?,age=? WHERE NumCompte='"+id+"'";
+            PreparedStatement prst = MyConnection.getInstance().conn.prepareStatement(url);
+            prst.setString(1, c.getNom());
+            prst.setString(2, c.getPrenom());
+            prst.setString(3, c.getLogin());
+            prst.setString(4, c.getPassword());
+            prst.setString(5, c.getEmail());
+            prst.setInt(6, c.getTel());
+            prst.setString(7, c.getSexe());
+            prst.setInt(8, c.getAge());
+            prst.executeUpdate();
+            System.out.println("Modification avec succes");
+        } catch (SQLException ex) {
+            System.err.println("Echec de modification!");
+        }
     }
 }

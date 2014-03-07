@@ -23,7 +23,7 @@ public class MyConnection {
     private MyConnection() {
         
         
-        String url = "jdbc:mysql://127.0.0.1:3306/projet_restaurant";
+        String url = "jdbc:mysql://127.0.0.1:3306/pidev2";
         String user = "root";
         String pwd = "";
         try {
