@@ -165,18 +165,19 @@ public class GestionReservationJFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(44, 44, 44))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
                         .addComponent(butAccepter, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(37, 37, 37)
                         .addComponent(butRefuser)
                         .addGap(32, 32, 32)
                         .addComponent(butRetour)
-                        .addGap(58, 58, 58))))
+                        .addGap(58, 58, 58))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {butAccepter, butRefuser, butRetour});
@@ -184,7 +185,7 @@ public class GestionReservationJFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
-    private void TableGPEGMouseClicked(java.awt.event.MouseEvent evt) {                                       
+ /*   private void TableGPEGMouseClicked(java.awt.event.MouseEvent evt) {                                       
         int rows = TableReservation.getSelectedRow();
         String a=TableReservation.getModel().getValueAt(rows, 1).toString();
         System.out.println(a);
@@ -202,7 +203,7 @@ public class GestionReservationJFrame extends javax.swing.JFrame {
             Logger.getLogger(GestionReservationJFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
     }    
-    
+    */
     private void butRetourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butRetourActionPerformed
         ProprietaireJFrameGenerale prGeneral = new ProprietaireJFrameGenerale();
         prGeneral.setVisible(true);

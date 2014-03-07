@@ -84,7 +84,9 @@ EspaceGourmand a =(EspaceGourmand) o;
     public List display() {
         List<EspaceGourmand> listedepots = new ArrayList<EspaceGourmand>();
         System.out.println("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh");
-        String requete = "select * from espacegourmand";
+        idConnexion=    1;
+                        
+        String requete = "select * from espacegourmand where idProprietaire ='"+idConnexion+"'";
        
 
         try {
