@@ -7,6 +7,7 @@
 package gourmand.gui;
 
 import gourmand.dao.EspaceGourmandDAOHAJER;
+import gourmand.util.MyConnection;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
@@ -122,15 +123,36 @@ public static Connection conn;
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+private void TableGPEGMouseClicked(java.awt.event.MouseEvent evt) {                                       
+        int rows = jTable1.getSelectedRow();
+        String a=jTable1.getModel().getValueAt(rows, 1).toString();
+        System.out.println(a);
+        try {
+            Statement st =(Statement) MyConnection.getInstance().conn.createStatement();
+            int row = jTable1.getSelectedRow();
+            String Table_Click =(jTable1.getModel().getValueAt(row, 1).toString());
+            String sql = "select nom,prenom,ok from reservation where nom='"+ Table_Click+"'";
+            ResultSet res = st.executeQuery(sql);
+            while(res.next())
+            {
+                
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(GestionReservationJFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
        // Statement state = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
       EspaceGourmandDAOHAJER D =new EspaceGourmandDAOHAJER();
+      EspaceGourmandDAOHAJER RDAO = new EspaceGourmandDAOHAJER();
+        
+      //RDAO.supprimer(D);
+                  
     // jTable1.addMouseListener();
      //jButton1.addMouseListener((new java.awt.event.MouseAdapter() {} ));
     
-            try {
+       try {
                 Class.forName("com.mysql.jdbc.Driver");
            
                         System.out.println("DRIVER OK ! ");
@@ -159,10 +181,10 @@ public static Connection conn;
     
      
         
-        jTable1.removeRowSelectionInterval(lign, 
-                lign);
+        ////jTable1.removeRowSelectionInterval(lign, 
+           //     lign);
          System.out.println(b);
-        jTable1.repaint();
+       // jTable1.repaint();
          } catch (Exception e1) {
                         e1.printStackTrace();
                          }

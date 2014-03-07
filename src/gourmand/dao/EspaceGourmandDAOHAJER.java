@@ -59,10 +59,12 @@ public class EspaceGourmandDAOHAJER implements Crud{
 
     @Override
     public void supprimer(Object o) {
-EspaceGourmand a = new EspaceGourmand();
+EspaceGourmand a =(EspaceGourmand) o;
+       
         
-        String url = " DELETE FROM espacegourmand WHERE IdEspaceGourmand='" + a.getIdEspaceGourmand()+"'";
+        String url = "DELETE FROM espacegourmand WHERE IdEspaceGourmand=" + a.getIdEspaceGourmand();
         try {
+            System.out.println(url);
             PreparedStatement prst = MyConnection.getInstance().conn.prepareStatement(url);
            //EspaceGourmand c = (EspaceGourmand) o;
 

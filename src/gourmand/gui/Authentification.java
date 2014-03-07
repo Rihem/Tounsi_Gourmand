@@ -216,8 +216,8 @@ public class Authentification extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this,"Bienvenue dans votre espace Client ","Espace Client ",
             JOptionPane.OK_OPTION, image);
             
-            AjoutClientJFrame  AjCl = null;
-            AjCl = new AjoutClientJFrame();
+            AjoutProprietaireHAJER  AjCl = null;
+            AjCl = new AjoutProprietaireHAJER();
             this.setVisible(false);
             AjCl.setVisible(true);
             
