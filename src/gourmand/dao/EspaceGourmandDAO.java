@@ -58,8 +58,9 @@ public class EspaceGourmandDAO implements Crud{
 
     @Override
     public void modifier(Object o) {
+        EspaceGourmand a = new EspaceGourmand();
         try {
-            String url = " UPDATE espacegourmand SET nomEspaceGourmand=? , adresse=?,numTel=?,email=?,type=?,idProprietaire=? WHERE idEspaceGourmand=" + idConnexion;
+            String url = " UPDATE espacegourmand SET nomEspaceGourmand=? , adresse=?,numTel=?,email=?,type=?,idProprietaire='"+idConnexion+"' WHERE idEspaceGourmand=" + a.getIdEspaceGourmand();
             PreparedStatement prst = MyConnection.getInstance().conn.prepareStatement(url);
             EspaceGourmand eg = (EspaceGourmand) o;
             prst.setString(1, eg.getNomEspaceGourmand());
