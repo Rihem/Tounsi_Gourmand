@@ -93,7 +93,7 @@ public class ModificationEspaeGourmandJFrame extends javax.swing.JFrame {
         buttonGroup1.add(butSalonThe);
         butSalonThe.setText("   Sallon de thé");
 
-        butModifier.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mahdouch\\Desktop\\iconsPI\\50-Developer-icon.png")); // NOI18N
+        butModifier.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/50-Developer-icon.png"))); // NOI18N
         butModifier.setText("     Modifier Mon Espace");
         butModifier.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -101,7 +101,7 @@ public class ModificationEspaeGourmandJFrame extends javax.swing.JFrame {
             }
         });
 
-        butRetour.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mahdouch\\Desktop\\iconsPI\\back-icon.png")); // NOI18N
+        butRetour.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/back-icon.png"))); // NOI18N
         butRetour.setText("     Retour");
         butRetour.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -115,13 +115,13 @@ public class ModificationEspaeGourmandJFrame extends javax.swing.JFrame {
 
         jLabel7.setText(" Id Proprietaire :");
 
-        jLabel8.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mahdouch\\Desktop\\iconsPI\\sushi-3-icon.png")); // NOI18N
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/sushi-3-icon.png"))); // NOI18N
 
-        jLabel9.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mahdouch\\Desktop\\iconsPI\\hot-dog-icon.png")); // NOI18N
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/hot-dog-icon.png"))); // NOI18N
 
-        jLabel10.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mahdouch\\Desktop\\iconsPI\\Cake-005-icon.png")); // NOI18N
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Cake-005-icon.png"))); // NOI18N
 
-        butModifMenu.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mahdouch\\Desktop\\iconsPI\\Protege_menu_restaurant.jpg")); // NOI18N
+        butModifMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Protege_menu_restaurant.jpg"))); // NOI18N
         butModifMenu.setText("     Modifier Mon Menu");
         butModifMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

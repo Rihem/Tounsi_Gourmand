@@ -50,7 +50,7 @@ public class ProprietaireJFrameGenerale extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 204, 204));
 
         gestionEspace.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
-        gestionEspace.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mahdouch\\Desktop\\iconsPI\\Coffee-icon (1).png")); // NOI18N
+        gestionEspace.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Coffee-icon (1).png"))); // NOI18N
         gestionEspace.setText("Gestion Espace Gourmand");
         gestionEspace.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         gestionEspace.addActionListener(new java.awt.event.ActionListener() {
@@ -69,7 +69,7 @@ public class ProprietaireJFrameGenerale extends javax.swing.JFrame {
         });
 
         consulterStat.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
-        consulterStat.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mahdouch\\Desktop\\iconsPI\\Numbers-icon.png")); // NOI18N
+        consulterStat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Numbers-icon.png"))); // NOI18N
         consulterStat.setText("Consultation  statistiques");
         consulterStat.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         consulterStat.addActionListener(new java.awt.event.ActionListener() {

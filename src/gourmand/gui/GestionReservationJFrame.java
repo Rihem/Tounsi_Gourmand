@@ -118,7 +118,7 @@ public class GestionReservationJFrame extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(TableReservation);
 
-        butAccepter.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mahdouch\\Desktop\\iconsPI\\ok-icon (1).png")); // NOI18N
+        butAccepter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ok-icon (1).png"))); // NOI18N
         butAccepter.setText("    Accepter");
         butAccepter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -126,7 +126,7 @@ public class GestionReservationJFrame extends javax.swing.JFrame {
             }
         });
 
-        butRefuser.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mahdouch\\Desktop\\iconsPI\\no-icon.png")); // NOI18N
+        butRefuser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/no-icon.png"))); // NOI18N
         butRefuser.setText("    Refuser");
         butRefuser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -134,7 +134,7 @@ public class GestionReservationJFrame extends javax.swing.JFrame {
             }
         });
 
-        butRetour.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mahdouch\\Desktop\\iconsPI\\back-icon.png")); // NOI18N
+        butRetour.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/back-icon.png"))); // NOI18N
         butRetour.setText("     Retour");
         butRetour.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -146,9 +146,9 @@ public class GestionReservationJFrame extends javax.swing.JFrame {
         jLabel13.setForeground(new java.awt.Color(0, 153, 204));
         jLabel13.setText("Gestion Réservation");
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mahdouch\\Desktop\\iconsPI\\Restaurant-Empire-2-1-icon.png")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Restaurant-Empire-2-1-icon.png"))); // NOI18N
 
-        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Mahdouch\\Desktop\\iconsPI\\Coffee-icon (2).png")); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Coffee-icon (2).png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -181,8 +181,7 @@ public class GestionReservationJFrame extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jLabel2))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -201,7 +200,6 @@ public class GestionReservationJFrame extends javax.swing.JFrame {
                         .addComponent(butRetour)
                         .addGap(58, 58, 58))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );

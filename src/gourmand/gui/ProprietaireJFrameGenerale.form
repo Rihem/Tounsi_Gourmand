@@ -83,7 +83,7 @@
               <Font name="Monotype Corsiva" size="24" style="1"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\Mahdouch\Desktop\iconsPI\Coffee-icon (1).png"/>
+              <Image iconType="3" name="/img/Coffee-icon (1).png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Gestion Espace Gourmand"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -118,7 +118,7 @@
               <Font name="Monotype Corsiva" size="24" style="1"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\Mahdouch\Desktop\iconsPI\Numbers-icon.png"/>
+              <Image iconType="3" name="/img/Numbers-icon.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Consultation  statistiques"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
