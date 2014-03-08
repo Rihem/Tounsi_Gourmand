@@ -22,7 +22,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Hell
  */
-public class GestionClientJFrame extends javax.swing.JFrame {
+public class GestionClientJFrame extends javax.swing.JFrame{
 
     /**
      * Creates new form GestionClientJFrame
@@ -31,7 +31,6 @@ public class GestionClientJFrame extends javax.swing.JFrame {
         initComponents();
         txtId.hide();
         ButtAdd.setText("Ajouter");
-        
         refresh();
 //        ClientDAO cDAO = new ClientDAO();
 //        List<Client> lc = cDAO.display();
@@ -82,11 +81,7 @@ public class GestionClientJFrame extends javax.swing.JFrame {
     public void refresh(){
         ClientDAO cDAO = new ClientDAO();
         List<Client> lc = cDAO.display();
-        DefaultTableModel DTM = new DefaultTableModel();
-        
-//        tableClients.getColumn("Id").setMaxWidth(0);
-//        tableClients.getColumn("Id").setMinWidth(0);
-//        tableClients.getColumn("Id").setResizable(false);
+        NonEditableDefaultTableModel DTM = new NonEditableDefaultTableModel();
         
         DTM.addColumn("Id");
         DTM.addColumn("Nom");
@@ -128,6 +123,10 @@ public class GestionClientJFrame extends javax.swing.JFrame {
         tableClients.getColumn("Id").setPreferredWidth(0);
         tableClients.getColumn("Id").setResizable(false);
     }
+    
+    
+            public boolean isCellEditable(int row, int column) { return false; }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -239,6 +238,7 @@ public class GestionClientJFrame extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tableClients.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         tableClients.getTableHeader().setReorderingAllowed(false);
         tableClients.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -348,42 +348,25 @@ public class GestionClientJFrame extends javax.swing.JFrame {
                 else{
             Client client = new Client();
             String err = "";
-            if ("".equals(txtNom.getText())) {
-                err += "nom ";
-            }
-            if ("".equals(txtPrenom.getText())) {
-                err += "prenom ";
-            }
-            if ("".equals(txtLogin.getText())) {
-                err += "login ";
-            }
-            if ("".equals(txtPass.getText())) {
-                err += "password ";
-            }
-            if ("".equals(txtMail.getText())) {
-                err += "mail ";
-            }
-            if ("".equals(txtAge.getText())) {
-                err += "age ";
-            }
-            if ("".equals(txtTel.getText())) {
-                err += "téléphone ";
-            }
+            if ("".equals(txtNom.getText())) err += "nom ";
+            if ("".equals(txtPrenom.getText())) err += "prenom ";
+            if ("".equals(txtLogin.getText())) err += "login ";
+            if ("".equals(txtPass.getText())) err += "password ";
+            if ("".equals(txtMail.getText())) err += "mail ";
+            if ("".equals(txtAge.getText())) err += "age ";
+            if ("".equals(txtTel.getText())) err += "téléphone ";
+            
             if (!radioF.isSelected() && !radioH.isSelected()) {
                 err += "sexe ";
             }
 
             String email = txtMail.getText();
-            if (email.indexOf("@") == -1) {
-                JOptionPane.showMessageDialog(this, "Adresse mail non valide");
-                txtMail.setText(null);
-            } else {
-                if ("".equals(err)) {
+            
+            if ("".equals(err)) {
                     String nom = txtNom.getText();
                     String prenom = txtPrenom.getText();
                     String login = txtLogin.getText();
                     String pass = txtPass.getText();
-                    if (!"".equals(txtAge.getText())) {
                         try {
                             int age = Integer.parseInt(txtAge.getText());
                             client.setAge(age);
@@ -393,9 +376,8 @@ public class GestionClientJFrame extends javax.swing.JFrame {
                             txtAge.setText("");
                             return;
                         }
-                    }
+                    
 
-                    if (!"".equals(txtTel.getText())) {
                         try {
                             int tel = Integer.parseInt(txtTel.getText());
                             client.setTel(tel);
@@ -404,7 +386,15 @@ public class GestionClientJFrame extends javax.swing.JFrame {
                             txtTel.setText("");
                             return;
                         }
-                    }
+                        
+                        if (email.indexOf("@") == -1) {
+                            JOptionPane.showMessageDialog(this, "Adresse mail non valide");
+                            txtMail.setText(null);
+                            return;
+                        }
+
+
+                    
                     String sexe = "";
                     if (radioH.isSelected()) {
                         sexe = radioH.getText();
@@ -426,7 +416,7 @@ public class GestionClientJFrame extends javax.swing.JFrame {
                 } else {
                     JOptionPane.showMessageDialog(this, "Les champs " + err + "sont obligatoires");
                 }
-            }
+            
             }
         }
         if(ButtAdd.getText().equals("Valider")){

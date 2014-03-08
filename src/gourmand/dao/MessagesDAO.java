@@ -75,6 +75,25 @@ public class MessagesDAO implements Crud{
         } catch (SQLException ex) {
             return null;
         }
+    }
+        
+        public List displayAdmin() {
+        List<Messages> listeMessages = new ArrayList<Messages>();
+        String url = "SELECT * FROM messages where destinataire='Admin'";
+        try {
+            Statement st = MyConnection.getInstance().conn.createStatement();
+            ResultSet rst = st.executeQuery(url);
+            while (rst.next()) {
+                Messages m = new Messages();
+                m.setId(rst.getInt(1));
+                m.setEmetteur(rst.getString(2));
+                m.setMessage(rst.getString(4));
+                listeMessages.add(m);
+            }
+            return listeMessages;
+        } catch (SQLException ex) {
+            return null;
+        }
   
     }
     

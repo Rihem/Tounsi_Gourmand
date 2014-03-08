@@ -6,6 +6,7 @@
 package gourmand.gui;
 
 import gourmand.dao.ClientDAO;
+import gourmand.dao.EspaceGourmandDAO;
 import gourmand.entities.EspaceGourmand;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
@@ -25,8 +26,8 @@ public class ClientListeEG_GUI extends javax.swing.JFrame {
 
         initComponents();
 
-        ClientDAO cDAO = new ClientDAO();
-        List<EspaceGourmand> ListeEG = cDAO.display2();
+        EspaceGourmandDAO cDAO = new EspaceGourmandDAO();
+        List<EspaceGourmand> ListeEG = cDAO.display();
         DefaultTableModel DTM = new DefaultTableModel();
         DefaultTableModel dtm = new DefaultTableModel(); //Definition du model utilisé par notre tableau
         dtm.addColumn("NomEspaceGourmand"); //Elaboration de la partie Header
