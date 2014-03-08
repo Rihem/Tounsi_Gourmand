@@ -10,9 +10,6 @@ package gourmand.gui;
  *
  * @author Mahdouch
  */
-
-import gourmand.dao.*;
-          
 public class ProprietaireJFrameGenerale extends javax.swing.JFrame {
 
     /**
@@ -20,14 +17,6 @@ public class ProprietaireJFrameGenerale extends javax.swing.JFrame {
      */
     public ProprietaireJFrameGenerale() {
         initComponents();
-        
-        
-
-    int a ;
-     AuthentificationClientDAO AutCliDAO = new AuthentificationClientDAO();
-     a = AutCliDAO.IDconnexion;
-    System.out.println("a= "+a);
-     
     }
 
     /**
@@ -146,7 +135,7 @@ public class ProprietaireJFrameGenerale extends javax.swing.JFrame {
     }//GEN-LAST:event_gestionReservationActionPerformed
 
     private void gestionEspaceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gestionEspaceActionPerformed
-        GestionEspaceGourmandHAJER gEspaceGourmand = new GestionEspaceGourmandHAJER();
+        GestionEspaceGourmand gEspaceGourmand = new GestionEspaceGourmand();
         gEspaceGourmand.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_gestionEspaceActionPerformed

@@ -12,33 +12,26 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
+/** 
  *
  * @author Hell
  */
 public class MyConnection {
     public static MyConnection instance;
-   public static Connection conn;
+    public static Connection conn;
     
     private MyConnection() {
-        
-        
-        String url = "jdbc:mysql://127.0.0.1:3306/projet_restaurant";
+        String url = "jdbc:mysql://localhost:3306/pidev";
         String user = "root";
         String pwd = "";
         try {
             Class.forName("com.mysql.jdbc.Driver"); //charger drive au niveau memoire
             System.out.println("Driver chargé!");
-
         } catch (ClassNotFoundException ex) {
             System.err.println("Driver non chargé!"); //msg erreur en rouge
-
         }
         try {
-            
             conn = DriverManager.getConnection(url, user, pwd);
-            System.out.println("fghjklhhhhhhhhhhh");
-            System.out.println("conn");
         } catch (SQLException ex) {
             Logger.getLogger(MyConnection.class.getName()).log(Level.SEVERE, null, ex);
         }

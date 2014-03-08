@@ -11,18 +11,14 @@ package gourmand.entities;
  * @author Mahdouch
  */
 public class Boissons {
-    private int idBoissons,idMenu;
+    private int idBoissons;
     private String libelleBoisson;
     private int prix;
 
-    public Boissons() {
-    }
-    
-    public Boissons(int idBoissons, String libelleBoisson, int prix, int idMenu) {
+    public Boissons(int idBoissons, String libelleBoisson, int prix) {
         this.idBoissons = idBoissons;
         this.libelleBoisson = libelleBoisson;
         this.prix = prix;
-        this.idMenu = idMenu;
     }
 
     public int getIdBoissons() {
@@ -45,17 +41,9 @@ public class Boissons {
         this.prix = prix;
     }
 
-    public int getIdMenu() {
-        return idMenu;
-    }
-
-    public void setIdMenu(int idMenu) {
-        this.idMenu = idMenu;
-    }
-    
     @Override
     public String toString() {
-        return "Boissons{" + "idBoissons=" + idBoissons + ", libelleBoisson=" + libelleBoisson + ", prix=" + prix + ", idMenu=" + idMenu +'}';
+        return "Boissons{" + "idBoissons=" + idBoissons + ", libelleBoisson=" + libelleBoisson + ", prix=" + prix + '}';
     }
 
     @Override

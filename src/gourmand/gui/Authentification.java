@@ -10,18 +10,50 @@ package gourmand.gui;
  *
  * @author BENAMARA
  */
+
 import gourmand.dao.*;
+import java.awt.Color;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
-
+import javax.swing.Timer;//
+import java.awt.event.ActionListener;//
+import java.awt.event.ActionEvent;//
 import java.sql.*;
+import javax.swing.UIManager;
 import org.jfree.ui.RefineryUtilities;
 
 public class Authentification extends javax.swing.JFrame {
 
-    /**
+    
+int i= 0;     
+Timer t  = new Timer(1000, new ActionListener() {
+
+    @Override
+    public void actionPerformed(ActionEvent ae) {
+     AuthentificationAdminDAO AutAdmDAO = new AuthentificationAdminDAO();
+     int x = AutAdmDAO.AuthentificationAdmin (txt_login.getText(),txt_password.getText());
+          
+        i++;
+        if (i==2)
+        {
+            if (x!=0)
+        {
+//                
+           
+           ProprietaireJFrameGenerale GComProp = null;
+            GComProp = new ProprietaireJFrameGenerale();
+          //  this.setVisible(false);
+            GComProp.setVisible(true);
+        }
+        }
+        
+    }
+}
+);
+/*
+    *
      * Creates new form Authentification
      */
     Connection con ;
@@ -31,6 +63,8 @@ public class Authentification extends javax.swing.JFrame {
     
    public Authentification() {
         initComponents();
+        
+               jProgressBar1.setVisible(false);
         RefineryUtilities.centerFrameOnScreen(this);
     }
 
@@ -54,6 +88,7 @@ public class Authentification extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        jProgressBar1 = new javax.swing.JProgressBar();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -140,6 +175,14 @@ public class Authentification extends javax.swing.JFrame {
         jPanel1.add(jLabel6);
         jLabel6.setBounds(370, 150, 130, 30);
 
+        jProgressBar1.setBackground(new java.awt.Color(0, 0, 0));
+        jProgressBar1.setForeground(new java.awt.Color(0, 0, 0));
+        jProgressBar1.setValue(100);
+        jProgressBar1.setAutoscrolls(true);
+        jProgressBar1.setIndeterminate(true);
+        jPanel1.add(jProgressBar1);
+        jProgressBar1.setBounds(-10, 250, 540, 20);
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/background0.gif"))); // NOI18N
         jPanel1.add(jLabel1);
         jLabel1.setBounds(0, -30, 530, 310);
@@ -152,7 +195,7 @@ public class Authentification extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 268, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 267, Short.MAX_VALUE)
         );
 
         pack();
@@ -186,14 +229,24 @@ public class Authentification extends javax.swing.JFrame {
             else if ( x !=0 ){
            // JOptionPane.showMessageDialog(this, "Bienvenue dans votre espace Administration " );
            
-           Icon image = new ImageIcon( getClass().getResource("/img/admin.png"));     
-           JOptionPane.showMessageDialog(this,"Bienvenue dans votre espace Administration ","Administrateur ",
-            JOptionPane.OK_OPTION, image);
                 
-            ProprietaireJFrameGenerale GComProp = null;
-            GComProp = new ProprietaireJFrameGenerale();
-            this.setVisible(false);
-            GComProp.setVisible(true);
+//                
+//           Icon image = new ImageIcon( getClass().getResource("/img/admin.png"));     
+//           JOptionPane.showMessageDialog(this,"Bienvenue dans votre espace Administration ","Administrateur ",
+//            JOptionPane.OK_OPTION, image);
+//                
+//           
+               t.start();
+//               jProgressBar1
+        UIManager.put("ProgressBar.background", Color.orange);
+        UIManager.put("ProgressBar.foreground", Color.black);
+        UIManager.put("ProgressBar.selectionBackground", Color.red);
+        UIManager.put("ProgressBar.selectionForeground", Color.green);
+               jProgressBar1.setVisible(true);
+//           ProprietaireJFrameGenerale GComProp = null;
+//            GComProp = new ProprietaireJFrameGenerale();
+//            this.setVisible(false);
+//            GComProp.setVisible(true);
             }
         
       ////////////////////Client///////////////////////////////////
@@ -216,8 +269,8 @@ public class Authentification extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this,"Bienvenue dans votre espace Client ","Espace Client ",
             JOptionPane.OK_OPTION, image);
             
-            AjoutProprietaireHAJER  AjCl = null;
-            AjCl = new AjoutProprietaireHAJER();
+            AjoutProprietaire  AjCl = null;
+            AjCl = new AjoutProprietaire();
             this.setVisible(false);
             AjCl.setVisible(true);
             
@@ -349,6 +402,7 @@ public class Authentification extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JTextField txt_login;
     private javax.swing.JPasswordField txt_password;
     // End of variables declaration//GEN-END:variables
