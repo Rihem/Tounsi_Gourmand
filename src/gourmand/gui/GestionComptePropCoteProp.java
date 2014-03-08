@@ -6,11 +6,8 @@
 
 package gourmand.gui;
 
-
 import gourmand.dao.ClientDAO;
-import gourmand.dao.ProprietaireDAO;
 import gourmand.entities.Client;
-import gourmand.entities.ProprietaireEspaceGourmand;
 
 /**
  *
@@ -58,9 +55,9 @@ public class GestionComptePropCoteProp extends javax.swing.JFrame {
         ComboSexe = new javax.swing.JComboBox();
         jPanel3 = new javax.swing.JPanel();
         ButtModifier1 = new javax.swing.JButton();
-        butSupprimer = new javax.swing.JButton();
-        butReset = new javax.swing.JButton();
-        butQuitter = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
         TXTLogin1 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -68,7 +65,7 @@ public class GestionComptePropCoteProp extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         TXTNom1 = new javax.swing.JTextField();
         TXTPrenom1 = new javax.swing.JTextField();
-        TXTLoginP = new javax.swing.JTextField();
+        jTextField4 = new javax.swing.JTextField();
         TXTPassword1 = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         TXTEmail1 = new javax.swing.JTextField();
@@ -78,7 +75,6 @@ public class GestionComptePropCoteProp extends javax.swing.JFrame {
         jLabel17 = new javax.swing.JLabel();
         TXTAge1 = new javax.swing.JTextField();
         ComboSexe1 = new javax.swing.JComboBox();
-        jLabel18 = new javax.swing.JLabel();
 
         ButtModifier.setText("Modifier");
         ButtModifier.addActionListener(new java.awt.event.ActionListener() {
@@ -240,26 +236,21 @@ public class GestionComptePropCoteProp extends javax.swing.JFrame {
             }
         });
 
-        butSupprimer.setText("Supprimer");
-        butSupprimer.addActionListener(new java.awt.event.ActionListener() {
+        jButton5.setText("Supprimer");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                butSupprimerActionPerformed(evt);
+                jButton5ActionPerformed(evt);
             }
         });
 
-        butReset.setText("Reset");
-        butReset.addActionListener(new java.awt.event.ActionListener() {
+        jButton6.setText("Reset");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                butResetActionPerformed(evt);
+                jButton6ActionPerformed(evt);
             }
         });
 
-        butQuitter.setText("Retour");
-        butQuitter.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                butQuitterActionPerformed(evt);
-            }
-        });
+        jButton7.setText("Quitter");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -268,30 +259,25 @@ public class GestionComptePropCoteProp extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addComponent(ButtModifier1)
-                .addGap(44, 44, 44)
-                .addComponent(butSupprimer)
-                .addGap(42, 42, 42)
-                .addComponent(butReset)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-                .addComponent(butQuitter)
-                .addGap(36, 36, 36))
+                .addGap(34, 34, 34)
+                .addComponent(jButton5)
+                .addGap(48, 48, 48)
+                .addComponent(jButton6)
+                .addGap(30, 30, 30)
+                .addComponent(jButton7)
+                .addContainerGap(51, Short.MAX_VALUE))
         );
-
-        jPanel3Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {ButtModifier1, butQuitter, butReset, butSupprimer});
-
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(16, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ButtModifier1)
-                    .addComponent(butSupprimer)
-                    .addComponent(butReset)
-                    .addComponent(butQuitter))
+                    .addComponent(jButton5)
+                    .addComponent(jButton6)
+                    .addComponent(jButton7))
                 .addContainerGap())
         );
-
-        jPanel3Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {ButtModifier1, butQuitter, butReset, butSupprimer});
 
         jLabel10.setText("Nom");
 
@@ -332,7 +318,7 @@ public class GestionComptePropCoteProp extends javax.swing.JFrame {
                 .addGroup(TXTLogin1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(TXTNom1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(TXTPrenom1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(TXTLoginP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(TXTPassword1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
                 .addGroup(TXTLogin1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -355,7 +341,7 @@ public class GestionComptePropCoteProp extends javax.swing.JFrame {
                 .addGap(24, 24, 24))
         );
 
-        TXTLogin1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {TXTLoginP, TXTNom1, TXTPassword1, TXTPrenom1});
+        TXTLogin1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {TXTNom1, TXTPassword1, TXTPrenom1, jTextField4});
 
         TXTLogin1Layout.setVerticalGroup(
             TXTLogin1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -389,7 +375,7 @@ public class GestionComptePropCoteProp extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(TXTLogin1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel12)
-                            .addComponent(TXTLoginP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(TXTLogin1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel13)
@@ -397,36 +383,27 @@ public class GestionComptePropCoteProp extends javax.swing.JFrame {
                 .addContainerGap(27, Short.MAX_VALUE))
         );
 
-        jLabel18.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
-        jLabel18.setForeground(new java.awt.Color(0, 153, 204));
-        jLabel18.setText("Gestion Compte Proprietaire");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(55, 55, 55)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(TXTLogin1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(65, 65, 65)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(TXTLogin1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(218, 218, 218)
-                        .addComponent(jLabel18)))
-                .addContainerGap(47, Short.MAX_VALUE))
+                        .addGap(20, 20, 20)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(81, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(jLabel18)
-                .addGap(31, 31, 31)
+                .addGap(65, 65, 65)
                 .addComponent(TXTLogin1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(20, 20, 20)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(77, Short.MAX_VALUE))
+                .addContainerGap(87, Short.MAX_VALUE))
         );
 
         pack();
@@ -465,44 +442,30 @@ public class GestionComptePropCoteProp extends javax.swing.JFrame {
 
         ClientDAO CDAO = new ClientDAO();
         Client C1 = new Client();
-        C1.setNom(TXTNom1.getText());
-        C1.setPrenom(TXTPrenom1.getText());
-        C1.setLogin(TXTPassword1.getText());
-        C1.setPassword(TXTLoginP.getText());
-        C1.setEmail(TXTEmail1.getText());
-        C1.setTel(Integer.parseInt(TXTTel1.getText()));
-        C1.setSexe((String) ComboSexe1.getSelectedItem());
-        C1.setAge(Integer.parseInt(TXTAge1.getText()));
+        C1.setNom(TXTNom.getText());
+        C1.setPrenom(TXTPrenom.getText());
+        C1.setLogin(TXTPassword.getText());
+        C1.setPassword(TXTPassword.getText());
+        C1.setEmail(TXTEmail.getText());
+        C1.setTel(Integer.parseInt(TXTTel.getText()));
+        C1.setSexe((String) ComboSexe.getSelectedItem());
+        C1.setAge(Integer.parseInt(TXTAge.getText()));
 
         CDAO.modifier(C1);
 
     }//GEN-LAST:event_ButtModifier1ActionPerformed
 
-    private void butSupprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butSupprimerActionPerformed
-        ProprietaireDAO PEGDAO = new ProprietaireDAO();
-        ProprietaireEspaceGourmand P = new ProprietaireEspaceGourmand();
-        PEGDAO.supprimer(P);
-    }//GEN-LAST:event_butSupprimerActionPerformed
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton5ActionPerformed
 
-    private void butResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butResetActionPerformed
-        TXTNom1.setText(null);
-        TXTPrenom1.setText(null);
-        TXTPassword1.setText(null);
-        TXTEmail1.setText(null);
-        TXTTel1.setText(null);
-        TXTLoginP.setText(null);
-        TXTAge1.setText(null);
-    }//GEN-LAST:event_butResetActionPerformed
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton6ActionPerformed
 
     private void TXTNom1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TXTNom1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TXTNom1ActionPerformed
-
-    private void butQuitterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butQuitterActionPerformed
-        ProprietaireJFrameGenerale PropGeneral = new ProprietaireJFrameGenerale();
-        PropGeneral.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_butQuitterActionPerformed
 
     /**
      * @param args the command line arguments
@@ -550,7 +513,6 @@ public class GestionComptePropCoteProp extends javax.swing.JFrame {
     private javax.swing.JTextField TXTEmail1;
     private javax.swing.JPanel TXTLogin;
     private javax.swing.JPanel TXTLogin1;
-    private javax.swing.JTextField TXTLoginP;
     private javax.swing.JTextField TXTNom;
     private javax.swing.JTextField TXTNom1;
     private javax.swing.JTextField TXTPassword;
@@ -559,12 +521,12 @@ public class GestionComptePropCoteProp extends javax.swing.JFrame {
     private javax.swing.JTextField TXTPrenom1;
     private javax.swing.JTextField TXTTel;
     private javax.swing.JTextField TXTTel1;
-    private javax.swing.JButton butQuitter;
-    private javax.swing.JButton butReset;
-    private javax.swing.JButton butSupprimer;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -573,7 +535,6 @@ public class GestionComptePropCoteProp extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -585,5 +546,6 @@ public class GestionComptePropCoteProp extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
     // End of variables declaration//GEN-END:variables
 }

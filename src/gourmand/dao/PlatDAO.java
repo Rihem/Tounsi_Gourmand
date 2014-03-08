@@ -21,18 +21,17 @@ import java.util.List;
  */
 public class PlatDAO implements Crud{
 
-    static int idConnexion;
+    private static int idConnexion;
 
     
     @Override
     public void ajouter(Object o) {
-        String url = " INSERT INTO plats(libellePlat,prix,idMenu) VALUES (?,?,?)";
+        String url = " INSERT INTO plats(libellePlat,prix) VALUES (?,?)";
         try {
             PreparedStatement prst = MyConnection.getInstance().conn.prepareStatement(url);
             Plats c = (Plats) o;
             prst.setString(1, c.getLibellePlat());
             prst.setInt(2, c.getPrix());
-            prst.setInt(3, c.getIdMenu());
             prst.executeUpdate();
             System.out.println("Insertion effectuée!");
         } catch (SQLException ex) {
@@ -60,12 +59,11 @@ public class PlatDAO implements Crud{
     @Override
     public void modifier(Object o) {
         try {
-            String url = " UPDATE plats SET libellePlats=? , prix=? , idMenu=? WHERE id=" + idConnexion;
+            String url = " UPDATE plats SET libellePlats=? , prix=? WHERE id=" + idConnexion;
             PreparedStatement prst = MyConnection.getInstance().conn.prepareStatement(url);
             Plats c = (Plats) o;
             prst.setString(1, c.getLibellePlat());
             prst.setInt(2, c.getPrix());
-            prst.setInt(3, c.getIdMenu());
             prst.executeUpdate();
             System.out.println("Modification avec succes");
         } catch (SQLException ex) {
@@ -84,8 +82,6 @@ public class PlatDAO implements Crud{
                 Plats c = new Plats();
                 c.setLibellePlat(rst.getString(2));
                 c.setPrix(rst.getInt(3));
-                c.setIdMenu(rst.getInt(3));
-                listePlats.add(c);
             }
             return listePlats;
         } catch (SQLException ex) {

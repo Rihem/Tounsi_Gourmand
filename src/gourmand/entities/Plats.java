@@ -11,19 +11,18 @@ package gourmand.entities;
  * @author Mahdouch
  */
 public class Plats {
-    private int idPlats,idMenu;
+    private int idPlats;
     private String libellePlat;
     private int prix;
 
-    public Plats(int idPlats, String libellePlat, int prix, int idMenu) {
+    public Plats(int idPlats, String libellePlat, int prix) {
         this.idPlats = idPlats;
         this.libellePlat = libellePlat;
         this.prix = prix;
-        this.idMenu= idMenu;
     }
 
     public Plats() {
-        
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public int getIdPlats() {
@@ -46,19 +45,9 @@ public class Plats {
         this.prix = prix;
     }
 
-    public int getIdMenu() {
-        return idMenu;
-    }
-
-    public void setIdMenu(int idMenu) {
-        this.idMenu = idMenu;
-    }
-    
-    
-
     @Override
     public String toString() {
-        return "Plats{" + "idPlats=" + idPlats + ", libelleDessert=" + libellePlat + ", prix=" + prix + "idMenu=" + idMenu +'}';
+        return "Plats{" + "idPlats=" + idPlats + ", libelleDessert=" + libellePlat + ", prix=" + prix + '}';
     }
 
     @Override

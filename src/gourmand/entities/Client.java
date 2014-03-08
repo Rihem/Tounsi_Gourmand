@@ -36,10 +36,6 @@ public class Client {
         return numCompte;
     }
 
-    public void setNumCompte(int numCompte) {
-        this.numCompte = numCompte;
-    }
-    
     public String getNom() {
         return nom;
     }

@@ -63,7 +63,7 @@ public class ClientDAO implements Crud{
     @Override
     public void modifier(Object o) {
         try {
-            String url = " UPDATE client SET nom=? , prenom=?,login=?,password=?,email=?,tel=?,sexe=?,age=? WHERE NumCompte=" + idConnexion;
+            String url = " UPDATE client SET nom=? , prenom=?,login=?,password=?,email=?,tel=?,sexe=?,age=? WHERE numCompte=" + idConnexion;
             PreparedStatement prst = MyConnection.getInstance().conn.prepareStatement(url);
             Client c = (Client) o;
             prst.setString(1, c.getNom());
@@ -90,7 +90,6 @@ public class ClientDAO implements Crud{
             ResultSet rst = st.executeQuery(url);
             while (rst.next()) {
                 Client c = new Client();
-                c.setNumCompte(rst.getInt(1));
                 c.setNom(rst.getString(2));
                 c.setPrenom(rst.getString(3));
                 c.setLogin(rst.getString(4));
@@ -98,44 +97,12 @@ public class ClientDAO implements Crud{
                 c.setEmail(rst.getString(6));
                 c.setTel(rst.getInt(7));
                 c.setSexe(rst.getString(8));
-                c.setAge(rst.getInt(9));
+                c.setTel(rst.getInt(9));
                 listeClient.add(c);
             }
             return listeClient;
         } catch (SQLException ex) {
             return null;
-        }
-    }
-    
-    public void deleteById(int id) {
-        ClientDAO a = new ClientDAO();
-        String url = " DELETE FROM client WHERE NumCompte='"+id+"'";
-        try {
-            PreparedStatement prst = MyConnection.getInstance().conn.prepareStatement(url);
-
-            prst.executeUpdate();
-            System.out.println("Suppression effectuée!");
-        } catch (SQLException ex) {
-            System.err.println("Probleme de suppression");
-        }
-    }
-    
-    public void updateById(Client c,int id){
-        try {
-            String url = " UPDATE client SET nom=? , prenom=?,login=?,password=?,email=?,tel=?,sexe=?,age=? WHERE NumCompte='"+id+"'";
-            PreparedStatement prst = MyConnection.getInstance().conn.prepareStatement(url);
-            prst.setString(1, c.getNom());
-            prst.setString(2, c.getPrenom());
-            prst.setString(3, c.getLogin());
-            prst.setString(4, c.getPassword());
-            prst.setString(5, c.getEmail());
-            prst.setInt(6, c.getTel());
-            prst.setString(7, c.getSexe());
-            prst.setInt(8, c.getAge());
-            prst.executeUpdate();
-            System.out.println("Modification avec succes");
-        } catch (SQLException ex) {
-            System.err.println("Echec de modification!");
         }
     }
 }
