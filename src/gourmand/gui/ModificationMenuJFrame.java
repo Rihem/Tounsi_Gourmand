@@ -16,8 +16,14 @@ import gourmand.entities.Desserts;
 import gourmand.entities.Entrees;
 import gourmand.entities.Menu;
 import gourmand.entities.Plats;
+import gourmand.util.MyConnection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -31,6 +37,14 @@ public class ModificationMenuJFrame extends javax.swing.JFrame {
     public ModificationMenuJFrame() {
         initComponents();
         
+        if(radioEntree.isSelected())
+            remplirEntrees();
+        if(radioPlat.isSelected())
+            remplirPlats();
+        if(radioDessert.isSelected())
+            remplirDesserts();
+        if(radioBoisson.isSelected())
+            remplirBoissons();
     }
     
     public void remplirEntrees(){
@@ -109,6 +123,12 @@ public class ModificationMenuJFrame extends javax.swing.JFrame {
         jLabel13.setFont(new java.awt.Font("Monotype Corsiva", 1, 24)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(0, 153, 204));
         jLabel13.setText("Modifier Le Menu De Mon Espace Gourmand ");
+
+        Combo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ComboActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Libelle : ");
 
@@ -337,6 +357,7 @@ public class ModificationMenuJFrame extends javax.swing.JFrame {
         
         if(radioBoisson.isSelected())
         {
+            remplirBoissons();
             B.setLibelleBoisson(txtLibelle.getText());
             B.setPrix(Integer.parseInt(txtPrix.getText()));
             EntDAO.ajouter(B);
@@ -401,6 +422,37 @@ public class ModificationMenuJFrame extends javax.swing.JFrame {
             EntDAO.modifier(B);
         }
     }//GEN-LAST:event_butModifierMenuActionPerformed
+
+    private void ComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboActionPerformed
+        /*List<Boissons> listBoissons = new ArrayList<Boissons>();
+        BoissonDAO boissonDAO = new BoissonDAO();
+        
+        List<Plats> listPlats = new ArrayList<Plats>();
+        PlatDAO platDAO = new PlatDAO();
+        
+        List<Entrees> listEntrees = new ArrayList<Entrees>();
+        EntreeDAO entreeDAO = new EntreeDAO();
+        
+        List<Desserts> listDesserts = new ArrayList<Desserts>();
+        DessertDAO dessertDAO = new DessertDAO();*/
+        String requetP = "select libellePlat,prix,idMenu from plats where libellePlat =" + Combo.getSelectedItem();
+        try {
+            Statement st =(Statement) MyConnection.getInstance().conn.createStatement();
+            ResultSet res = st.executeQuery(requetP);
+            while(res.next())
+            {
+                String add0 = res.getString("Nom Espace Gourmand");
+                txtLibelle.setText(add0);
+                String add1 = res.getString("Adresse");
+                txtPrix.setText(add1);
+                String add2 = res.getString("Téléphone");
+                txtMenu.setText(add2);
+                
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ModificationMenuJFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_ComboActionPerformed
 
     /**
      * @param args the command line arguments

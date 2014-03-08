@@ -82,6 +82,7 @@ public class BoissonDAO implements Crud{
                 c.setLibelleBoisson(rst.getString(2));
                 c.setPrix(rst.getInt(3));
                 c.setIdMenu(rst.getInt(3));
+                listeBoissons.add(c);
             }
             return listeBoissons;
         } catch (SQLException ex) {

@@ -85,6 +85,7 @@ public class PlatDAO implements Crud{
                 c.setLibellePlat(rst.getString(2));
                 c.setPrix(rst.getInt(3));
                 c.setIdMenu(rst.getInt(3));
+                listePlats.add(c);
             }
             return listePlats;
         } catch (SQLException ex) {

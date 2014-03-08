@@ -490,6 +490,7 @@ public class GestionComptePropCoteProp extends javax.swing.JFrame {
         TXTPassword1.setText(null);
         TXTEmail1.setText(null);
         TXTTel1.setText(null);
+        TXTLoginP.setText(null);
         TXTAge1.setText(null);
     }//GEN-LAST:event_butResetActionPerformed
 

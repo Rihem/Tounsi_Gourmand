@@ -6,7 +6,7 @@
 package gourmand.gui;
 
 
-import gourmand.dao.EspaceGourmandDAO12;
+import gourmand.dao.EspaceGourmandDAO;
 import gourmand.dao.EspaceGourmandDAOHAJER;
 import gourmand.entities.EspaceGourmand;
 import java.util.ArrayList;

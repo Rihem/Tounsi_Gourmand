@@ -82,6 +82,7 @@ public class DessertDAO implements Crud{
                 c.setLibelleDessert(rst.getString(2));
                 c.setPrix(rst.getInt(3));
                 c.setIdMenu(rst.getInt(3));
+                listeDesserts.add(c);
             }
             return listeDesserts;
         } catch (SQLException ex) {
