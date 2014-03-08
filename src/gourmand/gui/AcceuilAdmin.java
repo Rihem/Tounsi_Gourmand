@@ -151,9 +151,9 @@ public class AcceuilAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_ButtGererEGActionPerformed
 
     private void ButtStatsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtStatsActionPerformed
-        ConsulterStatAdmin stats = new ConsulterStatAdmin();
-        stats.setVisible(true);
-        this.setVisible(false);
+//        ConsulterStatAdmin stats = new ConsulterStatAdmin();
+//        stats.setVisible(true);
+//        this.setVisible(false);
     }//GEN-LAST:event_ButtStatsActionPerformed
 
     private void ButtMsgsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtMsgsActionPerformed
