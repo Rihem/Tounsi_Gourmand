@@ -12,74 +12,59 @@ package gourmand.gui;
  */
 
 import gourmand.dao.*;
+import java.awt.Color;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.Timer;//
+import java.awt.event.ActionListener;//
+import java.awt.event.ActionEvent;//
 import java.sql.*;
-
-
+import javax.swing.UIManager;
 import org.jfree.ui.RefineryUtilities;
 
 public class Authentification extends javax.swing.JFrame {
+
     
-    /*
+int i= 0;     
+Timer t  = new Timer(1000, new ActionListener() {
+
+    @Override
+    public void actionPerformed(ActionEvent ae) {
+     AuthentificationAdminDAO AutAdmDAO = new AuthentificationAdminDAO();
+     int x = AutAdmDAO.AuthentificationAdmin (txt_login.getText(),txt_password.getText());
+          
+        i++;
+        if (i==2)
+        {
+            if (x!=0)
+        {
+//                
+           
+           ProprietaireJFrameGenerale GComProp = null;
+            GComProp = new ProprietaireJFrameGenerale();
+          //  this.setVisible(false);
+            GComProp.setVisible(true);
+        }
+        }
+        
+    }
+}
+);
+/*
     *
      * Creates new form Authentification
      */
     Connection con ;
     Statement st ;
     ResultSet rs ; 
+     
     
-
-
-
-//      private Timer theTimer;
-    
-    
-//Thread runner;
-//int num = 0;
-////    
-    
-//    public void iterate() {
-//    while (num <= 100) {            
-//   jProgressBar1.setValue(num);
-//        try {
-//            Thread.sleep(10);
-//             
-//             num += 1;
-//                         
-//   jProgressBar1.setValue(num);
-//             Thread.sleep(10);
-//        } catch (InterruptedException e) {
-//        }
-//
-//        
-//
-//        
-//    }
-//}
-//    
-    
-    
-//      
-//      public void run(){
-//      
-//                if(100 == jProgressBar1.getValue())
-//            {
-//                theTimer.cancel();
-//                theTimer = null;
-//            }
-//            else
-//            {
-//                int currentValue = jProgressBar1.getValue();
-//                jProgressBar1.setValue(currentValue + 1);
-//            }
-//      }
- 
    public Authentification() {
         initComponents();
         
+               jProgressBar1.setVisible(false);
         RefineryUtilities.centerFrameOnScreen(this);
     }
 
@@ -93,7 +78,6 @@ public class Authentification extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jProgressBar1 = new javax.swing.JProgressBar();
         jLabel4 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -104,6 +88,7 @@ public class Authentification extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        jProgressBar1 = new javax.swing.JProgressBar();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -116,10 +101,6 @@ public class Authentification extends javax.swing.JFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Authentification", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Cooper Black", 1, 18), new java.awt.Color(0, 51, 255))); // NOI18N
         jPanel1.setLayout(null);
-
-        jProgressBar1.setStringPainted(true);
-        jPanel1.add(jProgressBar1);
-        jProgressBar1.setBounds(0, 250, 530, 20);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 51, 255));
@@ -194,6 +175,14 @@ public class Authentification extends javax.swing.JFrame {
         jPanel1.add(jLabel6);
         jLabel6.setBounds(370, 150, 130, 30);
 
+        jProgressBar1.setBackground(new java.awt.Color(0, 0, 0));
+        jProgressBar1.setForeground(new java.awt.Color(0, 0, 0));
+        jProgressBar1.setValue(100);
+        jProgressBar1.setAutoscrolls(true);
+        jProgressBar1.setIndeterminate(true);
+        jPanel1.add(jProgressBar1);
+        jProgressBar1.setBounds(-10, 250, 540, 20);
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/background0.gif"))); // NOI18N
         jPanel1.add(jLabel1);
         jLabel1.setBounds(0, -30, 530, 310);
@@ -241,81 +230,22 @@ public class Authentification extends javax.swing.JFrame {
            // JOptionPane.showMessageDialog(this, "Bienvenue dans votre espace Administration " );
            
                 
-////                
+//                
 //           Icon image = new ImageIcon( getClass().getResource("/img/admin.png"));     
 //           JOptionPane.showMessageDialog(this,"Bienvenue dans votre espace Administration ","Administrateur ",
 //            JOptionPane.OK_OPTION, image);
 //                
-           ////
-                
-                
-              
-                
-                
-//                iterate();
-                
-            
-                /////////////////////////////
-//               while (jProgressBar1.getValue()!=100)
-//               {
-//                   //Thread.sleep(10);
-//                 
-//                   try {
-//                       Thread.currentThread().sleep(1);
-//                       run();
-//                   } catch (InterruptedException ex) {
-//                       Logger.getLogger(Authentification.class.getName()).log(Level.SEVERE, null, ex);
-//                   }
-//              
-//               }
-//                
-                
-//                ////////////////
-//                
-//                while (jProgressBar1.getValue() < 100) {
-//            // The if and else implementation to cheange the text in Jlabel
-//            if (jLabel1.getText().equalsIgnoreCase("Loading...")) {
-//                jLabel1.setText("Loading....");
-//            } else {
-//                if (jLabel1.getText().equalsIgnoreCase("Loading.")) {
-//                    jLabel1.setText("Loading..");
-//                } else {
-//                    if (jLabel1.getText().equalsIgnoreCase("Loading..")) {
-//                        jLabel1.setText("Loading...");
-//                    } else {
-//                        jLabel1.setText("Loading.");
-//                    }
-//                }
-//            }
-//            jProgressBar1.setValue(jProgressBar1.getValue() + 1);
-//            try {
-//                Thread.sleep(10);
-//            } catch (Exception e) {
-//                System.out.println("LoadScreen class, run mehtod: there is a problem in the try and catch");
-//            }
-//        }
-//                
-                ///////////////////////////////
-//           for(int i=0;i<100;i++){                
-//                          
-//                          try 
-//                          {
-//                     jProgressBar1.setValue(jProgressBar1.getValue()+i);
-//                    Thread.currentThread().sleep(5);
-//                    jProgressBar1.setValue(jProgressBar1.getValue()+i);
-//           }   catch (InterruptedException ex) {
-//                   Logger.getLogger(Authentification.class.getName()).log(Level.SEVERE, null, ex);
-//               }
-//           }
-                
-                ////////////
-//          while((jProgressBar1.getValue()!=100)&&(jProgressBar1.getValue()<100)){
-//            
-//            jProgressBar1.setValue(jProgressBar1.getValue()+1);
-//        }
+//           
+               t.start();
+//               jProgressBar1
+        UIManager.put("ProgressBar.background", Color.orange);
+        UIManager.put("ProgressBar.foreground", Color.black);
+        UIManager.put("ProgressBar.selectionBackground", Color.red);
+        UIManager.put("ProgressBar.selectionForeground", Color.green);
+               jProgressBar1.setVisible(true);
 //           ProprietaireJFrameGenerale GComProp = null;
 //            GComProp = new ProprietaireJFrameGenerale();
-//           // this.setVisible(false);
+//            this.setVisible(false);
 //            GComProp.setVisible(true);
             }
         
