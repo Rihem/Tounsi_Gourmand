@@ -10,19 +10,18 @@ package gourmand.gui;
  *
  * @author BENAMARA
  */
-import Lib.ProprietaireJFrameGenerale;
+
 import gourmand.dao.*;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
-
 import java.sql.*;
 import org.jfree.ui.RefineryUtilities;
 
 public class Authentification extends javax.swing.JFrame {
-
-    /**
+/*
+    *
      * Creates new form Authentification
      */
     Connection con ;
@@ -32,6 +31,7 @@ public class Authentification extends javax.swing.JFrame {
     
    public Authentification() {
         initComponents();
+        
         RefineryUtilities.centerFrameOnScreen(this);
     }
 
@@ -153,7 +153,7 @@ public class Authentification extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 268, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 267, Short.MAX_VALUE)
         );
 
         pack();
@@ -187,11 +187,14 @@ public class Authentification extends javax.swing.JFrame {
             else if ( x !=0 ){
            // JOptionPane.showMessageDialog(this, "Bienvenue dans votre espace Administration " );
            
-           Icon image = new ImageIcon( getClass().getResource("/img/admin.png"));     
-           JOptionPane.showMessageDialog(this,"Bienvenue dans votre espace Administration ","Administrateur ",
-            JOptionPane.OK_OPTION, image);
                 
-            ProprietaireJFrameGenerale GComProp = null;
+//                
+//           Icon image = new ImageIcon( getClass().getResource("/img/admin.png"));     
+//           JOptionPane.showMessageDialog(this,"Bienvenue dans votre espace Administration ","Administrateur ",
+//            JOptionPane.OK_OPTION, image);
+//                
+         
+           ProprietaireJFrameGenerale GComProp = null;
             GComProp = new ProprietaireJFrameGenerale();
             this.setVisible(false);
             GComProp.setVisible(true);
@@ -217,8 +220,8 @@ public class Authentification extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this,"Bienvenue dans votre espace Client ","Espace Client ",
             JOptionPane.OK_OPTION, image);
             
-            AjoutProprietaireHAJER  AjCl = null;
-            AjCl = new AjoutProprietaireHAJER();
+            AjoutProprietaire  AjCl = null;
+            AjCl = new AjoutProprietaire();
             this.setVisible(false);
             AjCl.setVisible(true);
             
