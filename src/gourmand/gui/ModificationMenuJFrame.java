@@ -42,7 +42,7 @@ public class ModificationMenuJFrame extends javax.swing.JFrame {
         if(radioPlat.isSelected())
             remplirPlats();
         if(radioDessert.isSelected())
-            remplirDesserts();
+            remplirDesserts(); 
         if(radioBoisson.isSelected())
             remplirBoissons();
     }
