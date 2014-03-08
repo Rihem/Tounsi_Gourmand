@@ -6,6 +6,8 @@
 
 package gourmand.gui;
 
+import Lib.GestionEspaceGourmandPropJFrame;
+
 /**
  *
  * @author Hell

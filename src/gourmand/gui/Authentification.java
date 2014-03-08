@@ -10,6 +10,7 @@ package gourmand.gui;
  *
  * @author BENAMARA
  */
+import Lib.ProprietaireJFrameGenerale;
 import gourmand.dao.*;
 
 import javax.swing.Icon;

@@ -6,6 +6,7 @@
 
 package gourmand.gui;
 
+
 import gourmand.dao.ClientDAO;
 import gourmand.dao.ProprietaireDAO;
 import gourmand.entities.Client;
